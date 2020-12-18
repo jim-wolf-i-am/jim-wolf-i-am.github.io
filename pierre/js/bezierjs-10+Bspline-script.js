@@ -1309,15 +1309,11 @@ function mouseDragged() {
             bs_o_p[i].x = mouseX - canvas_c_x;
             bs_o_p[i].y = mouseY - canvas_c_y;
             
-//            calculate_bspline_points();   // no need here; the draw loop continuously calls this function
-            // but what if loop_status = false?
-//            if(!loop_status){
-//                console.log('loop_status is false, calling calculate_bspline_points')
+            calculate_bspline_points();
+            if(loop_status == false){
                 calculate_bspline_radii(); // this fixes the jumping spiro problem
-                calculate_bspline_points();
-                calculate_bspline_angle_incrementers(); // 
-                
-//            }
+            }
+            calculate_bspline_angle_incrementers();
         }
     }
     // END     for loop related to Shape 4     END    
