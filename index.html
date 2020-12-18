@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pierre 10++jw-ui++Bspline</title>
+<!--   <link rel="stylesheet" href="../libraries/jw/jw-ui.css">-->
+   <link rel="stylesheet" href="css/jw-ui.css">
+<!--    <link rel='stylesheet' href="bezierjs-10-bspline.css">-->
+    <link rel='stylesheet' href="css/bezierjs-10-bspline.css">
+<!--    <script language="javascript" type="text/javascript" src="libraries_local/howler.js"></script>-->
+    <script language="javascript" type="text/javascript" src="js/howler.js"></script>
+    
+<!--VERSION 8: Added Laser Light Show ( with music ! )-->
+    <style>
+        body {
+            overflow: hidden;
+            /* i feel guilty for doing this */
+        }
+    </style>
+</head>
+
+<html>
+    <body onload="document.ui-form.reset(); document.ui-form2.reset();">
+<!--       HAMBURGER-->
+        <a href="javascript:void(0)" id='menuicon' class='displaynone' onclick="openNav()">
+            <div class='menubars'></div>
+            <div class='menubars'></div>
+            <div class='menubars'></div>
+        </a>
+<!--    END HAMBURGER-->
+<!--        MAIN UI-->
+        <div id='ui-holder' class="sidenav">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <form id='ui-form' autocomplete="off">
+<!--            autocomplete="off" is needed so Firefox clears the form on Reload-->
+                <div class="controls_flex" style="margin-bottom: 20px;">
+                    <button id='keyboard_shortcuts_btn' onclick="openShortcuts(); return false">Shortcuts</button>
+                    <label for='background_color'>Background:</label>
+                    <button id='background_color' class="jscolor {closable:true,closeText:'close',valueElement:null,value:'rgb(0,0,0)',onFineChange: 'update_color_bkgd(this)'}"></button>
+                </div>
+                <h3 class="">COLOR CONTROLS</h3>
+                <div class="jw_ui">
+                    <div class="controls_flex" id="categories">
+                        <div id="transparency_category">TRANSPARENCY</div>
+                        <div id="color_category">COLOR</div>
+                    </div>
+                    <div class="controls_flex">
+                        <label for="transparency_range_1" class="text_color_1">Shape 1</label>
+                        <input type="range" min="1" max="255" value="63" class="slider" id="transparency_range_1">
+                        <button id='color_1' class="jscolor {closable:true,closeText:'close',valueElement:null,value:'rgb(255,3,123)',onFineChange: 'update_color_1(this)'}"></button>
+                    </div>
+                    <div class="controls_flex">
+                        <label for="transparency_range_2" class="text_color_2">Shape 2</label>
+                        <input type="range" min="1" max="255" value="63" class="slider" id="transparency_range_2">
+                        <button id='color_2' class="jscolor {closable:true,closeText:'close',valueElement:null,value:'rgb(77,235,255)',onFineChange: 'update_color_2(this)'}"></button>
+
+                    </div>
+                    <div class="controls_flex">
+                        <label for="transparency_range_3" class="text_color_3">Shape 3</label>
+                        <input type="range" min="1" max="255" value="63" class="slider" id="transparency_range_3">
+                        <button id='color_3' class="jscolor {closable:true,closeText:'close',valueElement:null,value:'rgb(241,255,48)',onFineChange: 'update_color_3(this)'}"></button>
+                    </div>
+                    <div class="controls_flex">
+                        <label for="transparency_range_4" class="text_color_4">Shape 4</label>
+                        <input type="range" min="1" max="255" value="63" class="slider" id="transparency_range_4">
+                        <button id='color_4' class="jscolor {closable:true,closeText:'close',valueElement:null,value:'rgb(154,0,255)',onFineChange: 'update_color_4(this)'}"></button>
+                    </div>
+                </div>
+                <h3 class="">MOTION CONTROLS</h3>
+                <div class="jw_ui">
+                    <div class="controls_flex ui_text">
+                        <label for="slider_spiro_speed" class="">Spiro Speed</label>
+                        <input type="range" min="1" max="28" value="24" class="slider" id="slider_spiro_speed">
+
+                        <p id='readout_spiro_speed' class='readout'>24</p>
+                    </div>
+
+                    <div class="controls_flex ui_text">
+                        <label for="slider_nonspiro_speed" class="">Circular Speed</label>
+                        <input type="range" min="1" max="16" value="10" class="slider" id="slider_nonspiro_speed">
+
+                        <p id='readout_nonspiro_speed' class="readout">10</p>
+                    </div>
+
+                    <div class="controls_flex ui_text">
+                        <label for="slider_rot_rad" class="">Rotating Radius</label>
+                        <input type="range" min="100" max="1600" step="5" value="250" class="slider" id="slider_rot_rad">
+    <!--                    slider_rot_rad affects r_spiro in the javascript  -->
+
+                        <p id='readout_rot_rad' class="readout">250</p>
+                    </div>
+
+                    <div class="controls_flex ui_text">
+                        <label for="slider_point_rad" class="">Point on Radius</label>
+                        <input type="range" min="25" max="400" step="5" value="250" class="slider" id="slider_point_rad">
+    <!--                    slider_point_rad affects point_on_small_r in the javascript   -->
+                        <p id='readout_point_rad' class="readout">250</p>
+                    </div>
+
+                    <div class="controls_flex ui_text">
+                        <label for="slider_shape_repeats" class="">Shape Repeats</label>
+                        <input type="range" min="1" max="22" value="7" class="slider" id="slider_shape_repeats">
+
+                        <p id='readout_shape_repeats' class="readout">7</p>
+                    </div>
+                    <div class="controls_flex center_vertically" style="margin-right: 43px; margin-bottom: 0;">
+                        <div class='radio_text'>Spiro Type:</div>
+                            <span class="radio_text">Epitrochoid</span>
+                        <div class="radio-item-epit">
+                            <input type="radio" id="epitro_radio" name="spiro_shape" value="epitrochoid" checked>
+                            <label for="epitro_radio"></label>
+                        </div>
+                            <span class="radio_text">Hypotrochoid</span>
+                        <div class="radio-item-hypo">
+                            <input type="radio"  id="hypotro_radio" name="spiro_shape" value="hypotrochoid">
+                            <label for="hypotro_radio"></label>
+                        </div>
+                    </div>
+                    <div class="controls_flex center_vertically" style="margin-right: 43px; margin-bottom: 17px;">
+                        <label for="spiro_option" class="">Spiro Movement?</label>
+                        <input type="checkbox" id="spiro_option" checked>
+                        <label for="draw_grid" class="">Draw Grid?</label>
+                        <input type="checkbox" id="draw_grid">
+                    </div>
+                </div>
+                    <h3 class="text_color_1">SHAPE 1 CONTROLS</h3>
+    <!--                SHAPE 1 CONTROLS-->
+                    <div class="jw_ui">
+                        <div class="jw_ui_wrapper">
+<!--                            <hr class='adjust_rule'>-->
+                            <div class="container controls_flex_col">
+                                <div class="col-0">
+                                    <button class="reset-points-button" onclick="reset_shape_1_points();  return false">reset points</button>
+                                </div>
+                                <div class="col-1">
+                                    <div class="controls_flex_in_col">
+                                        <label for="shape1" class="text_color_1">Show Shape 1</label>
+                                        <input type="checkbox" id="shape1">
+            <!--                            <input type="checkbox" id="shape1">-->
+                                    </div>
+                                    <div class="controls_flex_in_col">
+                                        <label for="lines1" class="text_color_1 wrap-non">Lines, Not Shapes</label>
+                                        <input type="checkbox" id="lines1">
+                                    </div>
+                                    <div class="controls_flex_in_col">
+                                        <label for="bilateral_1" class="text_color_1 wrap-non">Bilateral?</label>
+                                        <input type="checkbox" id="bilateral_1" checked>
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                    <div class="controls_flex_in_col">
+                                        <label for="anim0" class="text_color_1">Animate 1st Point</label>
+                                        <input type="checkbox" id="anim0">
+                        <!--                get_animate_1_params isn't used here, because this point just osciallates along the x axis-->
+                                    </div>
+                                    <div class="controls_flex_in_col">
+                                        <label for="anim1st_3rd" class="text_color_1 wrap-non">Animate Mid Point</label>
+                                        <input type="checkbox" id="anim1st_3rd" onchange="get_animate_1_params()">
+                                    </div>
+                                    <div class="controls_flex_in_col">
+                                        <label for="anim1" class="text_color_1">Animate Inner Point</label>
+                                        <input type="checkbox" id="anim1" onchange="get_animate_1_params()">
+                        <!--                <input type="checkbox" id="anim1">-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>     
+                    </div>
+    <!--            END SHAPE 1 CONTROLS-->
+                    <h3 class="text_color_2">SHAPE 2 CONTROLS</h3>
+    <!--                SHAPE 2 CONTROLS-->
+                    <div class="jw_ui">
+                        <div class="jw_ui_wrapper">
+<!--                            <hr class='adjust_rule'>-->
+                            <div class="container controls_flex_col">
+                                <div class="col-0">
+                                    <button class="reset-points-button" onclick="reset_shape_2_points();  return false;">reset points</button>
+                                </div>
+                                <div class="col-1">
+                                        <div class="controls_flex_in_col">
+                                            <label for="shape2" class="text_color_2">Show Shape 2</label>
+                                            <input type="checkbox" id="shape2" checked>
+            <!--                                <input type="checkbox" id="shape2">-->
+                                        </div>
+                                        <div class="controls_flex_in_col">
+                                            <label for="lines2" class="text_color_2 wrap-non">Lines, Not Shapes</label>
+                                            <input type="checkbox" id="lines2">
+                                        </div>
+                                    <div class="controls_flex_in_col">
+                                        <label for="bilateral_2" class="text_color_2 wrap-non">Bilateral?</label>
+                                        <input type="checkbox" id="bilateral_2" checked>
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                        <div class="controls_flex_in_col">
+                                            <label for="anim2_pt_1" class="text_color_2">Animate Point 1</label>
+                                            <input type="checkbox" id="anim2_pt_1" checked>
+                                        </div>
+                                        <div class="controls_flex_in_col">
+                                            <label for="anim2_cntrl_1" class="text_color_2">Animate Handle 1</label>
+                                            <input type="checkbox" id="anim2_cntrl_1" checked>
+                                        </div>
+                                        <div class="controls_flex_in_col">
+                                            <label for="anim2_anchor" class="text_color_2">Animate Outer Point</label>
+                            <!--                <input type="checkbox" id="anim2" onchange="get_animate_1_params()">-->
+                <!--                            <input type="checkbox" id="anim2_anchor" onchange="report_on_things()">-->
+                                            <input type="checkbox" id="anim2_anchor" checked>
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+    <!--            END SHAPE 2 CONTROLS-->
+                    </div>
+                    <div class="text_color_3">SHAPE 3 CONTROLS</div>
+    <!--                SHAPE 3 CONTROLS-->
+                    <div class="jw_ui">
+                        <div class="jw_ui_wrapper">
+<!--                            <hr class='adjust_rule'>-->
+                            <div class="container controls_flex_col">
+                                <div class="col-0">
+                                    <button class="reset-points-button" onclick="reset_shape_3_points();  return false">reset points</button>
+                                </div>
+                                <div class="col-1">
+                                        <div class="controls_flex_in_col">
+                                            <label for="shape3" class="text_color_3">Show Shape 3</label>
+                                            <input type="checkbox" id="shape3">
+            <!--                                <input type="checkbox" id="shape3">-->
+                                        </div>
+                                        <div class="controls_flex_in_col">
+                                            <label for="lines3" class="text_color_3 wrap-non">Lines, Not Shapes</label>
+                                            <input type="checkbox" id="lines3">
+                                        </div>
+                                    <div class="controls_flex_in_col">
+                                        <label for="bilateral_3" class="text_color_3 wrap-non">Bilateral?</label>
+                                        <input type="checkbox" id="bilateral_3" checked>
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                        <div class="controls_flex_in_col">
+                                            <label for="anim3_0" class="text_color_3">Animate 1st Point</label>
+                                            <input type="checkbox" id="anim3_0">
+                                        </div>
+                                        <div class="controls_flex_in_col">
+                                            <label for="anim3_1" class="text_color_3">Animate 2nd Point</label>
+                                            <input type="checkbox" id="anim3_1">
+                                        </div>
+                                        <div class="controls_flex_in_col">
+                                            <label for="anim3_2" class="text_color_3">Animate 3rd Point</label>
+                                            <input type="checkbox" id="anim3_2">
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+    <!--            END SHAPE 3 CONTROLS-->                        
+                    </div>
+                    <h3 class="text_color_4">SHAPE 4 CONTROLS</h3>
+    <!--                SHAPE 4 CONTROLS-->
+                    <div class="jw_ui">
+                        <div class="jw_ui_wrapper">
+<!--                            <hr class='adjust_rule'>-->
+                            <div class="container controls_flex_col remove_bottom_margin">
+                                <div class="col-0">
+                                    <button class="reset-points-button" onclick="reset_shape_4_points();  return false">reset points</button>
+                                    <p id="shape_4_note">NOTE:<br>Shape 4 is made with Bsplines!</p>
+                                </div>
+                                <div class="col-1">
+                                        <div class="controls_flex_in_col">
+                                            <label for="shape4" class="text_color_4">Show Shape 4</label>
+                                            <input type="checkbox" id="shape4">
+            <!--                                <input type="checkbox" id="shape3">-->
+                                        </div>
+                                        <div class="controls_flex_in_col">
+                                            <label for="lines4" class="text_color_4 wrap-non">Lines, Not Shapes</label>
+                                            <input type="checkbox" id="lines4">
+                                        </div>
+                                    <div class="controls_flex_in_col">
+                                        <label for="bilateral_4" class="text_color_4 wrap-non">Bilateral?</label>
+                                        <input type="checkbox" id="bilateral_4" checked>
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                        <div class="controls_flex_in_col">
+                                            <label for="anim4_0" class="text_color_4">Animate Point [1]</label>
+                                            <input type="checkbox" id="anim4_0">
+                                        </div>
+                                        <div class="controls_flex_in_col">
+                                            <label for="anim4_1" class="text_color_4">Animate Point [3]</label>
+                                            <input type="checkbox" id="anim4_1" checked>
+                                        </div>
+                                        <div class="controls_flex_in_col">
+                                            <label for="anim4_2" class="text_color_4">Animate Point [5]</label>
+                                            <input type="checkbox" id="anim4_2">
+                                        </div>
+                                </div>
+                            </div>
+                            <div class="container controls_flex_col">
+                                <div class="controls_flex_in_col remove_bottom_margin width_80">
+                                    <div class='slider-col-1'>
+                                        <label id='slider_full_label_1' for="slider_bspline_weight_1" class="text_color_4">Weight 1</label>
+                                    </div>
+                                    <div class='slider-col-2'>
+                                        <input type="range" min="0.1" max="10" step="0.1" value="1" class="slider" id="slider_bspline_weight_1">
+                                    </div>
+                                    <div class='slider-col-3'>
+                                        <p id='readout_slider_bspline_weight_1' class="readout_full_width">1</p>                
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="container controls_flex_col">
+                                <div class="controls_flex_in_col remove_bottom_margin width_80">
+                                    <div class='slider-col-1'>
+                                        <label id='slider_full_label_2' for="slider_bspline_weight_2" class="text_color_4">Weight 2</label>
+                                    </div>
+                                    <div class='slider-col-2'>
+                                        <input type="range" min="0.1" max="10" step="0.1" value="1" class="slider" id="slider_bspline_weight_2">
+                                    </div>
+                                    <div class='slider-col-3'>
+                                        <p id='readout_slider_bspline_weight_2' class="readout_full_width">1</p>                
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="container controls_flex_col">
+                                <div class="controls_flex_in_col remove_bottom_margin width_80">
+                                    <div class='slider-col-1'>
+                                        <label id='slider_full_label_3' for="slider_bspline_weight_3" class="text_color_4">Weight 3</label>
+                                    </div>
+                                    <div class='slider-col-2'>
+                                        <input type="range" min="0.1" max="10" step="0.1" value="1" class="slider" id="slider_bspline_weight_3">
+                                    </div>
+                                    <div class='slider-col-3'>
+                                        <p id='readout_slider_bspline_weight_3' class="readout_full_width">1</p>                
+                                    </div>
+                                </div>
+                            </div>
+                            <hr class='adjust_rule'>
+        <!--            END SHAPE 4 CONTROLS-->
+                       </div>
+                    </div>
+<!--                LASER LIGHT CONTROLS-->
+                <div class="container controls_flex_col remove_bottom_margin">
+                    <!-- <div class="col-1-bottom">
+                        <div class="controls_flex_in_col">
+                            <label for="i_feel_love_checkbox" id='vis_hide_1' class="hidden text_color_1" style="letter-spacing: 7px;">FEEL <span class="text_color_2">THE </span><span class="text_color_3">LOVE</span></label>
+                            <input type="checkbox" id="i_feel_love_checkbox" class='hidden'>
+                        </div>
+                    </div> -->
+                    <div class="col-2">
+                        <div class="controls_flex_in_col remove_bottom_margin">
+                            <label for="anim3_0" class="text_color_1">Laser <span class="text_color_2">Light </span><span class="text_color_3">Show </span></label>
+                            <input type="checkbox" id="laser_light_show">
+                        </div>
+                    </div>
+                </div>
+                <div id='last_main_ui' class="controls_flex ui_text">
+                    <label for="slider_laser_strength" class="">Laser Strength</label>
+                    <input type="range" min="1" max="40" value="15" class="slider" id="slider_laser_strength">
+                    <p id='readout_laser_strength' class="readout">15</p>                
+                </div>
+<!--            END LASER LIGHT CONTROLS-->
+            </form>
+        </div>
+<!--    END MAIN UI-->
+        <div id='ui-holder-fixed' class="sidenav on_dark_background">
+            <form id="ui-form2" autocomplete="off">
+<!--            autocomplete="off" is needed so Firefox clears the form on Reload-->
+                <div class="controls_flex_2">
+                    <button id="pause_resume_btn" onclick="pause_toggle(); return false">pause</button>
+    <!--                <button id="pause_resume_btn" onclick="pause_toggle()">pause</button>-->
+                </div>
+                <hr>
+                <div class="controls_flex_2">
+                    <input type="checkbox" id="handle_outline_viz" checked>
+                    <label for="handle_outline_viz" id="handle_outline_viz_lbl" class="lbl_in_flex_start">Show Handles &amp; Outlines?</label>
+                </div>
+            </form>        
+        </div>
+        
+        <div id='ui-shortcuts-holder' class='center'>
+            <a href="javascript:void(0)" class="close-shortcuts-btn" onclick="closeShortcuts(); return false">&times;</a>
+            <hr class='adjust_rule'>
+            <div id='shortcuts-flex'>
+                <div id='shortcuts-col-1'>
+                    <p>Show / Hide Shape 1</p>
+                    <p>Show / Hide Shape 2</p>
+                    <p>Show / Hide Shape 3</p>
+                    <p>Show / Hide Shape 4</p>
+                    <p>Epitrochoid</p>
+                    <p>Hypotrochoid</p>
+                    <p>Decrease Shape Repeats</p>
+                    <p>Increase Shape Repeats</p>
+                    <p>Auto Fade Transparency to 0</p>
+                    <p>Auto Fade Transparency to 255</p>
+                    <p>Pause / Resume</p>
+                </div>
+                <div id='shortcuts-col-2'>
+                    <p>\</p>
+                    <p>]</p>
+                    <p>[</p>
+                    <p>p</p>
+                    <p>e</p>
+                    <p>r</p>
+                    <p>a</p>
+                    <p>s</p>
+                    <p>t</p>
+                    <p>y</p>
+                    <p>spacebar</p>
+                </div>
+            </div>    
+        </div>
+
+        <div id='sketch-holder'>
+        </div>    
+        <script>
+            function resetForm(){
+                document.getElementById("ui-form").reset();
+                document.getElementById("ui-form2").reset();
+    //            console.log('reset form triggered');
+            }
+        </script>
+
+<!--        <script language="javascript" type="text/javascript" src='libraries_local/jscolor.min.js'></script>-->
+        <script language="javascript" type="text/javascript" src='js/jscolor.min.js'></script>
+
+<!--        <script language="javascript" type="text/javascript" src="libraries_local/p5.js"></script>-->
+        <script language="javascript" type="text/javascript" src="js/p5js/p5.js"></script>
+
+<!--        <script language="javascript" type="text/javascript" src="../libraries/jw/utils-jw.js"></script>-->
+        <script language="javascript" type="text/javascript" src="js/jw/utils-jw.js"></script>
+
+<!--        <script language="javascript" type="text/javascript" src="../libraries/jw/jw-ui.js"></script>-->
+        <script language="javascript" type="text/javascript" src="js/jw/jw-ui.js"></script>
+
+<!--        <script language="javascript" type="text/javascript" src="bezierjs-10+Bspline-script.js"></script>-->
+        <script language="javascript" type="text/javascript" src="js/bezierjs-10+Bspline-script.js"></script>
+
+     </body>
+
+</html>

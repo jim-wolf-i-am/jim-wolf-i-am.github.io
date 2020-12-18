@@ -1,0 +1,103 @@
+.row {
+	float: right;
+}
+
+html {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 90%;
+  background: #171717;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.center{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+canvas {
+    background: #000;
+    z-index: -1;
+    float: left;
+}
+
+.controls {
+    float: left;
+    margin: 15px 25px 0 5px;
+}
+
+button, label, input {
+    box-sizing: border-box;
+    padding: 0.4rem 0.8em;
+    margin: 0 10px 10px;
+    display: inline-block;
+    font-size: 1.2rem;
+    opacity: 0.3;
+    background: rgba(0,0,0,0);
+    color: white;
+    font-weight: bold;
+}
+
+button {
+    border-radius: 3px;
+    border: 2px solid;
+    transition: 0.5s;
+}
+
+input {
+    padding-left: 23px;
+	max-width: 6.2rem;
+}
+
+label {
+    margin-bottom: 0;
+	padding-right: 0;
+	margin-right: 0;
+	letter-spacing: 1px;
+}
+
+button:hover {
+  opacity: 0.75;
+background: rgba(245, 165, 106, 0.92);
+    color: white;
+  cursor: pointer;
+}
+
+button:active {
+  opacity: 1;
+  box-shadow: 0 -3px 10px rgba(0, 0, 0, 0.1) inset;
+}
+
+.fadeaway {
+    opacity: 0;
+}
+
+.active {
+  opacity: 0.75;
+background: rgba(242, 65, 65, 0.92);
+    color: white;
+  cursor: pointer;
+}
+
+@media only screen and (min-width: 768px) {
+	.row {
+		float: none;
+		display: inline-block;
+	}
+}
+
+@media only screen and (min-width: 1024px) {
+	input {
+    padding-left: 23px;
+	max-width: 7.0rem;
+	}
+}
+

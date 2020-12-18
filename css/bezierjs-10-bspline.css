@@ -1,0 +1,1080 @@
+.row {
+	float: right;
+}
+
+html {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 90%;
+  background: #171717;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    color: #ffffff;
+
+}
+
+.center{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.center_more{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#canvas_target {
+    z-index: 1;
+    background-color: transparent;
+}
+
+#canvas_anim_composite {
+    z-index: -1;
+}
+
+#canvas_composite {
+    z-index: -2;
+}
+
+#canvas_background {
+    z-index: -3;
+}
+
+#canvas_flat {
+    z-index: -4;
+    visibility: hidden;
+}
+
+.controls {
+    margin: 20px 0 4px 20px;
+    max-width: 250px;
+    z-index: 2;
+}
+
+.controls_flex {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 20px;
+    margin-bottom: 10px;
+}
+
+.controls_flex_2 {
+    display: flex;
+    justify-content: flex-start;
+    margin-left: 20px;
+    margin-bottom: 10px;
+}
+
+.controls_flex_col {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 10px;
+}
+
+.controls_flex_in_col {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 9px;
+}
+
+#last_main_ui {
+    margin-bottom: 10px;
+    margin-right: 0;
+}
+
+.arrows_container {
+    display: flex;
+    flex-direction: column;
+/*    justify-content: center;*/
+    padding-top: 13px;
+}
+
+.arrow_down {
+    margin-top: 8px;
+}
+
+.arrow {
+    fill: #868686;
+}
+
+.arrow:hover {
+    fill: white;
+}
+
+.arrow:active {
+    fill: #5cadc1;
+}
+
+.svg-icon {
+    fill: red;
+    transform: rotate(180deg);
+}
+
+.svg-icon:hover {
+    fill: green;
+}
+
+.svg-icon:active {
+    fill: grey;
+}
+
+
+.col-1 input {
+    margin-right: 0;
+}
+
+.col-1 {
+    width: 50%;
+}
+
+.col-1-bottom {
+    width: 76%;
+}
+
+.col-2 {
+    padding-right: 20px;
+    width: 61%;
+}
+
+.nest-container {
+    display: flex;
+}
+
+.col-nest-1 {
+    justify-content: flex-end;
+    margin-left: 14px;
+    margin-top: 5px;
+    border-right: 2px #3e3e3e solid;
+    padding-right: 24px;
+}
+
+.col-nest-2 {
+    flex: 2;
+    justify-content: flex-end;
+    margin-top: 10px;
+    margin-right: 24px;
+}
+
+button, label, input,.radio_text, .display_areas *, .readout, .basic_ui_text {
+    box-sizing: border-box;
+    padding: 0.4rem;
+/*    display: inline-block;*/
+    font-size: 1.0rem;
+    opacity: 0.7;
+    background: rgba(0,0,0,0);
+    color: white;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+button {
+    color: gray;
+}
+
+.display_areas {
+    margin-top: 0;    
+}
+
+.display_areas p {
+    padding-left: 0;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+input[type='checkbox']{
+    opacity: 1;
+    width: 20px;
+    height: 20px;
+    margin-top: 5.5px;
+    margin-bottom: 0;
+}
+
+#transparency_display, #diameter_display {
+    min-width: 29%;
+    text-align: right;
+    font-size: x-large;
+    font-weight: normal;
+    margin-left: 18px;
+}
+
+button {
+  margin-top: 16px;
+    border-radius: 3px;
+    border: 2px solid;
+    transition: 0.5s;
+	letter-spacing: 1px;
+}
+
+#color_1,#color_2,#color_3,#color_4,#background_color,input,select, .display_areas * {
+    padding-left: 8px;
+    margin-left: 2px;
+    font-size: 0.9em;
+}
+
+label {
+	letter-spacing: 1px;
+    margin-top: 2px;
+	margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 20px;
+    padding-bottom: 4px;
+    padding-left: 0;
+    text-align: right;
+}
+
+.ui_text {
+    margin-bottom: 0;
+}
+
+/*
+.ui_text > p {
+    margin-right: 5px;
+    margin-bottom: 4px;
+    letter-spacing: 1px;
+}
+*/
+
+/*
+.ui_text > p:first-child {
+    margin-right: 0;
+    padding-right: 0;
+}
+
+*/
+.readout {
+    display: inline-block;
+    min-width: 57px;
+    text-align: center;
+    font-size: 1.6rem;
+    font-weight: normal;
+    padding: 0;
+    margin: 8px 11px 12px 27px;
+}
+
+.readout_full_width {
+    display: inline-block;
+    min-width: 27px;
+    text-align: left;
+    font-size: 1.6rem;
+    font-weight: normal;
+    padding: 0;
+    margin: 2px 14px 0px 11px;
+}
+
+.lbl_in_flex_start {
+    text-align: left;
+    margin-left: 0;
+    margin-right: 16px;
+    padding-top: 5px;
+    color: #b9b9b9;
+    transition: 0.8s;
+}
+
+.lbl_in_flex_start:hover {
+    color: white;
+    opacity: 0.9;
+}
+
+.ui-row {
+    margin-bottom: 10px;
+}
+
+button:hover {
+  opacity: 0.75;
+background: rgb(0,0,0);
+    color: white;
+  cursor: pointer;
+}
+
+button:active {
+  opacity: 1;
+  box-shadow: 0 -3px 10px rgba(0, 0, 0, 0.1) inset;
+}
+
+.fadeaway {
+    opacity: 0;
+}
+
+.active {
+  opacity: 0.75;
+background: rgba(242, 65, 65, 0.92);
+    color: white;
+  cursor: pointer;
+}
+
+.instructions {
+  font-size: 0.9em;
+  line-height: 1.4em;
+  color: #717171;
+  text-align: left;
+  margin-top: 10px;
+}
+
+#color_1,#color_2,#color_3,#color_4,#background_color {
+    margin: 0;
+    padding: 0;
+    transition: 0s;
+    width: 79px;
+    height: 27px;
+    opacity: 1;
+    border-color: rgba(255, 255, 255, 0.7);
+    font-size: 0.8em;
+    text-align: center;
+    transition: 0s;
+}
+
+#redoBtn,#saveBtn {
+    margin-left: 16px;
+}
+
+.instructions_container {
+    border-top: 1px solid gray;
+    max-width: 170px;
+    margin-top: 40px;
+}
+
+.menubars {
+    width: 30px;
+    height: 4px;
+    background-color: #a8a8a8;
+    margin: 5px 0;
+}
+
+.menubars_on_light_background {
+    background-color: #1a1a1a !important;
+}
+#menuicon {
+    position: absolute;
+    z-index: 98;
+    margin-top: 18px;
+    margin-left: 18px;
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 5px 7px;
+}
+
+.menuicon_on_light_background {
+    background-color: rgba(0, 0, 0, 0.2) !important;
+}
+
+.displaynone {
+    display: none;
+}
+
+/* The side navigation menu */
+.sidenav {
+/*    width: 0;  0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    z-index: 99; /* Stay on top */
+    top: 0;
+    left: 0;
+    margin-left: 0; /* -270px if you want it to start off screen, 0 if on screen */
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 25px; /* Place content 50px from the top */
+    padding-bottom: 5px;
+    background-color: rgba(0, 0, 0, 0.8);
+    transition: 0.5s; /* transition effect to slide in the sidenav */
+}
+
+.on_dark_background {
+    background-color: rgba(0, 0, 0, 0.2);    
+}
+
+.on_light_background {
+    background-color: rgba(0, 0, 0, 0.0);
+    color: #464646 !important;
+}
+
+#handle_outline_viz_lbl {
+    background: none;
+}
+
+/* Position and style the close button (top right corner) in Chrome & Safari */
+/* media query code came from */
+/* https://www.ryadel.com/en/css3-media-query-target-only-ie-ie6-ie11-firefox-chrome-safari-edge/ */
+@media screen and (-webkit-min-device-pixel-ratio:0) { 
+    .sidenav .closebtn {
+        position: absolute;
+        top: 0px;
+        left: 17px;
+        font-size: 48px;
+        padding: 1px 8px;
+    }
+}
+/* Position and style the close button (top right corner) in Firefox */
+/* media query code came from */
+/* https://www.ryadel.com/en/css3-media-query-target-only-ie-ie6-ie11-firefox-chrome-safari-edge/ */
+@-moz-document url-prefix() {
+    .sidenav .closebtn {
+        position: absolute;
+        top: 0px;
+        left: 17px;
+        font-size: 48px;
+        padding: 9px 8px;
+    } 
+}
+
+.closebtn {
+    color: #a8a8a8;
+    font-weight: 100;
+    text-decoration: none;
+}
+
+#ui-holder {
+    float: left;
+    z-index: 5;
+    color: gray;
+    width: 530px;
+}
+
+#sketch-holder {
+  z-index: -5;
+/*          width: 1080px;*/
+/*          margin: 0 auto;*/
+  padding: 0;
+/*          float: left;*/
+}
+
+#keyboard_shortcuts_btn {
+    margin: 0 35px 0 0;
+    padding: 0;
+    width: 100px;
+    height: 27px;
+/*    opacity: 1;*/
+    border-color:
+    rgba(255, 255, 255, 0.7);
+/*    font-size: 0.8em;*/
+    text-align: center;
+    transition: 0.8s;
+}
+
+#ui-holder-fixed {
+    position: fixed;
+    bottom: 0;
+/*            right: 0;*/
+    top: inherit;
+    left: inherit;
+    max-width: 310px;
+    padding-top: 5px;
+}
+
+#ui-shortcuts-holder {
+    z-index: -1;
+    opacity: 0;
+    background-color: rgba(0, 0, 0, 0.9);
+    padding: 15px 30px;
+    width: 23%;
+    top: 40%;
+    font-size: 1.3em;
+    transition: 0.8s;
+}
+
+#shortcuts-flex {
+    display: flex;
+}
+
+#shortcuts-col-1 {
+    text-align: right;
+    margin-bottom: 40px;
+}
+
+#shortcuts-col-2 {
+    margin-left: 20px;
+    margin-bottom: 40px;
+}
+
+.close-shortcuts-btn {
+    color: #a8a8a8;
+    font-weight: 100;
+    text-decoration: none;
+    font-size: 28px;
+}
+
+.center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#categories {
+    justify-content: space-between;
+    letter-spacing: 8px;
+    font-size: 12px;
+    color: #797979;
+}
+
+#transparency_category, #note_1 {
+    margin-left: 171px;
+}
+
+#color_category, #note_2 {
+    margin-right: -7px;
+}
+
+#note_1, #note_2 {
+    letter-spacing: 2px;   
+}
+
+#note_2 {
+    width: 84px;
+    text-align: center;
+    margin-top: -11px;
+    margin-right: -4px;
+    margin-bottom: 12px;
+}
+
+#up_arrow {
+    font-size: 2em;
+}
+
+.center_vertically {
+    align-items: center;
+}
+
+#epitrochoid_icon, #hypotrochoid_icon {
+    margin-top: -5px;
+    margin-right: 4px;
+}
+
+.custom_radio_text {
+    position: relative;
+    top: 6px;
+}
+
+.radio_text {
+    margin-left: 12px;
+}
+
+/* CODE BELOW COMES FROM */
+/* https://stackoverflow.com/questions/4253920/how-do-i-change-the-color-of-radio-buttons */
+/* AUTHOR: JamieD */
+/*
+
+input[type='radio']:after {
+        width: 15px;
+        height: 15px;
+        border-radius: 15px;
+        top: -2px;
+        left: -1px;
+        position: relative;
+        background-color: #d1d3d1;
+        content: '';
+        display: inline-block;
+        visibility: visible;
+        border: 2px solid white;
+    }
+
+    input[type='radio']:checked:after {
+        width: 15px;
+        height: 15px;
+        border-radius: 15px;
+        top: -2px;
+        left: -1px;
+        position: relative;
+        background-color: #ffa500;
+        content: '';
+        display: inline-block;
+        visibility: visible;
+        border: 2px solid white;
+    }
+*/
+
+
+
+/* CODE BELOW COMES FROM */
+
+/* https://stackoverflow.com/questions/4253920/how-do-i-change-the-color-of-radio-buttons*/
+/* AUTHOR: klewis */
+
+.radio-item-epit, .radio-item-hypo {
+  display: inline-block;
+  position: relative;
+/*  padding: 0 6px;*/
+/*  margin: 10px 0 0;*/
+}
+
+.radio-item input[type='radio'] {
+  display: none;
+}
+
+.radio-item-epit input[type='radio'],.radio-item-hypo input[type='radio'] {
+  display: none;
+}
+
+.radio-item-epit label,.radio-item-hypo label {
+/*  color: #666;*/
+/*  font-weight: normal;*/
+    position: relative;
+    display: inline-block;
+    width: 42px;
+    padding: 0;
+    margin: 0;
+}
+
+/* CUSTOM RADIO BORDER */
+/*
+.radio-item label:before {
+  content: " ";
+  display: inline-block;
+  position: relative;
+  top: 6px;
+  width: 20px;
+  height: 20px;
+  border-radius: 11px;
+  border: 2px solid #ffffff;
+}
+*/
+
+/* CUSTOM RADIO BORDER v2, test background image */
+.radio-item-epit label:before {
+  content: " ";
+  display: inline-block;
+  position: relative;
+/*  top: 6px;*/
+  width: 52px;
+  height: 52px;
+/*    background-image: url("assets/epitrochoid-icon.png");*/
+    background-image: url("../assets/epitrochoid-icon.png");
+    background-position: left;
+    background-repeat: no-repeat;
+}
+
+.radio-item-hypo label:before {
+  content: " ";
+  display: inline-block;
+  position: relative;
+/*  top: 6px;*/
+  width: 52px;
+  height: 52px;
+    background-image: url("../assets/hypotrochoid-icon.png");
+    background-position: left;
+    background-repeat: no-repeat;
+}
+/* CUSTOM RADIO DOT */
+/*.radio-item input[type=radio]:checked + label:after {
+  border-radius: 11px;
+  width: 12px;
+  height: 12px;
+  position: absolute;
+  top: 12px;
+  right: 8px;
+  content: " ";
+  display: block;
+  background: #ff9d00;
+}
+*/
+.radio-item-epit input[type=radio]:checked + label:after {
+  position: absolute;
+  display: inline-block;
+  border-radius: 11px;
+  width: 12px;
+  height: 12px;
+  top: 20px;
+  right: 14px;
+  content: " ";
+  background: #ff9d00;
+}
+
+.radio-item-hypo input[type=radio]:checked + label:after {
+  position: absolute;
+  display: inline-block;
+  border-radius: 11px;
+  width: 12px;
+  height: 12px;
+  top: 20px;
+  right: 9px;
+  content: " ";
+  background: #ff9d00;
+}
+
+#hateful {
+/*    width: 0px;*/
+}
+
+/********************************************/
+ hr {
+    color: #3e3e3e;
+     border-color: #3e3e3e;
+}
+.text_color_1 {
+    color: rgb(255,3,123);
+    transition: color 1s;
+}
+.text_color_2 {
+    color: rgb(77,235,255);
+    transition: color 1s;
+}
+
+.text_color_3 {
+    color: rgb(241,255,48);
+    transition: color 1s;
+}
+
+.text_color_4 {
+    color: rgb(154,0,255);
+    transition: color 1s;
+}
+
+.wrap-non {
+    white-space: nowrap;
+}
+
+label[for='transparency_range_1'],label[for='transparency_range_2'],label[for='transparency_range_3'],label[for='transparency_range_4']{
+/*           margin-top: 4px;*/
+   padding-bottom: 0;
+    padding-right: 3px;
+}
+
+#transparency_range_1, #transparency_range_2, #transparency_range_3 {
+    margin-bottom: 0px;
+}
+
+#transparency_range_1, #transparency_range_2, #transparency_range_3, #transparency_range_4 {
+    margin-right: 17px;
+}
+
+.darkgray_text {
+    color: dimgray;
+    margin-right: 4px;
+}
+
+input[type='number'] {
+max-height: 30px;
+    max-width: 70px;
+}
+
+/*
+label[for='r_spiro']{
+    padding-top: 0;
+}
+
+label[for='point_on_small_r']{
+    padding-top: 0;
+}
+*/
+
+input[type='radio']{
+    margin-top: -1px;
+    margin-right: 9px;
+}
+
+input#spiro_option {
+    margin-left: 0;
+    margin-right: 43px;
+}
+
+input#draw_grid {
+    margin-left: 0;
+    margin-right: 6px;
+}
+
+.adjust_rule {
+    margin: 12px auto;
+}
+
+#handle_outline_viz {
+    margin-left: 0;
+    margin-right: 8px;
+/*    opacity: 0.5;*/
+    transition: 0.8s;
+}
+
+#handle_outline_viz:hover {
+    opacity: 0.9;
+}
+
+#pause_resume_btn {
+/*    color: #505050;*/
+    color: #a8a8a8;
+    min-width: 74px;
+    margin-top: 8px;
+    margin-bottom: 5px;
+    margin-left: 0;
+    transition: 0.8s;
+}
+
+#pause_resume_btn:hover {
+    opacity: 1.0;
+    color: white !important;
+    background-color: #3b3b3b;
+}
+
+.slidecontainer {
+    width: 100%; /* Width of the outside container */
+}
+
+/* The slider itself */
+.slider {
+  -webkit-appearance: none;  /* Override default CSS styles */
+  appearance: none;
+  width: 47%; /* was 100% */
+/*            max-width: 100%;*/
+    padding: 0;
+    margin: 15px 0px 15px 16px;
+  height: 3px; /* Specified height */
+  background: #ffffff; /* Grey background */
+  outline: none; /* Remove outline */
+  opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+  -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+  transition: opacity .2s;
+}
+
+/* Mouse-over effects */
+.slider:hover {
+  opacity: 1; /* Fully shown on mouse-over */
+}
+
+/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 15px;
+    border: white 2px solid;
+    border-radius: 25px;
+  background: #000000;
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 25px;
+/*          height: 25px;*/
+    border: white 2px solid;
+    border-radius: 25px;
+  background: #000000;
+  cursor: pointer;
+}
+
+.col-0 {
+    display: flex;
+    align-items: flex-start;
+    flex-flow: wrap;
+    width: 24.8%;
+}
+
+.reset-points-button {
+    margin-top: 5px;
+    margin-left: 20px;
+}
+
+.hidden {
+/*    visibility: hidden;*/
+    opacity: 0 !important;
+}
+
+.width_80 {
+    width: 80%;
+}
+
+.full_width {
+    width: 100%;
+}
+
+
+#vis_hide_1, #i_feel_love_checkbox {
+    transition: 1.0s;
+    padding-right: 2px;
+}
+
+#i_feel_love_checkbox {
+    margin-right: 0;
+}
+
+#second_last_main_ui {
+    margin-bottom: 0;
+}
+
+.remove_bottom_margin {
+    margin-bottom: 0;
+}
+#readout_laser_strength {
+    margin: 8px 0 0 8px;
+    text-align: left;
+    min-width: 42px;
+}
+
+#slider_bspline_weight_1,#slider_bspline_weight_2,#slider_bspline_weight_3 {
+    width: 98%;
+    margin: 11px 0px 6px 6px;
+}
+
+.slider-col-1 {
+    margin: 6px 2px 0 0;
+}
+
+.slider-col-2 {
+    width: 51%;
+}
+
+.slider-col-3 {
+    width: 13%;
+}
+
+#slider_full_label_1,#slider_full_label_2,#slider_full_label_3 {
+    margin: 0;
+    padding: 0;
+}
+
+#shape_4_note {
+	margin-left: 20px;
+	position: absolute;
+	width: 25%;
+	text-align: left;
+	bottom: 17px;
+	font-size: 0.9rem;
+	line-height: 1.2rem;
+    letter-spacing: 0.7px;
+	color: #5a5a5a;
+}
+
+/* THIS TARGETS MY LAPTOP 1700 works */
+@media screen and (max-device-width: 1700px){
+
+    .sidenav {
+        padding-top: 17px;
+    }
+    
+    label {
+        padding: 0.3rem 0.3rem 0.3rem 0;
+    }
+    
+    .controls_flex label {
+        margin-top: 3px;
+    }
+    
+    .controls_flex_in_col {
+        display: flex;
+        justify-content: flex-end;
+        margin-bottom: 3px;
+    }
+
+    
+    .adjust_rule {
+        margin: 0 auto 10px;
+    }
+    
+    .readout {
+        display: inline-block;
+        min-width: 57px;
+        text-align: center;
+        font-size: 1.3rem;
+        font-weight: normal;
+        padding: 0;
+        margin: 5px 11px 0px 27px;
+    }
+    
+    /* Position and style the close button (top right corner) in Chrome & Safari */
+    /* media query code came from */
+    /* https://www.ryadel.com/en/css3-media-query-target-only-ie-ie6-ie11-firefox-chrome-safari-edge/ */
+    @media screen and (-webkit-min-device-pixel-ratio:0) { 
+        .sidenav .closebtn {
+            position: absolute;
+            top: 0px;
+            left: 17px;
+            font-size: 36px;
+            padding: 1px 8px;
+        }
+    }
+    /* Position and style the close button (top right corner) in Firefox */
+    /* media query code came from */
+    /* https://www.ryadel.com/en/css3-media-query-target-only-ie-ie6-ie11-firefox-chrome-safari-edge/ */
+    @-moz-document url-prefix() {
+        .sidenav .closebtn {
+            position: absolute;
+            top: 0px;
+            left: 17px;
+            font-size: 36px;
+            padding: 9px 8px;
+        } 
+    }
+
+
+    
+}
+
+
+/*
+@media screen and (max-width: 400px){
+    #menuicon {
+        display: inherit;
+    }
+    
+    .sidenav {
+        margin-left: -540px;
+    }
+    
+    button, label, input {
+        padding: 4px;
+    }
+
+    button {
+        margin-top: 0;
+    }
+
+    input,select {
+        padding-left: 8px;
+        min-width: 32%;
+        max-width: 32%;
+    }
+    
+    input[type='checkbox'],input[type='radio']{
+        opacity: 1;
+        min-width: 0;
+        margin-left: 19%;
+    }
+
+    
+    .instructions {
+      margin-top: 4px;
+    }
+
+    #redoBtn,#saveBtn {
+        margin-left: 16px;
+    }
+
+    .controls {
+        margin-top: 15px;
+        margin-bottom: 6px;
+    }
+
+    .instructions_container {
+        max-width: 300px;
+        margin-top: 20px;
+    }
+    
+    .hide_on_mobile {
+        display: none;
+    }
+    
+}
+*/
+
+/* ----------- Non-Retina Screens ----------- */
+@media screen 
+  and (min-device-width: 1200px) 
+  and (max-device-width: 1600px) 
+  and (-webkit-min-device-pixel-ratio: 1) { 
+      body {
+          color: red !important;
+      }
+}
+
+/* ----------- Retina Screens ----------- */
+@media screen 
+  and (min-device-width: 1200px) 
+  and (max-device-width: 1600px) 
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (min-resolution: 192dpi) {
+      body {
+          color: red !important;
+      }
+}
+
