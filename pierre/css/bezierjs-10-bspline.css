@@ -68,8 +68,8 @@ body {
 
 .controls_flex_2 {
     display: flex;
-    justify-content: flex-start;
-    margin-left: 20px;
+    justify-content: flex-end;
+    margin-right: 20px;
     margin-bottom: 10px;
 }
 
@@ -269,16 +269,16 @@ label {
     margin: 2px 14px 0px 11px;
 }
 
-.lbl_in_flex_start {
+.lbl_in_flex_end {
     text-align: left;
     margin-left: 0;
-    margin-right: 16px;
     padding-top: 5px;
+    padding-bottom: 0;
     color: #b9b9b9;
     transition: 0.8s;
 }
 
-.lbl_in_flex_start:hover {
+.lbl_in_flex_end:hover {
     color: white;
     opacity: 0.9;
 }
@@ -458,7 +458,7 @@ background: rgba(242, 65, 65, 0.92);
 #ui-holder-fixed {
     position: fixed;
     bottom: 0;
-/*            right: 0;*/
+    right: 0;
     top: inherit;
     left: inherit;
     max-width: 310px;

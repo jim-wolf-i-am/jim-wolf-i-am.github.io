@@ -862,6 +862,7 @@ function setup(){
         shape_3_original_points_x_coordinates.push(square_points[i].xpos);
         shape_3_original_points_y_coordinates.push(square_points[i].ypos);
     }
+
     
 //    calculate_bspline_radii();
 //    console.log('setup says bspline_r_3 = ' + bspline_r_3);
@@ -888,6 +889,7 @@ function setup(){
 //        console.log('I made a handle with indx = ' + i);
     }
     fix_bspline_points_that_overlap();
+
 }  // END OF setup
 
 // FUNCTION TO GET VALUES TO ROTATE A POINT. MIGHT NOT USE THIS FUNCITON
@@ -1279,16 +1281,6 @@ function mouseDragged() {
     }
     // END: for Shape 2 (tBs2) - END
     
-    // this for loop is related to Shape 3
-    for (var i = 0; i < square_points.length; i++) {
-        if (square_points[i].selected) {
-            square_points[i].xpos = mouseX - canvas_c_x;
-            square_points[i].ypos = mouseY - canvas_c_y;
-            square_points[i].update_radius_angle(square_points[i].xpos,square_points[i].ypos);
-        }
-    }
-    // END     for loop related to Shape 3     END    
-    
     // this for loop is related to Shape 2.1 part of refactoring Shape 2.1
     for (var i = 0; i < bez_elmnts_Shape_2.length; i++) {
         if (bez_elmnts_Shape_2[i].selected) {
@@ -1299,21 +1291,46 @@ function mouseDragged() {
     }
     // END     for loop related to Shape 2.1     END    
     
+    // this for loop is related to Shape 3
+    for (var i = 0; i < square_points.length; i++) {
+        if (square_points[i].selected) {
+            square_points[i].xpos = mouseX - canvas_c_x;
+            square_points[i].ypos = mouseY - canvas_c_y;
+            square_points[i].update_radius_angle(square_points[i].xpos,square_points[i].ypos);
+        }
+    }
+    // END     for loop related to Shape 3     END    
+    
     // this for loop is related to the HANDLES Shape 4
     for (var i = 0; i < bspline_handles.length; i++) {
         if (bspline_handles[i].selected) {
             bspline_handles[i].xpos = mouseX - canvas_c_x;
             bspline_handles[i].ypos = mouseY - canvas_c_y;
             bspline_handles[i].update_radius_angle(bspline_handles[i].xpos,bspline_handles[i].ypos);
+            // PROBLEM? it's updating the radius based on the point's current position... but if a point has spiro movement, its position is also affected by the spiro equations (so it's factoring in r_spiro and point_on_small_r)
+            // is the SOLUTION to somehow 'filter out' the spiro radii when updating a point's radius?
+            // NOPE, it didn't fix the problem
 
             bs_o_p[i].x = mouseX - canvas_c_x;
             bs_o_p[i].y = mouseY - canvas_c_y;
             
-            calculate_bspline_points();
             if(loop_status == false){
-                calculate_bspline_radii(); // this fixes the jumping spiro problem
+                // calculate_bspline_radii(); // this fixes the jumping spiro problem
+                // but if it's only done while loop_status is false, then points at indexes 1, 3, 5 (the animatiable ones) can't be freely moved even if their checkbox is unchecked; they follow their animation path only
             }
+            calculate_bspline_radii(); // when this function happens while loop_status is true, then b_spline_r_3 increases a lot if you move any other point. Only happens to this point's radius, as it currently is the only one that has spiro motion. Points index 1 and 5 just move in a circle. ALSO, point [3] can only move along it's animation path
+
+            // OMG, this is such a hack: updating point index 3's radius here, because it can't be done in the function calculate_bspline_radii (makes it jump there)
+            if(bspline_handles[3].selected){
+                bspline_r_3 = Math.round(Math.sqrt((bs_o_p[3].x * bs_o_p[3].x) + (bs_o_p[3].y * bs_o_p[3].y)));
+            }
+            calculate_bspline_points();
             calculate_bspline_angle_incrementers();
+            // OMG, this is such a hack: updating point index 3's angle incrementer here, because it can't be done in the function calculate_bspline_angle_incrementers (makes it jump there)
+            if(bspline_handles[3].selected){
+                gamma_bspline =  Math.atan2(bs_o_p[3].y, bs_o_p[3].x);
+            }
+        
         }
     }
     // END     for loop related to Shape 4     END    
@@ -1908,16 +1925,19 @@ function draw(){
         }
     }
     
+// ************************
+// ** FOR TESTING THINGS **
+// ************************
+//    THIS CODE PRINTS VALUES TO THE CANVAS
 
-////// HANDLES_TEST    
-//////    THIS CODE PRINTS VALUES TO THE CANVAS
-//    fill('white');
-//    noStroke();
-//    textSize(16);
-//    var text_offset_v = 70;
-//    var text_x = 400;
-//    var text_x_col_offset = 100;
-//    
+   fill('white');
+   noStroke();
+   textSize(16);
+   var text_offset_v = 50;
+   var text_x = 200;
+   var text_x_col_offset = 150;
+
+////    SHAPE 4 HANDLES TEST
 //    text('HANDLE',text_x,-canvas_c_y+(text_offset_v*.35));
 //    text('BS_O_P',text_x + text_x_col_offset,-canvas_c_y+(text_offset_v*.35));
 //    text('BSPLINE',text_x + (text_x_col_offset * 2),-canvas_c_y+(text_offset_v*.35));
@@ -1944,8 +1964,36 @@ function draw(){
 //        text('bspline_r_3  =  ' + Math.round(bspline_r_3), text_x + (text_x_col_offset * 3),-canvas_c_y+text_offset_v + (7*60));
 //        text('bspline_r_3 + r_spiro  =  ' + Math.round(bspline_r_3 + r_spiro), text_x + (text_x_col_offset * 3),-canvas_c_y+text_offset_v + (7.5*60));
 ////        text('bspline_r_5  =  ' + Math.round(bspline_r_5), text_x + (text_x_col_offset * 3),-canvas_c_y+text_offset_v + (7*60));
-////// end   HANDLES_TEST    
+////    SHAPE 4 HANDLES TEST -- END
 
+// //    SPIRO RADIUS TEST
+//     text('r_spiro',text_x, -canvas_c_y+text_offset_v);
+//     text(r_spiro, text_x + text_x_col_offset, -canvas_c_y+text_offset_v);
+//     text('bspline_r_3',text_x, -canvas_c_y+(text_offset_v * 2));
+//     text(bspline_r_3, text_x + text_x_col_offset, -canvas_c_y+(text_offset_v * 2));
+
+//     text('bs_o_p[3].x',text_x, -canvas_c_y+(text_offset_v * 3));
+//     text(Math.round(bs_o_p[3].x), text_x + text_x_col_offset, -canvas_c_y+(text_offset_v * 3));
+
+//     text('bs_o_p[3].y',text_x + text_x_col_offset * 2, -canvas_c_y+(text_offset_v * 3));
+//     text(Math.round(bs_o_p[3].y), text_x + text_x_col_offset * 3, -canvas_c_y+(text_offset_v * 3));
+
+//     text('bspline_x_3',text_x, -canvas_c_y+(text_offset_v * 4));
+//     text(Math.round(bspline_x_3), text_x + text_x_col_offset, -canvas_c_y+(text_offset_v * 4));
+
+//     text('bspline_y_3',text_x + text_x_col_offset * 2, -canvas_c_y+(text_offset_v * 4));
+//     text(Math.round(bspline_y_3), text_x + text_x_col_offset * 3, -canvas_c_y+(text_offset_v * 4));
+
+//     text('bspline_handles[3].xpos',text_x - 90, -canvas_c_y+(text_offset_v * 5));
+//     text(Math.round(bspline_handles[3].xpos), text_x + text_x_col_offset, -canvas_c_y+(text_offset_v * 5));
+
+//     text('bspline_handles[3].ypos',text_x - 90 + text_x_col_offset * 2, -canvas_c_y+(text_offset_v * 5));
+//     text(Math.round(bspline_handles[3].ypos), text_x + text_x_col_offset * 3, -canvas_c_y+(text_offset_v * 5));
+// //  end   SPIRO RADIUS TEST   end
+
+// ****************************
+// ** END OF  TESTING THINGS **
+// ****************************
     
         x_spiro = (R_spiro + r_spiro) * Math.cos(theta) - (point_on_small_r * Math.cos(((R_spiro + r_spiro)/r_spiro)*theta));  // IT WORKS! FROM https://en.wikipedia.org/wiki/Epitrochoid
         y_spiro = (R_spiro + r_spiro) * Math.sin(theta) - (point_on_small_r * Math.sin(((R_spiro + r_spiro)/r_spiro)*theta));  // but now, I don't think I'm using them
@@ -2173,7 +2221,6 @@ function draw(){
                 // DRAWS Shape 4
                 
                 calculate_bspline_points();
-//                console.log('triggered calculate_bspline_points, from draw loop');
                 const spline = new BSpline(bspline_points);
                 spline.bspline_weights = bspline_weights;
 
@@ -2243,9 +2290,9 @@ function draw(){
             if(show_shape_4){
                 for (var i = 0; i < bspline_handles.length; i++){
                     bspline_handles[i].show_handle(red_4,grn_4,blu_4);
-                    // textSize(20);
-                    // noStroke();
-                    // text(i,bspline_handles[i].xpos+20,bspline_handles[i].ypos+5); // HANDLES_TEST, but kind of nice so I kept it
+                    textSize(20);
+                    noStroke();
+                    text(i,bspline_handles[i].xpos+20,bspline_handles[i].ypos+5); // HANDLES_TEST, but kind of nice so I kept it
                 }
             }
             
@@ -2464,9 +2511,11 @@ function fix_bspline_points_that_overlap(){
 
 }
 
+var make_it_go = true; // temp variable to get around loop_status true or false
 function calculate_bspline_points(){
     
     // copy original points into the bspline points array
+    // WHY HERE? THIS FUNCTION IS CALLED CONTINUOUSLY IN THE DRAW LOOP
     bspline_points = 
          [{x:bs_o_p[0].x, y:bs_o_p[0].y},
           {x:bs_o_p[1].x, y:bs_o_p[1].y},
@@ -2538,6 +2587,7 @@ function calculate_bspline_points(){
 // *****************************************************************************************************************************************************************
     
     // only points of index 1, 3 and 5 can animate, so here we're setting their x y values based on polar coordinates (radius * angle)
+    // this if statement normally is based on loop_status
     if(loop_status){
         
         r_spiro = parseInt(r_spiro); // because the universe hates me
@@ -2713,7 +2763,8 @@ function Bez_point(name,bx,by,r,g,b,a){
     };
 
     this.update_radius_angle = function (xx,yy){
-        this.radius = Math.sqrt((xx ** 2) + (yy ** 2));
+        this.radius = Math.sqrt((xx ** 2) + (yy ** 2)); // 'normal' version
+        // this.radius = Math.sqrt((xx ** 2) + (yy ** 2) - r_spiro - point_on_small_r); // trying to stop the points with spiro movement from adding the spiro radii to their own, DIDN'T WORK
         this.angle = Math.atan2(yy,xx) * 180 / Math.PI;
     }
 } // END of Bezier anchor or control handle CLASS
@@ -2867,7 +2918,9 @@ function calculate_bspline_radii(){
 
     // THESE WORK. QUITE WHILE YOU'RE AHEAD!
     bspline_r_1 = Math.sqrt((bs_o_p[1].x * bs_o_p[1].x) + (bs_o_p[1].y * bs_o_p[1].y));
-    bspline_r_3 = Math.round(Math.sqrt((bs_o_p[3].x * bs_o_p[3].x) + (bs_o_p[3].y * bs_o_p[3].y)));
+    if(!spiro_option){
+        bspline_r_3 = Math.round(Math.sqrt((bs_o_p[3].x * bs_o_p[3].x) + (bs_o_p[3].y * bs_o_p[3].y)));
+    }
     bspline_r_5 = Math.sqrt((bs_o_p[5].x * bs_o_p[5].x) + (bs_o_p[5].y * bs_o_p[5].y));            
     // end, THESE WORK. QUITE WHILE YOU'RE AHEAD!
 
@@ -2875,7 +2928,9 @@ function calculate_bspline_radii(){
 
 function calculate_bspline_angle_incrementers() {
     theta_bspline =  Math.atan2(bs_o_p[1].y, bs_o_p[1].x);
-    gamma_bspline =  Math.atan2(bs_o_p[3].y, bs_o_p[3].x);
+    if(!spiro_option){
+        gamma_bspline =  Math.atan2(bs_o_p[3].y, bs_o_p[3].x);
+    }
     petri_bspline =  Math.atan2(bs_o_p[5].y, bs_o_p[5].x);
 }
 
