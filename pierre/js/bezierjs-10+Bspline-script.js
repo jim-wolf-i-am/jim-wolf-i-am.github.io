@@ -2477,16 +2477,17 @@ class BSpline {
     bspline_x_1 = 133; // ANIMATES
     bspline_y_1 = 230; // ANIMATES
 
-    bspline_x_2 = -13;
-    bspline_y_2 = 230;
+    bspline_x_2 = -window.innerWidth / 3; // previously -13
+    bspline_y_2 = 230; // previously 230
 
-    bspline_x_3 = -26; // ANIMATES
+    bspline_x_3 = -window.innerWidth / 5; // ANIMATES, previously -26
     bspline_y_3 = 0;   // ANIMATES
 
-    bspline_x_4 = -134;
-    bspline_y_4 = -231;
+    bspline_x_4 = window.innerWidth / 2.5 ; // previously -134
+    bspline_y_4 = -window.innerHeight / 2.5; // previously -231
 //    
-    bspline_x_5 = 133;  // ANIMATES
+    bspline_x_5 = window.innerWidth / 6 ;  // ANIMATES, previously 133
+    console.log(bspline_x_5);
     bspline_y_5 = -231; // ANIMATES
 
 // bs_o_p = bspline original points
