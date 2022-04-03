@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1 minimum-scale=1">
+	<title>:::: twirly thing ::::</title>
+
+	<link rel="stylesheet" href="spiro-final-style.css">
+</head>
+    
+<!--<body id='main' onKeyUp='return checkSubmit(event)'>-->
+<body id='main'>
+	    
+		<div class="controls flex-row">
+			<button type="button" id="turboBtn" onmouseup="this.blur();">Turbo</button>
+			<button type="button" id="pauseBtn" onmouseup="this.blur();">Pause</button>
+			<button type="button" id="optionsBtn" onmouseup="this.blur();">Options</button>
+            <button type="button" id="saveBtn" onmouseup="this.blur();">Save</button>
+		</div>
+
+<!--    FORM GOES HERE
+Size of Larger Circle
+Size of Smaller Cicle (or Pen Offset)
+R += is speed of Larger Circle
+r += is speed of Smaller Circle
+Color (if you use HTML5 color form element, will have to convert to rgba)
+Shape (store them in an array?)
+-->
+    
+    <form class='center' name='anim_input' id='animInput'> 
+        <div id='firstrow' class="flex-row">
+            <div class='row1'>
+                <label for='radius1'>Enter a Radius:<br>0-9</label><br>
+                <input type="text" name="radius1" id="radius1" value='9'><br>
+            </div>
+            <div class='row1'>
+                <label for='penoffset'>Enter Pen Offset:<br>0-200</label><br>
+                <input type="text" name="penoffset" id="penoffset" value='100'><br>
+            </div>
+            <div class='row1'>
+                <label for='speed_LC'>Enter Larger<br>Circle Speed: 0-100</label><br>
+<!--                <input type="text" name="speed_LC" value='4'><br>-->
+                <input type="text" name="speed_LC" value='10'><br>
+            </div>
+            <div class='row1'>
+            <label for='speed_sc'>Enter Smaller<br>Circle Speed: 0-100</label><br>
+<!--            <input type="text" name="speed_sc" value='11'><br>-->
+            <input type="text" name="speed_sc" value='13'><br>
+            </div>
+<!--
+            <div class='row1'>
+            <label for='pattern_amount'>Pattern Amount<br>1:Full 2:Half 3:Third</label><br>
+            <input type="text" name="pattern_amount" value='1'><br>
+            </div>
+-->
+            <div class='row1'>
+                <fieldset id='pattern' class="flex-row wrap">
+                    <legend>How Much Pattern?</legend>
+                    <div class='sub-row-1-2'>
+                        <label for="full" class="radioContainer">Full
+                            <input type='radio' name='pattern_amount' id='full' value='full' checked/>
+                            <span class="circle"></span>
+                        </label>
+                    </div>
+                    <div class='sub-row-1-2'>
+                        <label for="half" class="radioContainer">Half
+                            <input type='radio' name='pattern_amount' id='half' value='half' />
+                            <span class="circle"></span>
+                        </label>
+                    </div>
+                    <div class='sub-row-1-2'>
+                        <label for="third" class="radioContainer">Third
+                            <input type='radio' name='pattern_amount' id='third' value='third' />
+                            <span class="circle"></span>
+                        </label>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+        <fieldset class="flex-row">
+            <legend>CHOOSE PEN SHAPE</legend>
+            <div id='secondrow' class="flex-row">
+                <div class='row3'>
+                    <label for="circle" class="radioContainer">circle
+                        <input type='radio' name='penshape' id='circle' value='circle' onClick='setShape(this.value)'>
+                        <span class="circle"></span>
+                    </label>
+                </div>
+                <div class='row3'>
+                    <label for="square" class="radioContainer">square
+                        <input type='radio' name='penshape' id='square' value='square' onClick='setShape(this.value)'>
+                        <span class="circle"></span>
+                    </label>
+                </div>
+                <div class='row3'>
+                    <label for="triangle" class="radioContainer">triangle
+                        <input type='radio' name='penshape' id='triangle' value='triangle' onClick='setShape(this.value)'>
+                        <span class="circle"></span>
+                    </label>
+                </div>
+                <div class='row3'>
+                    <label for="oval" class="radioContainer">oval                    
+                    <input type='radio' name='penshape' id='oval' value='oval' checked=true onClick='setShape(this.value)'>
+                    <span class="circle"></span>
+                </label>
+                </div>
+                <div class='row3'>
+                    <label for="teardrop" class="radioContainer">teardrop
+                    <input type='radio' name='penshape' id='teardrop' value='teardrop' onClick='setShape(this.value)'>
+                    <span class="circle"></span>
+                </label>
+                </div>
+                <div class='row3'>
+                    <label for="leaf" class="radioContainer">leaf
+                        <input type='radio' name='penshape' id='leaf' value='leaf' onClick='setShape(this.value)'>
+                        <span class="circle"></span>
+                    </label>
+                </div>
+                <div class='row3'>
+                    <label for="diamond" class="radioContainer">diamond
+                        <input type='radio' name='penshape' id='diamond' value='diamond' onClick='setShape(this.value)'>
+                        <span class="circle"></span>
+                    </label>
+                </div>
+                <div class='row3'>
+                    <label for="dots" class="radioContainer">dots
+                        <input type='radio' name='penshape' id='dots' value='dots' onClick='setShape(this.value)'>
+                        <span class="circle"></span>
+                    </label>
+                </div>
+                <div class='row3'>
+                    <label for="line" class="radioContainer">line
+                        <input type='radio' name='penshape' id='line' value='line' onClick='setShape(this.value)'>
+                        <span class="circle"></span>
+                    </label>
+                </div>
+                <div class='row3'>
+                    <label for="curve" class="radioContainer">curve
+                        <input type='radio' name='penshape' id='curve' value='curve' onClick='setShape(this.value)'>
+                        <span class="circle"></span>
+                    </label>
+                </div>
+                <div class='row3'>
+                    <label for="puckeredtri" class="radioContainer">puckered triangle
+                        <input type='radio' name='penshape' id='puckeredtri' value='puckeredtri' onClick='setShape(this.value)'>
+                        <span class="circle"></span>
+                    </label>
+                </div>
+                
+            </div> <!-- END OF '2ND ROW' -->
+        </fieldset>
+
+        <div id='fourthrow' class="flex-row">
+            <p class="hide_on_desktop">Mix a Color</p>
+<!--
+            <div class='row4'>
+                <label for='shapecolor'>Choose a color:<br>
+                <input type="color" name="shapecolor" id='colorpicker' value="#000000" onChange='setColor()'>
+                <input type="color" name="shapecolor" id='colorpicker' value="#000000">
+            </div>
+-->
+        <div id='fourthrow_first_col' class="flex-row">
+            <div class='row4'>
+                <input type="range" id='red_value' name="red_value" min="0" max="255" value=255 onChange='setRedvalue()'>
+                <div id='outputRed'>Red: 255</div> 
+            </div>
+            <div class='row4'>
+                <input type="range" id='green_value' name="green_value" min="0" max="255" value=126 onChange='setGreenvalue()'>
+                <div id='outputGreen'>Green: 126</div>
+            </div>
+            <div class='row4'>
+                <input type="range" id='blue_value' name="blue_value" min="0" max="255" value=0 onChange='setBluevalue()'>
+                <div id='outputBlue'>Blue: 0</div>
+            </div>
+            <div class='row4'>
+                <input type="range" id='opacity_value' name="opacity_value" min="0.10" max="1.00" step='0.05' value='0.15' onChange='setOpacityvalue()'>
+                <div id='outputOpacity'>Opacity: 0.15</div>
+            </div>
+        </div>
+
+        <div id='fourthrow_second_col' class="flex-row">
+            <div class='' id='colorSwatch'></div>
+        </div>
+    </div>
+    <div id='fifthrow' class="flex-row">
+        <p class="hide_on_desktop mt">Change Scale</p>
+        <div id='fifthrow_first_col'>
+            <div class='row5' id='row5_first'>
+            <input type='range' id='horzscale' name='horzscale' min='0.1' max='2' step='0.1' value='1.0' onChange='setHorzScale(this.value)'>
+            <div id='outputHorzScale'>Horzontal<br>Scale: 1.0</div>
+            </div>
+            <div class='row5'>
+            <input type='range' id='vertscale' name='vertscale' min='0.1' max='2' step='0.1' value='1.0' onChange='setVertScale(this.value)'>
+            <div id='outputVertScale'>Vertical<br>Scale: 1.0</div>
+            </div>
+        </div>
+        <div id='fifthrow_second_col'>
+            <div id='formlast'>
+    <!--            <input id='onlyBtn' type="button" name='sbmtBtn' value="DRAW IT!" onclick="init()">-->
+                <input id='onlyBtn' type="button" name='sbmtBtn' value="DRAW IT!" onmouseup="this.blur();">
+            </div>
+        </div>
+    </div>
+    </form>
+<!--    EVC Gallery Display (the "old" one) is 1920 x 1080-->
+		<!-- <canvas id="stage" width="1800" height="1400"></canvas> -->
+	<canvas id="stage"></canvas>
+	
+        <!-- FOR FIREFOX -->
+	<script>
+        var the_form = document.getElementsByTagName("form");
+        the_form[0].reset();
+    </script>
+
+	<script src="raf-polyfill.js"></script>
+    <script src="FileSaver.js"></script>
+<!--    <script src="canvas-toBlob.js"></script>-->
+	<script src="spiro-final-script.js"></script>
+</body>
+</html>

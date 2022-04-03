@@ -1,0 +1,554 @@
+@charset "utf-8";
+
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+html {
+    font-family: 'PT Sans', Helvetica, Arial, sans-serif;
+    letter-spacing: 0.5px;
+    background: #171717;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    /* overflow: hidden; */
+}
+
+.flex-row {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+
+.center{
+    position: absolute;
+    top: 42%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+canvas {
+    background: #000;
+    /* position: absolute; */
+    /* top: -6%; */
+    /* left: 50%; */
+    /* transform: translate(-50%,0); */
+    z-index: -1;
+}
+
+.controls {
+    position: absolute;
+    top: 3%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 20%;
+    z-index: 1;
+
+}
+
+button {
+  opacity: 0.3;
+  display: inline-block;
+  border-radius: 3px;
+  border: 2px solid;
+  font-size: 0.9rem;
+  padding: 0.4rem 0.8em;
+  background: rgba(0,0,0,0);
+  color: white;
+  -webkit-font-smoothing: antialiased;
+  font-weight: bold;
+  margin: 0 0.25rem;
+  text-align: center;
+  transition: 0.5s;
+}
+
+button:hover {
+  opacity: 0.75;
+background: rgba(245, 165, 106, 0.92);
+    color: white;
+  cursor: pointer;
+}
+
+button:active {
+  opacity: 1;
+  box-shadow: 0 -3px 10px rgba(0, 0, 0, 0.1) inset;
+}
+
+.fadeaway {
+    opacity: 0;
+}
+
+input[type="text"] {
+    font-size: 1.5em;
+    padding: 0;
+    text-align: center;
+    display: block;
+    margin: 0 auto 1em auto;
+    border: none;
+    border-radius: 50%;
+    opacity: .65;
+    color: #3e3e3e;
+}
+
+.row1 input {
+    height: 3.5em;
+    width: 3.5em;
+}
+
+.wrap {
+    flex-wrap: wrap;
+}
+
+input[type='radio'] {
+    /* width: 7em; */
+    /* height: 7em; */
+    /* zoom: 0.5; */ /* invalid property name*/
+}
+
+input[name='pattern_amount'] {
+    /* width: 1em; */
+    /* height: 1em; */
+    /* zoom: 1; */
+    /* margin: 0.6em 0 0 0.6em; */
+}
+
+form {
+	color: rgba(255, 255, 255, 0.85);
+	max-width: 1090px;
+    width: 65%;
+	margin: 4em auto;
+	border-radius: 4em;
+	background-color: rgba(87, 87, 87, 0.65);
+	line-height: 1.5em;
+	transition: 1s;
+	padding: 3em;
+}
+
+
+
+
+legend {
+	margin: 0 auto 15px;
+	text-transform: uppercase;
+}
+
+fieldset input {
+    margin: 1em auto 0.2em auto;
+}
+
+legend + input {
+    margin: 0.75em auto 0.1em auto;
+}
+
+label {
+    text-align: center;
+    display: block;
+}
+
+fieldset {
+    border: none;
+}
+
+/* #firstrow, #secondrow, #thirdrow, #fourthrow, #fifthrow, fieldset {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+} */
+
+#fourthrow, #fifthrow {
+    /* flex-wrap: wrap; */
+    justify-content:flex-start;
+    padding-left: 2.1em;
+}
+
+#pattern {
+    width: 81%;
+}
+
+.row1 {
+    width: 22.7%;
+}
+
+/* .row1:last-child {
+    width: 25%;
+} */
+
+.row2,.row3,.row4 {
+    text-align: center;
+    width: 22%;
+}
+
+.row3 {
+    width: 16%;
+}
+
+.row4,.row5 {
+    display: flex;
+    flex-wrap: nowrap;
+    text-align: left;
+    margin-top: 0.5em;
+    width: 100%;
+        align-content:flex-end;
+}
+
+#row5_first {
+    margin-top: 3em;
+}
+
+.row5 input {
+    margin-top: 0.8em;
+}
+
+#fourthrow_first_col, #fourthrow_second_col, #fifthrow_first_col, #fifthrow_second_col {
+    flex-direction: column;
+    width: 48%;
+}
+
+/*
+* [type="color"] {
+    border-radius: 0;
+        border: none;
+    background-color: none;
+}
+*/
+#colorpicker {
+/*
+    width: 2em;
+    height: 2em;
+*/
+    margin-top: 0.5em;
+    border-radius: 0;
+        border: none;
+    background: none;
+}
+
+#formleft {
+    width: 40%;
+    padding-left: 3em;
+    float: left;
+}
+#formright {
+    display: none;
+    width: 50%;
+    float: right;
+}
+
+#formlast {
+    margin: 2em auto;
+}
+
+#onlyBtn {
+    float: none;
+    height: 5.25em;
+    width: 5.25em;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #313131;
+    padding: 0;
+    text-align: center;
+    border: none;
+    border-radius: 50%;
+}
+
+[type='range'] {
+    height: 1em;
+    width: 57%;
+    margin: 4px 10px 0 0;
+    padding: 0;
+        align-content: center;
+
+}
+
+#green_value,#blue_value,#opacity_value {
+    margin-top: 16px;
+}
+
+#outputRed {
+    margin-top: -1px;
+}
+
+#outputBlue,#outputGreen,#outputOpacity {
+    margin-top: 10px;
+}
+
+#outputRed,#outputGreen,#outputBlue,#outputHorzScale,#outputVertScale,#outputOpacity { 
+    display: inline-table;
+    width: 105px;
+    color: rgba(255,255,255,.75);
+    padding: 0 1em 0 0.5em;
+    border-radius: 10px;
+    font: bold 15px/20px;
+}
+
+#colorSwatch {
+    margin-top: 0.8em;
+    height: 112px;
+    width: 138px;
+    background-color: rgba(255, 126, 0, 0.15);
+/*    opacity: 0.15;*/
+    transition: 0.5s;
+}
+
+.hide_on_desktop {
+    display: none;
+}
+
+p.hide_on_desktop {
+    margin-bottom: 0;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+
+/* CUSTOM RADIO BUTTONS */
+
+.radioContainer {
+	display: inline-block;
+	position: relative;
+	cursor: pointer;
+	/* font-family: sans-serif; */
+	/* font-size: 16px; */
+	line-height: 1.3;
+	user-select: none;
+	padding-top: 32px;
+}
+
+.radioContainer input {
+    display: none;
+}
+
+/* v1, radio button, left of label */
+
+/* .radioContainer .circle {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-color: #eee;
+    position: absolute;
+    left: 0;
+    top: 0;
+    border-radius: 50%;
+    transition: background-color 200ms;
+} */
+
+/* v2, for centered radio button, above label */
+.radioContainer .circle {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-color: #eee;
+    position: absolute;
+    left: calc(50% - 10px);
+    top: 0;
+    border-radius: 50%;
+    transition: background-color 200ms;
+}
+
+.radioContainer:hover .circle {
+    background-color: #ccc;
+}
+
+.radioContainer input:checked + .circle {
+    background-color: #2196fc;
+}
+
+@keyframes radiocircle {
+    0% {
+        /* transform-origin: center; */
+        /* transform: scale(1); */        /* this is enough for Chrome */
+        /* transform: scale(1) translate(0,0); */
+    }
+
+    50% {
+        /* transform-origin: 0em; */
+        transform: scale(1.3);
+        /* transform: translate(0,50%) scale(1.3); */
+        /* transform: translateY(4px) scale(1.3); */
+        /* width: 20px; */
+        /* height: 20px; */
+    }
+
+    100% {
+        /* transform-origin: center; */
+        /* transform: scale(1); */
+        /* transform: scale(1) translate(0,5px); */
+    }
+}
+
+/* this used to work fine for both Chrome and Firefox */
+.radioContainer input:checked + .circle::after {
+    content: "";
+    height: 10px;
+    width: 10px;
+    background-color: #fff;
+    position: absolute;
+    border-radius: 50%;
+    left: calc(50% - 5px);
+    top: calc(50% - 5px);
+    opacity: 1;
+    animation: radiocircle 800ms;
+}
+
+/* trying to get it right in Firefox DIDN'T WORK WELL  */
+
+/* .radioContainer input:checked + .circle::after {
+	content: "";
+	height: 10px;
+	width: 10px;
+	background-color: #fff;
+	position: absolute;
+	border-radius: 50%;
+	opacity: 1;
+	transform: translate(-5px,6px);
+	animation: radiocircle 800ms;
+} */
+
+@media screen and (max-width: 1300px) {
+    * {
+        /* color: red !important; */  /* for testing media query */
+    }
+
+    .controls {
+        top: 4%;
+        width: 25%;
+    }
+
+    form {
+        margin: 4.6em auto;
+        max-width: 960px;
+        width: 85%;
+        padding: 2em 3em 0.7em;
+    }
+
+    .row1 {
+        width: 15%;
+    }
+
+    .row1 input {
+        height: 3.3em;
+        width: 3.3em;
+    }
+
+    /* .row1:last-child {
+        width: unset;
+    } */
+
+    input[type="text"] {
+        margin: 0 auto 0.8em auto;
+    }
+
+    legend {
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 800px) {
+
+    .hide_on_desktop {
+        display: unset;
+    }
+
+    html {
+        background-color: #000;
+        font-size: 85%;
+    }
+
+    .center {
+        top: 0;
+        transform: translate(-50%, 0%);
+    }
+
+    form {
+        width: 80%;
+        padding: 2em 2em 0.7em;
+        border-radius: 2.5em;
+    }
+
+    .flex-row {
+        flex-wrap: wrap;
+    }
+
+    .controls {
+        top: 4%;
+        width: 100%;
+        justify-content: center;
+        gap: 5px;
+        /* margin: 4% auto; */
+        flex-wrap: nowrap;
+    }
+
+    .mt {
+        margin-top: 30px;
+    }
+
+    .row1 {
+        width: 45%;
+    }
+
+    .row1:last-child {
+        width: 100%;
+        margin-bottom: 15px;
+    }
+
+    .row3 {
+        width: 27%;
+    }
+
+    .radioContainer {
+        padding-top: 28px;
+    }
+
+    #secondrow {
+        gap: 28px;
+        justify-content: center;
+    }
+
+    #fourthrow, #fifthrow {
+        padding: 0;
+    }
+
+    #fourthrow_first_col, #fourthrow_second_col, #fifthrow_first_col, #fifthrow_second_col {
+        width: 100%;
+    }
+
+    #fourthrow_first_col, #fifthrow_first_col {
+        margin-top: 10px;
+    }
+
+    fieldset {
+        margin: 0 auto;
+        padding: 5px 0 9px;
+    }
+
+    [type="range"] {
+        width: 66%;
+    }
+
+    #outputRed, #outputGreen, #outputBlue, #outputHorzScale, #outputVertScale, #outputOpacity {
+        width: 33%;
+        padding: 0 0 0 0.5em;
+    }
+
+    #colorSwatch {
+        height: 62px;
+        width: 100%;
+        margin-top: 25px;
+    }
+
+    #row5_first {
+        margin-top: 1em;
+    }
+
+    #formlast {
+        display: block;
+    }
+
+    #onlyBtn {
+        display: block;
+        margin: 0 auto;
+    }
+}
+
