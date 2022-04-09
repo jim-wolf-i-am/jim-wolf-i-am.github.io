@@ -208,6 +208,20 @@ fieldset {
     width: 48%;
 }
 
+#fourthrow_second_col {
+    flex-direction: row;
+    margin-top: 0.8em;
+    justify-content: flex-start;
+}
+
+#fourthrow_second_col label {
+    display: inline-block;
+}
+
+#random_color {
+    margin: 0 10px 0 30px;
+}
+
 /*
 * [type="color"] {
     border-radius: 0;
@@ -256,7 +270,7 @@ fieldset {
 
 [type='range'] {
     height: 1em;
-    width: 57%;
+    width: 70%;
     margin: 4px 10px 0 0;
     padding: 0;
         align-content: center;
@@ -285,11 +299,9 @@ fieldset {
 }
 
 #colorSwatch {
-    margin-top: 0.8em;
     height: 112px;
-    width: 138px;
+    width: 108px;
     background-color: rgba(255, 126, 0, 0.15);
-/*    opacity: 0.15;*/
     transition: 0.5s;
 }
 
@@ -519,13 +531,17 @@ p.hide_on_desktop {
         margin-top: 10px;
     }
 
+    #random_color {
+        margin: 10px 10px 0 0;
+    }
+
     fieldset {
         margin: 0 auto;
         padding: 5px 0 9px;
     }
 
     [type="range"] {
-        width: 66%;
+        width: 90%;
     }
 
     #outputRed, #outputGreen, #outputBlue, #outputHorzScale, #outputVertScale, #outputOpacity {

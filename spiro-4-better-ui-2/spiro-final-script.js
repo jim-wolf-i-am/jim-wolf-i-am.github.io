@@ -136,8 +136,11 @@ function btnGetFormClick (e) {
     
     setPatternAmount();
 
-        // console.log('from inside btnGetFormClick function, pattern amount = ' + pattern_amount);
-
+    let random_color = document.getElementById('random_color').checked;
+    if(random_color){
+        setRandomColor();
+    }
+        
     makeCombinedColor();
 //        console.log('btnGetFormClick thinks animation is not running, and will trigger init');
 
@@ -148,8 +151,7 @@ function btnGetFormClick (e) {
     window.scrollTo(0,0);
 }
 
-function getRadioCheckedValue(radio_name)
-{
+function getRadioCheckedValue(radio_name) {
    var oRadio = document.forms[0].elements[radio_name];
  
    for(var i = 0; i < oRadio.length; i++)
@@ -854,7 +856,20 @@ function setBluevalue() {
     makeCombinedColor();
 //    colorSwatchIndicator.style.backgroundColor = combinedColor;
     OutputBlueTarget.innerHTML = 'Blue: ' + blueValue;
+}
 
+var random_Red;
+var random_Green;
+var random_Blue;
+
+function setRandomColor() {
+    document.getElementById('red_value').value = Math.floor(Math.random() * 256);
+    document.getElementById('green_value').value = Math.floor(Math.random() * 256);
+    document.getElementById('blue_value').value = Math.floor(Math.random() * 256);
+
+    setRedvalue();
+    setGreenvalue();
+    setBluevalue();
 }
 
 function setOpacityvalue() {
