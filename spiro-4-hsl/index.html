@@ -155,33 +155,39 @@ Shape (store them in an array?)
 <!--
             <div class='row4'>
                 <label for='shapecolor'>Choose a color:<br>
-                <input type="color" name="shapecolor" id='colorpicker' value="#000000" onChange='setColor()'>
+                <input type="color" name="shapecolor" id='colorpicker' value="#000000" oninput='setColor()'>
                 <input type="color" name="shapecolor" id='colorpicker' value="#000000">
             </div>
 -->
         <div id='fourthrow_first_col' class="flex-row">
             <div class='row4'>
-                <input type="range" id='red_value' name="red_value" min="0" max="255" value=255 onChange='setRedvalue()'>
-                <div id='outputRed'>Red: 255</div> 
+                <!-- <input type="range" id='red_value' name="red_value" min="0" max="255" value=255 oninput='setRedvalue()'> -->
+                <!-- <div id='outputRed'>Red: 255</div>  -->
+                <input type="range" id='hueValue' name="hueValue" min="0" max="360" value=30 oninput='setHuevalue()'>
+                <div id='outputHue'>Hue: 30</div> 
             </div>
             <div class='row4'>
-                <input type="range" id='green_value' name="green_value" min="0" max="255" value=126 onChange='setGreenvalue()'>
-                <div id='outputGreen'>Green: 126</div>
+                <!-- <input type="range" id='green_value' name="green_value" min="0" max="255" value=126 oninput='setGreenvalue()'> -->
+                <!-- <div id='outputGreen'>Green: 126</div> -->
+                <input type="range" id='saturationValue' name="saturationValue" min="0" max="100" value=100 oninput='setSaturationvalue()'>
+                <div id='outputSaturation'>Saturation: 100</div>
             </div>
             <div class='row4'>
-                <input type="range" id='blue_value' name="blue_value" min="0" max="255" value=0 onChange='setBluevalue()'>
-                <div id='outputBlue'>Blue: 0</div>
+                <!-- <input type="range" id='blue_value' name="blue_value" min="0" max="255" value=0 oninput='setBluevalue()'> -->
+                <!-- <div id='outputBlue'>Blue: 0</div> -->
+                <input type="range" id='lightnessValue' name="lightnessValue" min="0" max="100" value=50 oninput='setLightnessvalue()'>
+                <div id='outputLightness'>Lightness: 50</div>
             </div>
             <div class='row4'>
-                <input type="range" id='opacity_value' name="opacity_value" min="0.10" max="1.00" step='0.05' value='0.15' onChange='setOpacityvalue()'>
-                <div id='outputOpacity'>Opacity: 0.15</div>
+                <input type="range" id='opacity_value' name="opacity_value" min="0.10" max="1.00" step='0.01' value='0.20' oninput='setOpacityvalue()'>
+                <div id='outputOpacity'>Opacity: 0.20</div>
             </div>
         </div>
 
         <div class="flex-row" id="fourthrow_second_col">
-            <div class='' id='colorSwatch'></div>
+            <div id='colorSwatch'></div>
             <div>
-                <input type="checkbox" id="random_color" name="random_color">
+                <input type="checkbox" id="random_color" name="random_color" oninput="maybeChangeColor()">
                 <label for="random_color">Use Random Color?</label>    
             </div>
         </div>
@@ -190,11 +196,11 @@ Shape (store them in an array?)
         <p class="hide_on_desktop mt">Change Scale</p>
         <div id='fifthrow_first_col'>
             <div class='row5' id='row5_first'>
-            <input type='range' id='horzscale' name='horzscale' min='0.1' max='2' step='0.1' value='1.0' onChange='setHorzScale(this.value)'>
+            <input type='range' id='horzscale' name='horzscale' min='0.1' max='2' step='0.1' value='1.0' oninput='setHorzScale(this.value)'>
             <div id='outputHorzScale'>Horzontal<br>Scale: 1.0</div>
             </div>
             <div class='row5'>
-            <input type='range' id='vertscale' name='vertscale' min='0.1' max='2' step='0.1' value='1.0' onChange='setVertScale(this.value)'>
+            <input type='range' id='vertscale' name='vertscale' min='0.1' max='2' step='0.1' value='1.0' oninput='setVertScale(this.value)'>
             <div id='outputVertScale'>Vertical<br>Scale: 1.0</div>
             </div>
         </div>

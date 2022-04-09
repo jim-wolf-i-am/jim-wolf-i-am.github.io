@@ -10,17 +10,31 @@
     var animation_is_running;
     var mostRecentShape;
     var shapecolor;
+
     var redValue=255;
     var greenValue=126;
     var blueValue=0;
-    var combinedColor;
+
+    var hueValue = 30; // value ranges 0 - 360
+    var saturationValue = 100; // value ranges 0% – 100%
+    var lightnessValue = 50; // value ranges 0% – 100%
+
     var OutputRedTarget = document.getElementById('outputRed');
     var OutputGreenTarget = document.getElementById('outputGreen');
     var OutputBlueTarget = document.getElementById('outputBlue');
-    var opacityValue = 0.15;
+
+    var OutputHueTarget = document.getElementById('outputHue');
+    var OutputLightnessTarget = document.getElementById('outputLightness');
+    var OutputSaturationTarget = document.getElementById('outputSaturation');
+
+    var opacityValue = 0.20;
+    
+    var combinedColor;
+    
     var OutputOpacityTarget = document.getElementById('outputOpacity');
     var OutputHorzScale = document.getElementById('outputHorzScale');
     var OutputVertScale = document.getElementById('outputVertScale');
+    
     var willbe_desired_horzScale;
     var willbe_desired_vertScale;
     var horzScale=1;
@@ -126,7 +140,6 @@ function btnGetFormClick (e) {
     var n = userInputForm.radius1.value;
     sizeR = (n-1) * 18.75 + 100;
     moon_offset = userInputForm.penoffset.value;
-    console.log('moon_offset = ' + moon_offset);
     speed_Around = parseInt(userInputForm.speed_LC.value)/1000;
     speed_Pen_around = parseFloat(userInputForm.speed_sc.value)/1000;
     desired_shape = willbe_desired_shape;
@@ -702,6 +715,7 @@ window.onload = function() {
     console.log('onload function fired');
 //    userInputForm.sbmtBtn.addEventListener('click', btnGetFormClick);  //  ORIGINAL LOCATION
 //    document.anim_input.sbmtBtn.preventDefault;
+    // makeCombinedColor();
 
     if(innerWidth < 800 ){
         console.log('wow thats a tiny screen');
@@ -858,18 +872,50 @@ function setBluevalue() {
     OutputBlueTarget.innerHTML = 'Blue: ' + blueValue;
 }
 
+function setHuevalue() {
+    setHuevalue.preventDefault;
+    hueValue = document.getElementById('hueValue').value;
+    makeCombinedColor();
+    OutputHueTarget.innerHTML = 'Hue: ' + hueValue;
+}
+
+function setSaturationvalue() {
+    setSaturationvalue.preventDefault;
+    saturationValue = document.getElementById('saturationValue').value;
+    makeCombinedColor();
+    OutputSaturationTarget.innerHTML = 'Saturation: ' + saturationValue;
+}
+
+function setLightnessvalue() {
+    setLightnessvalue.preventDefault;
+    lightnessValue = document.getElementById('lightnessValue').value;
+    makeCombinedColor();
+    OutputLightnessTarget.innerHTML = 'Lightness: ' + lightnessValue;
+}
+
 var random_Red;
 var random_Green;
 var random_Blue;
 
 function setRandomColor() {
-    document.getElementById('red_value').value = Math.floor(Math.random() * 256);
-    document.getElementById('green_value').value = Math.floor(Math.random() * 256);
-    document.getElementById('blue_value').value = Math.floor(Math.random() * 256);
+    // document.getElementById('red_value').value = Math.floor(Math.random() * 256);
+    // document.getElementById('green_value').value = Math.floor(Math.random() * 256);
+    // document.getElementById('blue_value').value = Math.floor(Math.random() * 256);
 
-    setRedvalue();
-    setGreenvalue();
-    setBluevalue();
+    document.getElementById('hueValue').value = Math.floor(Math.random() * 361);
+
+    // setRedvalue();
+    // setGreenvalue();
+    // setBluevalue();
+
+    setHuevalue();
+}
+
+function maybeChangeColor() {
+    let x = document.getElementById('random_color').checked;
+    if (x) {
+        setRandomColor();
+    }
 }
 
 function setOpacityvalue() {
@@ -877,14 +923,13 @@ function setOpacityvalue() {
 //    opacityValue = document.getElementById('opacity_value').value;
     opacityValue = parseFloat(document.getElementById('opacity_value').value).toFixed(2);
     OutputOpacityTarget.innerHTML = 'Opacity: ' + opacityValue;
-    console.log( 'opacityValue, from within the opacityValue function ' + opacityValue);
-        makeCombinedColor();
+    makeCombinedColor();
 }
 
 function setHorzScale() {
     var h = document.getElementById('horzscale').value;
     willbe_desired_horzScale = parseFloat(h);
-        OutputHorzScale.innerHTML = 'Horzontal<br>Scale: ' + h;
+    OutputHorzScale.innerHTML = 'Horzontal<br>Scale: ' + h;
 
 }
 
@@ -896,9 +941,11 @@ function setVertScale() {
 
 function makeCombinedColor() {
     makeCombinedColor.preventDefault;
-    combinedColor = 'rgba(' + redValue + ', ' + greenValue + ', ' + blueValue + ', ' + opacityValue + ')';
+    // combinedColor = 'rgba(' + redValue + ', ' + greenValue + ', ' + blueValue + ', ' + opacityValue + ')';
+    combinedColor = 'hsla(' + hueValue + ', ' + saturationValue + '%, ' + lightnessValue + '%, ' + opacityValue + ')';
 
-            colorSwatchIndicator.style.backgroundColor = combinedColor;
+    colorSwatchIndicator.style.backgroundColor = combinedColor; // NOTE: inline styles will automatically convert to rgba. No way to prevent that. pOOp!
+
 }
 
 function makeCombinedScale() {
@@ -910,8 +957,6 @@ function init_canvas(){
     screen_width = window.innerWidth;
     screen_height = window.innerHeight;
     
-    console.log('window.innerWidth = ' + window.innerWidth);
-
     canvas.height = screen_height;
     canvas.width = screen_width;
 
