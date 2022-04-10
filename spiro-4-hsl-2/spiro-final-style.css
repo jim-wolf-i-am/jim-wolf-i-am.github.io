@@ -13,7 +13,6 @@ html {
 body {
     margin: 0;
     padding: 0;
-    /* overflow: hidden; */
 }
 
 .flex-row {
@@ -32,10 +31,6 @@ body {
 
 canvas {
     background: #000;
-    /* position: absolute; */
-    /* top: -6%; */
-    /* left: 50%; */
-    /* transform: translate(-50%,0); */
     z-index: -1;
 }
 
@@ -103,18 +98,6 @@ input[type="text"] {
     flex-wrap: wrap;
 }
 
-input[type='radio'] {
-    /* width: 7em; */
-    /* height: 7em; */
-    /* zoom: 0.5; */ /* invalid property name*/
-}
-
-input[name='pattern_amount'] {
-    /* width: 1em; */
-    /* height: 1em; */
-    /* zoom: 1; */
-    /* margin: 0.6em 0 0 0.6em; */
-}
 
 form {
 	color: rgba(255, 255, 255, 0.85);
@@ -127,9 +110,6 @@ form {
 	transition: 1s;
 	padding: 3em;
 }
-
-
-
 
 legend {
 	margin: 0 auto 15px;
@@ -153,14 +133,7 @@ fieldset {
     border: none;
 }
 
-/* #firstrow, #secondrow, #thirdrow, #fourthrow, #fifthrow, fieldset {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-} */
-
 #fourthrow, #fifthrow {
-    /* flex-wrap: wrap; */
     justify-content:flex-start;
     padding-left: 2.1em;
 }
@@ -172,10 +145,6 @@ fieldset {
 .row1 {
     width: 22.7%;
 }
-
-/* .row1:last-child {
-    width: 25%;
-} */
 
 .row2,.row3,.row4 {
     text-align: center;
@@ -214,26 +183,26 @@ fieldset {
     justify-content: flex-start;
 }
 
+#fourthrow_second_col .flex-row {
+    flex-wrap: wrap;
+    margin-left: 30px;
+    margin-top: -4px;
+    align-content: space-between;
+}
+
+#fourthrow_second_col .flex-row div {
+    width: 100%;
+}
+
 #fourthrow_second_col label {
     display: inline-block;
 }
 
-#random_color {
-    margin: 0 10px 0 30px;
+#gradient_range {
+    width: 100%;
 }
 
-/*
-* [type="color"] {
-    border-radius: 0;
-        border: none;
-    background-color: none;
-}
-*/
 #colorpicker {
-/*
-    width: 2em;
-    height: 2em;
-*/
     margin-top: 0.5em;
     border-radius: 0;
         border: none;
@@ -273,8 +242,7 @@ fieldset {
     width: 70%;
     margin: 4px 10px 0 0;
     padding: 0;
-        align-content: center;
-
+    align-content: center;
 }
 
 #green_value,#blue_value,#opacity_value {
@@ -322,8 +290,6 @@ p.hide_on_desktop {
 	display: inline-block;
 	position: relative;
 	cursor: pointer;
-	/* font-family: sans-serif; */
-	/* font-size: 16px; */
 	line-height: 1.3;
 	user-select: none;
 	padding-top: 32px;
@@ -370,24 +336,13 @@ p.hide_on_desktop {
 
 @keyframes radiocircle {
     0% {
-        /* transform-origin: center; */
-        /* transform: scale(1); */        /* this is enough for Chrome */
-        /* transform: scale(1) translate(0,0); */
     }
 
     50% {
-        /* transform-origin: 0em; */
         transform: scale(1.3);
-        /* transform: translate(0,50%) scale(1.3); */
-        /* transform: translateY(4px) scale(1.3); */
-        /* width: 20px; */
-        /* height: 20px; */
     }
 
     100% {
-        /* transform-origin: center; */
-        /* transform: scale(1); */
-        /* transform: scale(1) translate(0,5px); */
     }
 }
 
@@ -419,10 +374,9 @@ p.hide_on_desktop {
 	animation: radiocircle 800ms;
 } */
 
+
+/* FOR LARGE SCREEN (?) */
 @media screen and (max-width: 1300px) {
-    * {
-        /* color: red !important; */  /* for testing media query */
-    }
 
     .controls {
         top: 4%;
@@ -445,10 +399,6 @@ p.hide_on_desktop {
         width: 3.3em;
     }
 
-    /* .row1:last-child {
-        width: unset;
-    } */
-
     input[type="text"] {
         margin: 0 auto 0.8em auto;
     }
@@ -458,10 +408,15 @@ p.hide_on_desktop {
     }
 }
 
+/* FOR MOBILE */
 @media screen and (max-width: 800px) {
 
     .hide_on_desktop {
         display: unset;
+    }
+
+    .hide_on_mobile {
+        display: none;
     }
 
     html {
@@ -489,12 +444,11 @@ p.hide_on_desktop {
         width: 100%;
         justify-content: center;
         gap: 5px;
-        /* margin: 4% auto; */
         flex-wrap: nowrap;
     }
 
     .mt {
-        margin-top: 30px;
+        margin-top: 50px;
     }
 
     .row1 {
@@ -523,15 +477,19 @@ p.hide_on_desktop {
         padding: 0;
     }
 
-    #fourthrow_first_col, #fourthrow_second_col, #fifthrow_first_col, #fifthrow_second_col {
+    #fourthrow_first_col, #fourthrow_second_col, #fourthrow_second_col div, #fifthrow_first_col, #fifthrow_second_col {
         width: 100%;
+    }
+
+    #fourthrow_second_col .flex-row {
+        margin-left: 0;
     }
 
     #fourthrow_first_col, #fifthrow_first_col {
         margin-top: 10px;
     }
 
-    #random_color {
+    #random_color, #gradiate_color {
         margin: 10px 10px 0 0;
     }
 
@@ -541,18 +499,18 @@ p.hide_on_desktop {
     }
 
     [type="range"] {
-        width: 90%;
+        width: 100%;
+        margin: 24px 0 0 0;
     }
 
-    #outputRed, #outputGreen, #outputBlue, #outputHorzScale, #outputVertScale, #outputOpacity {
-        width: 33%;
-        padding: 0 0 0 0.5em;
+    #outputRed, #outputGreen, #outputBlue, #outputHorzScale, #outputVertScale, #outputOpacity, input + div {
+        margin-top: 10px;
     }
 
     #colorSwatch {
         height: 62px;
         width: 100%;
-        margin-top: 25px;
+        margin: 15px 0;
     }
 
     #row5_first {
@@ -567,5 +525,15 @@ p.hide_on_desktop {
         display: block;
         margin: 0 auto;
     }
+
+    #fourthrow_first_col .row4, #fifthrow_first_col .row5 {
+        flex-wrap: wrap;
+    }
+
+    #outputHorzScale, #outputVertScale, #outputOpacity {
+        width: unset;
+    }
+
 }
 
+/* yes, the CSS is sloppy. But did you see the Javascript? Oh..um... that's sloppy too. */

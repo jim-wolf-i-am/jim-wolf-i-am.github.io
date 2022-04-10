@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1 minimum-scale=1">
-	<title>:::: twirly thing v4 ::::</title>
+	<title>:::: twirly thing v4.2 ::::</title>
 
 	<link rel="stylesheet" href="spiro-final-style.css">
 </head>
@@ -39,13 +39,13 @@ Shape (store them in an array?)
             </div>
             <div class='row1'>
                 <label for='speed_LC'>Enter Larger<br>Circle Speed: 0-100</label><br>
-<!--                <input type="text" name="speed_LC" value='4'><br>-->
-                <input type="text" name="speed_LC" value='10'><br>
+               <input type="text" name="speed_LC" value='4'><br> <!-- 4 looks good with gradient -->
+                <!-- <input type="text" name="speed_LC" value='10'><br> --> <!-- 10 is original -->
             </div>
             <div class='row1'>
             <label for='speed_sc'>Enter Smaller<br>Circle Speed: 0-100</label><br>
-<!--            <input type="text" name="speed_sc" value='11'><br>-->
-            <input type="text" name="speed_sc" value='13'><br>
+           <input type="text" name="speed_sc" value='5'><br> <!-- 5 looks good with gradient -->
+            <!-- <input type="text" name="speed_sc" value='13'><br> --> <!-- 13 is original -->
             </div>
 <!--
             <div class='row1'>
@@ -146,35 +146,21 @@ Shape (store them in an array?)
                         <span class="circle"></span>
                     </label>
                 </div>
-                
             </div> <!-- END OF '2ND ROW' -->
         </fieldset>
 
         <div id='fourthrow' class="flex-row">
-            <p class="hide_on_desktop">Mix a Color</p>
-<!--
-            <div class='row4'>
-                <label for='shapecolor'>Choose a color:<br>
-                <input type="color" name="shapecolor" id='colorpicker' value="#000000" oninput='setColor()'>
-                <input type="color" name="shapecolor" id='colorpicker' value="#000000">
-            </div>
--->
+            <p class="hide_on_desktop mt">Mix a Color</p>
         <div id='fourthrow_first_col' class="flex-row">
             <div class='row4'>
-                <!-- <input type="range" id='red_value' name="red_value" min="0" max="255" value=255 oninput='setRedvalue()'> -->
-                <!-- <div id='outputRed'>Red: 255</div>  -->
                 <input type="range" id='hueValue' name="hueValue" min="0" max="360" value=30 oninput='setHuevalue()'>
                 <div id='outputHue'>Hue: 30</div> 
             </div>
             <div class='row4'>
-                <!-- <input type="range" id='green_value' name="green_value" min="0" max="255" value=126 oninput='setGreenvalue()'> -->
-                <!-- <div id='outputGreen'>Green: 126</div> -->
                 <input type="range" id='saturationValue' name="saturationValue" min="0" max="100" value=100 oninput='setSaturationvalue()'>
                 <div id='outputSaturation'>Saturation: 100</div>
             </div>
             <div class='row4'>
-                <!-- <input type="range" id='blue_value' name="blue_value" min="0" max="255" value=0 oninput='setBluevalue()'> -->
-                <!-- <div id='outputBlue'>Blue: 0</div> -->
                 <input type="range" id='lightnessValue' name="lightnessValue" min="0" max="100" value=50 oninput='setLightnessvalue()'>
                 <div id='outputLightness'>Lightness: 50</div>
             </div>
@@ -185,35 +171,45 @@ Shape (store them in an array?)
         </div>
 
         <div class="flex-row" id="fourthrow_second_col">
-            <div id='colorSwatch'></div>
             <div>
-                <input type="checkbox" id="random_color" name="random_color" oninput="maybeChangeColor()">
-                <label for="random_color">Use Random Color?</label>    
+                <div id='colorSwatch'></div>
+            </div>
+            <div class="flex-row">
+                <div>
+                    <input type="checkbox" id="random_color" name="random_color" oninput="maybeChangeColor()">
+                    <label for="random_color">Use Random Color?</label>    
+                </div>
+                <div>
+                    <input type="checkbox" id="gradiate_color" name="gradiate_color" oninput="setHuevalue()">
+                    <label for="gradiate_color">Gradient Color in Each Loop?</label>    
+                </div>
+                <div>
+                    <input type='range' id='gradient_range' name='gradient_range' min='1' max='20' step='1' value='2' oninput='makeHueIncrementer(this.value)'>
+                    <div id='outputgradiant_range'>Gradient Range: 2</div>
+                </div>
             </div>
         </div>
+
     </div>
-    <div id='fifthrow' class="flex-row">
-        <p class="hide_on_desktop mt">Change Scale</p>
-        <div id='fifthrow_first_col'>
-            <div class='row5' id='row5_first'>
-            <input type='range' id='horzscale' name='horzscale' min='0.1' max='2' step='0.1' value='1.0' oninput='setHorzScale(this.value)'>
-            <div id='outputHorzScale'>Horzontal<br>Scale: 1.0</div>
+        <div id='fifthrow' class="flex-row">
+            <p class="hide_on_desktop mt">Change Scale</p>
+            <div id='fifthrow_first_col'>
+                <div class='row5' id='row5_first'>
+                <input type='range' id='horzscale' name='horzscale' min='0.1' max='2' step='0.1' value='1.0' oninput='setHorzScale(this.value)'>
+                <div id='outputHorzScale'>Horzontal<br class="hide_on_mobile">Scale: 1.0</div>
+                </div>
+                <div class='row5'>
+                <input type='range' id='vertscale' name='vertscale' min='0.1' max='2' step='0.1' value='1.0' oninput='setVertScale(this.value)'>
+                <div id='outputVertScale'>Vertical<br class="hide_on_mobile">Scale: 1.0</div>
+                </div>
             </div>
-            <div class='row5'>
-            <input type='range' id='vertscale' name='vertscale' min='0.1' max='2' step='0.1' value='1.0' oninput='setVertScale(this.value)'>
-            <div id='outputVertScale'>Vertical<br>Scale: 1.0</div>
+            <div id='fifthrow_second_col'>
+                <div id='formlast'>
+                    <input id='onlyBtn' type="button" name='sbmtBtn' value="DRAW IT!" onmouseup="this.blur();">
+                </div>
             </div>
         </div>
-        <div id='fifthrow_second_col'>
-            <div id='formlast'>
-    <!--            <input id='onlyBtn' type="button" name='sbmtBtn' value="DRAW IT!" onclick="init()">-->
-                <input id='onlyBtn' type="button" name='sbmtBtn' value="DRAW IT!" onmouseup="this.blur();">
-            </div>
-        </div>
-    </div>
     </form>
-<!--    EVC Gallery Display (the "old" one) is 1920 x 1080-->
-		<!-- <canvas id="stage" width="1800" height="1400"></canvas> -->
 	<canvas id="stage"></canvas>
 	
         <!-- FOR FIREFOX -->
@@ -224,7 +220,6 @@ Shape (store them in an array?)
 
 	<script src="raf-polyfill.js"></script>
     <script src="FileSaver.js"></script>
-<!--    <script src="canvas-toBlob.js"></script>-->
 	<script src="spiro-final-script.js"></script>
 </body>
 </html>
