@@ -239,8 +239,9 @@ fieldset {
 
 #onlyBtn {
     float: none;
-    height: 110px;
-    width: 110px;
+    /* height: 110px; */
+    aspect-ratio: 1 / 1;
+    width: 24%;
     font-size: 1.5em;
     font-weight: bold;
     color: #313131;
@@ -439,7 +440,7 @@ p.hide_on_desktop {
 
     .center {
         top: 0;
-        transform: translate(-50%, 0%);
+        transform: translate(-50%, 2%);
     }
 
     form {
@@ -453,7 +454,7 @@ p.hide_on_desktop {
     }
 
     .controls {
-        top: 4%;
+        top: 6.5%;
         width: 100%;
         justify-content: center;
         gap: 5px;
@@ -537,6 +538,7 @@ p.hide_on_desktop {
     #onlyBtn {
         display: block;
         margin: 0 auto;
+        width: 40%;
     }
 
     #fourthrow_first_col .row4, #fifthrow_first_col .row5 {
