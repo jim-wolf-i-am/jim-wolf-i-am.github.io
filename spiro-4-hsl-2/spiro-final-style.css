@@ -390,7 +390,7 @@ p.hide_on_desktop {
 
 
 /* FOR LARGE SCREEN (?) */
-@media screen and (max-width: 1300px) {
+@media screen and (min-device-width: 1101px) {
 
     .controls {
         top: 4%;
@@ -422,8 +422,25 @@ p.hide_on_desktop {
     }
 }
 
+@media screen and (min-device-width: 801px) and (max-device-width: 1100px) { 
+    #onlyBtn {
+        float: none;
+        /* height: 110px; */
+        aspect-ratio: 1 / 1;
+        width: 24%;
+        font-size: 17px;
+        font-weight: bold;
+        color: #ff4c4c;
+        padding: 0;
+        text-align: center;
+        border: none;
+        border-radius: 50%;
+    }
+}
+
+
 /* FOR MOBILE */
-@media screen and (max-width: 800px) {
+@media screen and (max-device-width: 800px) {
 
     .hide_on_desktop {
         display: unset;
