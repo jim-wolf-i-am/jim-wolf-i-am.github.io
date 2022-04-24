@@ -172,7 +172,7 @@ fieldset {
     display: flex;
     flex-wrap: nowrap;
     text-align: left;
-    margin-top: 0.5em;
+    margin-bottom: 0.5em;
     width: 100%;
         align-content:flex-end;
 }
@@ -199,11 +199,12 @@ fieldset {
 #fourthrow_second_col .flex-row {
     flex-wrap: wrap;
     margin-left: 30px;
-    margin-top: -4px;
-    align-content: space-between;
+    margin-top: -2px;
+    align-content: flex-start;
 }
 
 #fourthrow_second_col .flex-row div {
+    margin-bottom: 11px;
     width: 100%;
 }
 
@@ -259,7 +260,7 @@ fieldset {
     align-content: center;
 }
 
-#green_value,#blue_value,#opacity_value {
+#hueValue,#saturationValue,#lightnessValue,#opacity_value {
     margin-top: 16px;
 }
 
@@ -267,13 +268,13 @@ fieldset {
     margin-top: -1px;
 }
 
-#outputBlue,#outputGreen,#outputOpacity {
+#outputHue, #outputSaturation, #outputLightness,#outputOpacity {
     margin-top: 10px;
 }
 
-#outputRed,#outputGreen,#outputBlue,#outputHorzScale,#outputVertScale,#outputOpacity { 
+#outputHue, #outputSaturation, #outputLightness,#outputHorzScale,#outputVertScale,#outputOpacity { 
     display: inline-table;
-    width: 105px;
+    width: 27%;
     color: rgba(255,255,255,.75);
     padding: 0 1em 0 0.5em;
     border-radius: 10px;
@@ -399,9 +400,9 @@ p.hide_on_desktop {
 
     form {
         margin: 4.6em auto;
-        max-width: 960px;
-        width: 85%;
-        padding: 2em 3em 0.7em;
+        max-width: 1000px;
+        width: 90%;
+        padding: 2em 2em 0.7em;
     }
 
     .row1 {
@@ -443,9 +444,36 @@ p.hide_on_desktop {
   and (max-device-width: 1024px) 
   and (-webkit-min-device-pixel-ratio: 1) {
 
+    form {
+        border-radius: 2em;
+        font-size: 13px;
+        padding: 2em 0.5em 0.5em;
+        width: 95%;
+    }
+
     #onlyBtn {
-        width: 42%;
+        max-width: 105px;
         color: #0bc50f;
+    }
+
+    .center {
+        top: 45%;
+    }
+
+    .controls {
+        top: 5%;
+    }
+
+    .flex-row {
+        width: 98%;
+    }
+
+    .row4, .row5 {
+        margin-bottom: 1.1em;
+    }
+
+    #fourthrow_second_col .flex-row div {
+        margin-bottom: 16px;
     }
 }
 
@@ -490,7 +518,7 @@ p.hide_on_desktop {
     }
 
     .mt {
-        margin-top: 50px;
+        margin-top: 30px;
     }
 
     .row1 {
