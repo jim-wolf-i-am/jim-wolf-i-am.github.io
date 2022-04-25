@@ -120,7 +120,8 @@ form {
 	border-radius: 4em;
 	background-color: rgba(87, 87, 87, 0.65);
 	line-height: 1.5em;
-	transition: 1s;
+	transition: opacity 1s;
+	/* transition: 1s; */
 	padding: 3em;
 }
 

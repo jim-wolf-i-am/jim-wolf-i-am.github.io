@@ -300,13 +300,15 @@ function draw_Leaf() {
 }
 
 function draw_Puckeredtri() {
-    
-    // ctx.beginPath();
-    // ctx.stroke(svg_puckeredtri);
+    ctx.beginPath();
+    ctx.stroke(svg_puckeredtri);
     // ctx.fillStyle=combinedColor;
+}
+
+function draw_ShapeText() {
     ctx.fillStyle="rgba(0,0,0," + opacityValue + ")";
-    ctx.fillText("pizza",0,0);
-    ctx.strokeText("pizza",0,0);
+    ctx.fillText(shape_text_value,0,0);
+    ctx.strokeText(shape_text_value,0,0);
 }
 
 
@@ -470,6 +472,9 @@ function animate() {
                 break;
             case 'puckeredtri':
                 draw_Puckeredtri();
+                break;
+            case 'shape_text':
+                draw_ShapeText();
                 break;
             default: 
                 draw_Ellipse();
@@ -670,6 +675,20 @@ function setPatternAmount() {
 
 function setShape(shape) {
     willbe_desired_shape = shape;
+    if(shape == "shape_text"){
+        getShapeText();
+    }
+}
+
+var shape_text_value;
+
+function getShapeText(){
+    shape_text_value = prompt("enter some text", "pizza");
+    // in the if statement below, if you use '= null' it sets the variable to null!
+    if(shape_text_value == null || shape_text_value == ""){
+        console.log('pizza for everybody!');
+        shape_text_value = "pizza";
+    }
 }
 
 function setColor() {
