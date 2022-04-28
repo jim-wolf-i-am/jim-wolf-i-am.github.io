@@ -389,6 +389,10 @@ p.hide_on_desktop {
 	animation: radiocircle 800ms;
 } */
 
+.show-on-desktop {
+    display: none;
+}
+
 
 /* FOR LARGE SCREEN (?) */
 @media screen and (min-device-width: 1101px) {
@@ -421,8 +425,17 @@ p.hide_on_desktop {
     legend {
         text-align: center;
     }
+
+    #onlyBtn {
+        color: #d24cff;
+    }
+
+    .show-on-desktop {
+        display: initial;
+    }
 }
 
+/* THIS IS JUST TO TEST THE MEDIA QUERY */
 @media screen and (min-device-width: 601px) and (max-device-width: 1100px) { 
     #onlyBtn {
         float: none;
@@ -447,8 +460,12 @@ p.hide_on_desktop {
     form {
         border-radius: 2em;
         font-size: 13px;
-        padding: 2em 0.5em 0.5em;
+        padding: 1.4em 0 0.5em;
         width: 95%;
+    }
+
+    input[type="text"], input[type="number"] {
+        margin: 0 auto 0.5em auto;
     }
 
     #onlyBtn {
@@ -474,6 +491,14 @@ p.hide_on_desktop {
 
     #fourthrow_second_col .flex-row div {
         margin-bottom: 16px;
+    }
+
+    #row5_first {
+        margin-top: 0.6em;
+    }
+
+    br.hide-on-mobile {
+        display: none;
     }
 }
 

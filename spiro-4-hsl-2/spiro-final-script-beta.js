@@ -541,13 +541,16 @@ function animate() {
 
 	// Event listener for the reset button.
 document.getElementById('optionsBtn').addEventListener('click', function(e) {
-	e.preventDefault();
+	// e.preventDefault();
     formReset();
 });
 
 function formReset() {
     document.getElementById('animInput').setAttribute('class','center');
     document.getElementById('main').addEventListener('keyup', checkSubmit);
+    console.log('formReset triggered');
+    var element = document.getElementById("animInput");
+//    element.classList.toggle("fadeaway");
 }
 
 //   FIRST SOLUTION, WORKS ALL THE TIME, NOW THAT WE CONVERT SVG FILES
