@@ -389,7 +389,7 @@ p.hide_on_desktop {
 	animation: radiocircle 800ms;
 } */
 
-.show-on-desktop {
+.show_on_desktop {
     display: none;
 }
 
@@ -430,7 +430,7 @@ p.hide_on_desktop {
         color: #d24cff;
     }
 
-    .show-on-desktop {
+    .show_on_desktop {
         display: initial;
     }
 }

@@ -770,14 +770,14 @@ function setOpacityvalue() {
 function setHorzScale() {
     var h = document.getElementById('horzscale').value;
     willbe_desired_horzScale = parseFloat(h);
-    OutputHorzScale.innerHTML = 'Horzontal <br class="hide_on_mobile">Scale: ' + h;
+    OutputHorzScale.innerHTML = 'Horzontal <br class="show_on_desktop">Scale: ' + h;
 
 }
 
 function setVertScale() {
     var v = document.getElementById('vertscale').value;
     willbe_desired_vertScale = parseFloat(v);
-    OutputVertScale.innerHTML = 'Vertical <br class="hide_on_mobile">Scale: ' + v;
+    OutputVertScale.innerHTML = 'Vertical <br class="show_on_desktop">Scale: ' + v;
 }
 
 function makeCombinedColor() {
