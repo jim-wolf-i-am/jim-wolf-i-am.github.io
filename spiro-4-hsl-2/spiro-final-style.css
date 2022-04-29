@@ -63,15 +63,15 @@ button {
 
 button:hover {
   opacity: 0.75;
-background: rgba(245, 165, 106, 0.92);
-    color: white;
+background: rgba(255, 255, 255, 0.92);
+    color: black;
   cursor: pointer;
 }
 
-button:active {
+/* button:active {
   opacity: 1;
   box-shadow: 0 -3px 10px rgba(0, 0, 0, 0.1) inset;
-}
+} */
 
 .fadeaway {
     opacity: 0;
