@@ -808,6 +808,7 @@ input#draw_grid {
     background-color: #3b3b3b;
 }
 
+/* CODE FOR CUSTOM SLIDER FROM https://www.w3schools.com/howto/howto_js_rangeslider.asp */
 .slidecontainer {
     width: 100%; /* Width of the outside container */
 }
@@ -853,6 +854,8 @@ input#draw_grid {
   background: #000000;
   cursor: pointer;
 }
+
+/* --END-- CODE FOR CUSTOM SLIDER --END-- */
 
 .col-0 {
     display: flex;
