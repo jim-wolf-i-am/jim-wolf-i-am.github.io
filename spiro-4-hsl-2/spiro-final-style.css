@@ -438,20 +438,11 @@ p.hide_on_desktop {
 /* THIS IS JUST TO TEST THE MEDIA QUERY */
 @media screen and (min-device-width: 601px) and (max-device-width: 1100px) { 
     #onlyBtn {
-        float: none;
-        /* height: 110px; */
-        aspect-ratio: 1 / 1;
-        width: 25%;
-        font-size: 17px;
-        font-weight: bold;
         color: #ff4c4c;
-        padding: 0;
-        text-align: center;
-        border: none;
-        border-radius: 50%;
     }
 }
 
+/* TABLETS */
 @media only screen 
   and (min-device-width: 768px) 
   and (max-device-width: 1024px) 
@@ -471,6 +462,7 @@ p.hide_on_desktop {
     #onlyBtn {
         max-width: 105px;
         color: #0bc50f;
+        margin-bottom: 10px;
     }
 
     .center {
@@ -486,15 +478,51 @@ p.hide_on_desktop {
     }
 
     .row4, .row5 {
-        margin-bottom: 1.1em;
+        margin-bottom: 0em;
+    }
+
+    #outputHue, #outputSaturation, #outputLightness, #outputOpacity, #outputHorzScale, #outputVertScale {
+        margin-top: 4px;
+    }
+
+    #hueValue, #saturationValue, #lightnessValue, #opacity_value, #horzscale, #vertscale {
+        margin-top: 10px;
     }
 
     #fourthrow_second_col .flex-row div {
         margin-bottom: 16px;
     }
 
+    #fourthrow_second_col .flex-row div {
+        margin-bottom: 16px;
+    }
+
+    #fourthrow_second_col .flex-row div#outputgradiant_range {
+        margin-top: 6px;
+        margin-bottom: 0;
+    }
+
     #row5_first {
-        margin-top: 0.6em;
+        margin-top: 0.4em;
+    }
+
+    #fourthrow_first_col, #fifthrow_first_col {
+        width: 50%;
+    }
+
+    #fourthrow_second_col {
+        max-width: 46%;
+    }
+
+    #fourthrow_first_col, #fifthrow_first_col {
+        display: flex;
+        justify-content: space-evenly;
+        gap: 5px;
+    }
+
+    #fifthrow_first_col {
+        justify-content: flex-start;
+        gap: 14px;
     }
 
     br.hide-on-mobile {
@@ -503,7 +531,7 @@ p.hide_on_desktop {
 }
 
 
-/* FOR MOBILE */
+/* PHONES */
 @media screen and (max-device-width: 600px) {
 
     .hide_on_desktop {
