@@ -463,6 +463,7 @@ p.hide_on_desktop {
         max-width: 105px;
         color: #0bc50f;
         margin-bottom: 10px;
+        border-radius: 52.5px;
     }
 
     .center {
