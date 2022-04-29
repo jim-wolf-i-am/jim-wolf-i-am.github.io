@@ -159,19 +159,19 @@ Shape (store them in an array?)
             <p class="hide_on_desktop mt">Mix a Color</p>
         <div id='fourthrow_first_col' class="flex-row">
             <div class='row4'>
-                <input type="range" id='hueValue' name="hueValue" min="0" max="360" value=30 oninput='setHuevalue()'>
+                <input type="range" class="slider" id='hueValue' name="hueValue" min="0" max="360" value=30 oninput='setHuevalue()'>
                 <div id='outputHue'>Hue: 30</div> 
             </div>
             <div class='row4'>
-                <input type="range" id='saturationValue' name="saturationValue" min="0" max="100" value=100 oninput='setSaturationvalue()'>
+                <input type="range" class="slider" id='saturationValue' name="saturationValue" min="0" max="100" value=100 oninput='setSaturationvalue()'>
                 <div id='outputSaturation'>Saturation: 100</div>
             </div>
             <div class='row4'>
-                <input type="range" id='lightnessValue' name="lightnessValue" min="0" max="100" value=50 oninput='setLightnessvalue()'>
+                <input type="range" class="slider" id='lightnessValue' name="lightnessValue" min="0" max="100" value=50 oninput='setLightnessvalue()'>
                 <div id='outputLightness'>Lightness: 50</div>
             </div>
             <div class='row4'>
-                <input type="range" id='opacity_value' name="opacity_value" min="0.10" max="1.00" step='0.01' value='0.20' oninput='setOpacityvalue()'>
+                <input type="range" class="slider" id='opacity_value' name="opacity_value" min="0.10" max="1.00" step='0.01' value='0.20' oninput='setOpacityvalue()'>
                 <div id='outputOpacity'>Opacity: 0.20</div>
             </div>
         </div>
@@ -190,7 +190,7 @@ Shape (store them in an array?)
                     <label for="gradiate_color">Gradient Color in Each Loop?</label>    
                 </div>
                 <div>
-                    <input type='range' id='gradient_range' name='gradient_range' min='1' max='20' step='1' value='2' oninput='makeHueIncrementer(this.value)'>
+                    <input type='range' class='slider' id='gradient_range' name='gradient_range' min='1' max='20' step='1' value='2' oninput='makeHueIncrementer(this.value)'>
                     <div id='outputgradiant_range'>Gradient Range: 2</div>
                 </div>
             </div>
@@ -201,11 +201,11 @@ Shape (store them in an array?)
             <p class="hide_on_desktop mt">Change Scale</p>
             <div id='fifthrow_first_col'>
                 <div class='row5' id='row5_first'>
-                <input type='range' id='horzscale' name='horzscale' min='0.1' max='2' step='0.1' value='1.0' oninput='setHorzScale(this.value)'>
+                <input type='range' class='slider' id='horzscale' name='horzscale' min='0.1' max='2' step='0.1' value='1.0' oninput='setHorzScale(this.value)'>
                 <div id='outputHorzScale'>Horzontal<br class="show_on_desktop">Scale: 1.0</div>
                 </div>
                 <div class='row5'>
-                <input type='range' id='vertscale' name='vertscale' min='0.1' max='2' step='0.1' value='1.0' oninput='setVertScale(this.value)'>
+                <input type='range' class='slider' id='vertscale' name='vertscale' min='0.1' max='2' step='0.1' value='1.0' oninput='setVertScale(this.value)'>
                 <div id='outputVertScale'>Vertical<br class="show_on_desktop">Scale: 1.0</div>
                 </div>
             </div>

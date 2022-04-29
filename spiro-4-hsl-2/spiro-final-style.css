@@ -260,6 +260,49 @@ fieldset {
     align-content: center;
 }
 
+/* CODE FOR CUSTOM SLIDER FROM https://www.w3schools.com/howto/howto_js_rangeslider.asp */
+.slidecontainer {
+    width: 100%; /* Width of the outside container */
+}
+
+/* The slider itself */
+.slider {
+  -webkit-appearance: none;  /* Override default CSS styles */
+  appearance: none;
+  width: 70%; /* was 100% */
+/*            max-width: 100%;*/
+    padding: 0;
+    /* margin: 15px 0px 15px 16px; */ /* from Pierre */
+    margin: 4px 10px 0 0;
+  height: 3px; /* Specified height */
+  background: #ffffff; /* Grey background */
+  outline: none; /* Remove outline */
+}
+
+/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+    border: white 2px solid;
+    border-radius: 20px;
+  background: #1e1e1e;
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 15px;
+  height: 15px;
+    border: white 2px solid;
+    border-radius: 15px;
+    background: #1e1e1e;
+    cursor: pointer;
+}
+
+/* --END-- CODE FOR CUSTOM SLIDER --END-- */
+
+
 #hueValue,#saturationValue,#lightnessValue,#opacity_value {
     margin-top: 16px;
 }
