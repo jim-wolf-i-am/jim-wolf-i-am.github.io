@@ -853,7 +853,6 @@ var gradiated_color;
 function makeGradiatedColor() {
     // gradiated_color = 'linear-gradient(to right, red , yellow)';
     gradiated_color = 'linear-gradient(to right, '+ combinedColor + ', ' + 'hsla(' + parseInt(parseInt(hueValue) + (parseInt(document.getElementById('gradient_range').value) * -15)) + ', ' + saturationValue + '%, ' + lightnessValue + '%, ' + opacityValue + ')' + ')';
-    console.log('makeGradiatedColor gradiated_color = ' + gradiated_color);
     // return;
 }
 
