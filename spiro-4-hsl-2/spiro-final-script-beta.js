@@ -154,6 +154,9 @@ function btnGetFormClick (e) {
     hueCounterDirection = "up";
     hueCounterDirectionSwitchCount = 0;
     
+
+    resetControlButtonsColor();
+
     setPatternAmount();
 
     // complete_loop = parseInt(pattern_amount / userInputForm.speed_sc.value);
@@ -178,7 +181,7 @@ function btnGetFormClick (e) {
 
     makeHueIncrementer();
 
-    document.getElementById('animInput').setAttribute('class','center fadeaway');
+    document.getElementById('animInput').setAttribute('class','center hidden');
     document.getElementById('main').removeEventListener('keyup', checkSubmit);
 
     window.scrollTo(0,0);
@@ -311,6 +314,11 @@ function draw_ShapeText() {
     ctx.strokeText(shape_text_value,0,0);
 }
 
+// something cool might go here in the future!!
+// something cool might go here in the future!!
+// something cool might go here in the future!!
+// something cool might go here in the future!!
+
 
 function eraseCanvas() {
     // Reset all transformations.  // YES, ALL THIS IS NECESSARY
@@ -340,7 +348,12 @@ function testVariables() {
 //    console.log('BUT testVariables also says that the current fillStyle = ' + ctx.fillStyle);
     }
 
-function init() {
+var chunk_width;
+var chunk_height;
+var chunk_x;
+var chunk_y;
+    
+    function init() {
 // THE INIT FUNCTION REALLY IS THE THING THAT 'RESETS' EVERYTHING
 // NO MATTER HOW MANY OTHER PLACES YOU SEE CODE SETTING EVERYTHING TO 0
 
@@ -414,6 +427,10 @@ function animate() {
                 hueCounterDirectionSwitchCount += 1;
                 hueCounterDirection = "up";
             }
+        }
+
+        if ((revolutions % 100) == 0 ){
+            getBrightnessBehindControlButtons();
         }
 
         if(hueCounterDirection == "up"){
@@ -505,7 +522,7 @@ function animate() {
 	document.getElementById('turboBtn').addEventListener('click', function(e) {
 	e.preventDefault();
 
-    document.getElementById('animInput').setAttribute('class','center fadeaway');
+    document.getElementById('animInput').setAttribute('class','center hidden');
 
     // Start the animation.
         
@@ -550,7 +567,7 @@ function formReset() {
     document.getElementById('main').addEventListener('keyup', checkSubmit);
     console.log('formReset triggered');
     var element = document.getElementById("animInput");
-//    element.classList.toggle("fadeaway");
+//    element.classList.toggle("hidden");
 }
 
 //   FIRST SOLUTION, WORKS ALL THE TIME, NOW THAT WE CONVERT SVG FILES
@@ -625,6 +642,7 @@ window.onload = function() {
 
 window.addEventListener('resize', function(){
     if(!animation_is_running){
+        resetControlButtonsColor();
         init_canvas();
         formReset();
     }
@@ -653,9 +671,72 @@ function manual_stop() {
             console.log('-----------------------------');
 
 		// Stop the animation;
+        getBrightnessBehindControlButtons();
 		cancelAnimationFrame(requestID);
     }
 
+    var cnvs_center;
+var chunk_start_x_rel_to_canvas;
+var canvas_copy;
+var myImageData;
+var childList;
+
+function getBrightnessBehindControlButtons() {
+    chunk_width = document.getElementById('controls').clientWidth;
+    chunk_height = document.getElementById('controls').clientHeight;
+
+    cnvs_center = canvas.width/2;
+    chunk_start_x_rel_to_canvas = cnvs_center - chunk_width/2;
+    canvas_copy = ctx.getImageData(0,0,canvas.width,canvas.height);
+    myImageData = ctx.getImageData(chunk_start_x_rel_to_canvas, 0, chunk_width, chunk_height);
+    // ctx.putImageData(myImageData, 0,0); // used during function testing
+
+    // CODE TO CALCULATE BRIGHTNESS ADAPTED FROM https://stackoverflow.com/a/13763063
+
+    var data = myImageData.data;
+    var r,g,b,avg;
+    var colorSum = 0;
+
+    for(var x = 0, len = data.length; x < len; x+=4) {
+        r = data[x];
+        g = data[x+1];
+        b = data[x+2];
+
+        avg = Math.floor((r+g+b)/3);
+        colorSum += avg;
+    }
+
+    var brightness = Math.floor(colorSum / (chunk_width * chunk_height));
+    // callback(brightness); // from original code
+
+    // end of -- CODE TO CALCULATE BRIGHTNESS -- 
+
+    // console.log('the brightness = ' + brightness); // for testing
+
+    if(brightness >= 84 ){
+        makeControlButtonsLighter();
+    }
+} // END OF  getBrightnessBehindControlButtons FUNCTION
+
+function makeControlButtonsLighter() {
+    childList = document.getElementById('controls').childNodes;
+
+    for(var node of childList){
+        if (node.nodeName == "BUTTON"){
+            document.getElementById(node.id).classList.add('button_on_light_image');
+        }
+    } // omg, this is my first use of the for of loop!!!
+}
+
+function resetControlButtonsColor() {
+    childList = document.getElementById('controls').childNodes;
+
+    for(var node of childList){
+        if (node.nodeName == "BUTTON"){
+            document.getElementById(node.id).classList.remove('button_on_light_image');
+        }
+    }
+}
 function setPatternAmount() {
     
     x = userInputForm.pattern_amount.value;
@@ -767,28 +848,29 @@ function setOpacityvalue() {
     makeCombinedColor();
 }
 
-function setHorzScale() {
-    var h = document.getElementById('horzscale').value;
-    willbe_desired_horzScale = parseFloat(h);
-    OutputHorzScale.innerHTML = 'Horzontal <br class="show_on_desktop">Scale: ' + h;
+var gradiated_color;
 
-}
-
-function setVertScale() {
-    var v = document.getElementById('vertscale').value;
-    willbe_desired_vertScale = parseFloat(v);
-    OutputVertScale.innerHTML = 'Vertical <br class="show_on_desktop">Scale: ' + v;
+function makeGradiatedColor() {
+    // gradiated_color = 'linear-gradient(to right, red , yellow)';
+    gradiated_color = 'linear-gradient(to right, '+ combinedColor + ', ' + 'hsla(' + parseInt(parseInt(hueValue) + (parseInt(document.getElementById('gradient_range').value) * -15)) + ', ' + saturationValue + '%, ' + lightnessValue + '%, ' + opacityValue + ')' + ')';
+    console.log('makeGradiatedColor gradiated_color = ' + gradiated_color);
+    // return;
 }
 
 function makeCombinedColor() {
     makeCombinedColor.preventDefault;
     combinedColor = 'hsla(' + hueValue + ', ' + saturationValue + '%, ' + lightnessValue + '%, ' + opacityValue + ')';
+    gradiate_color = document.getElementById('gradiate_color').checked;
 
-    colorSwatchIndicator.style.backgroundColor = combinedColor; // NOTE: inline styles will automatically convert to rgba. No way to prevent that. pOOp!
-}
-
-function makeCombinedScale() {
-    combinedScale = '(' + horzScale + ',' + vertScale + ')';
+    if(gradiate_color){
+        makeGradiatedColor();
+        colorSwatchIndicator.style.background = gradiated_color;
+        // console.log('makeCombinedColor function says that gradiate_color is true, so lets set the colorWatchIndicator to that gradient');
+    } else {
+        // console.log('makeCombinedColor function says that gradiate_color is FALSE, so lets set the colorWatchIndicator to that COLOR');
+        colorSwatchIndicator.style.background = combinedColor; // NOTE: inline styles will automatically convert to rgba. No way to prevent that. pOOp!
+    }
+    // console.log('makeCombinedColor function triggered');
 }
 
 function makeHueIncrementer() {
@@ -803,6 +885,22 @@ function makeHueIncrementer() {
     makeHueIncrementer.preventDefault;
     hueIncrementer = document.getElementById('gradient_range').value / 10; // you just had to give the user control over this, didn't you?
     document.getElementById('outputgradiant_range').innerHTML = "Gradient Range: " + hueIncrementer * 10;
+}
+
+function setHorzScale() {
+    var h = document.getElementById('horzscale').value;
+    willbe_desired_horzScale = parseFloat(h);
+    OutputHorzScale.innerHTML = 'Horzontal <br class="show_on_desktop">Scale: ' + h;
+}
+
+function setVertScale() {
+    var v = document.getElementById('vertscale').value;
+    willbe_desired_vertScale = parseFloat(v);
+    OutputVertScale.innerHTML = 'Vertical <br class="show_on_desktop">Scale: ' + v;
+}
+
+function makeCombinedScale() {
+    combinedScale = '(' + horzScale + ',' + vertScale + ')';
 }
 
 function init_canvas(){

@@ -34,7 +34,7 @@ canvas {
     z-index: -1;
 }
 
-.controls {
+#controls {
     position: absolute;
     top: 5%;
     left: 50%;
@@ -68,12 +68,13 @@ background: rgba(255, 255, 255, 0.92);
   cursor: pointer;
 }
 
-/* button:active {
-  opacity: 1;
-  box-shadow: 0 -3px 10px rgba(0, 0, 0, 0.1) inset;
-} */
+button.button_on_light_image {
+    color: #000;
+    border-color: #000;
+    opacity: 0.6;
+}
 
-.fadeaway {
+.hidden {
     opacity: 0;
 }
 
@@ -440,7 +441,7 @@ p.hide_on_desktop {
 /* FOR LARGE SCREEN (?) */
 @media screen and (min-device-width: 1101px) {
 
-    .controls {
+    #controls {
         top: 4%;
         width: 25%;
     }
@@ -513,7 +514,7 @@ p.hide_on_desktop {
         top: 45%;
     }
 
-    .controls {
+    #controls {
         top: 5%;
     }
 
@@ -606,7 +607,7 @@ p.hide_on_desktop {
         flex-wrap: wrap;
     }
 
-    .controls {
+    #controls {
         top: 6.5%;
         width: 100%;
         justify-content: center;
