@@ -190,7 +190,7 @@ Shape (store them in an array?)
                     <label for="gradiate_color">Gradient Color in Each Loop?</label>    
                 </div>
                 <div>
-                    <input type='range' class='slider' id='gradient_range' name='gradient_range' min='1' max='20' step='1' value='2' oninput='makeHueIncrementer(this.value)'>
+                    <input type='range' class='slider' id='gradient_range' name='gradient_range' min='1' max='20' step='1' value='2' oninput='makeHueIncrementer(this.value); setHuevalue();'>
                     <div id='outputgradiant_range'>Gradient Range: 2</div>
                 </div>
             </div>
