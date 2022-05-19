@@ -39,12 +39,12 @@ Shape (store them in an array?)
             </div>
             <div class='row1'>
                 <label for='speed_LC'>Enter Larger<br>Circle Speed: 0-100</label><br>
-               <input type="number" name="speed_LC" value='4'><br> <!-- 4 looks good with gradient -->
+               <input type="number" name="speed_LC" id="speed_LC" value='4'><br> <!-- 4 looks good with gradient -->
                 <!-- <input type="text" name="speed_LC" value='10'><br> --> <!-- 10 is original -->
             </div>
             <div class='row1'>
             <label for='speed_sc'>Enter Smaller<br>Circle Speed: 0-100</label><br>
-           <input type="number" name="speed_sc" value='5'><br> <!-- 5 looks good with gradient -->
+           <input type="number" name="speed_sc" id="speed_sc" value='5'><br> <!-- 5 looks good with gradient -->
             <!-- <input type="text" name="speed_sc" value='13'><br> --> <!-- 13 is original -->
             </div>
 <!--
@@ -58,7 +58,7 @@ Shape (store them in an array?)
                     <legend>How Much Pattern?</legend>
                     <div class='sub-row-1-2'>
                         <label for="full" class="radioContainer">Full
-                            <input type='radio' name='pattern_amount' id='full' value='full' checked/>
+                            <input type='radio' name='pattern_amount' id='full' value='full' role="radio" tabindex="0" checked/>
                             <span class="circle"></span>
                         </label>
                     </div>
