@@ -215,6 +215,8 @@ fieldset {
 
 #gradient_range {
     width: 100%;
+    margin-bottom: 10px;
+    margin-top: 13px;
 }
 
 #colorpicker {
@@ -277,7 +279,7 @@ fieldset {
     margin: 4px 10px 0 0;
   height: 3px; /* Specified height */
   background: #ffffff; /* Grey background */
-  outline: none; /* Remove outline */
+  /* outline: none;  */ /* using this hurts accessibility */
 }
 
 /* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
@@ -316,13 +318,13 @@ fieldset {
     margin-top: 10px;
 }
 
-#outputHue, #outputSaturation, #outputLightness,#outputHorzScale,#outputVertScale,#outputOpacity { 
+#outputHue, #outputSaturation, #outputLightness, #outputHorzScale, #outputVertScale, #outputOpacity { 
     display: inline-table;
     width: 27%;
     color: rgba(255,255,255,.75);
     padding: 0 1em 0 0.5em;
     border-radius: 10px;
-    font: bold 15px/20px;
+    text-align: unset;
 }
 
 #colorSwatch {
@@ -355,7 +357,9 @@ p.hide_on_desktop {
 }
 
 .radioContainer input {
-    display: none;
+    /* display: none; */ /* THIS IS BAD, see this article for why: https://www.sarasoueidan.com/blog/inclusively-hiding-and-styling-checkboxes-and-radio-buttons/ */
+    position: absolute;
+    opacity: 0;
 }
 
 /* v1, radio button, left of label */
@@ -666,13 +670,22 @@ p.hide_on_desktop {
         padding: 5px 0 9px;
     }
 
+    #gradient_range {
+        margin-bottom: 0;
+    }
+
     [type="range"] {
         width: 100%;
         margin: 24px 0 0 0;
     }
 
-    #outputRed, #outputGreen, #outputBlue, #outputHorzScale, #outputVertScale, #outputOpacity, input + div {
+    #outputRed, #outputGreen, #outputBlue, #outputHorzScale, #outputVertScale, #outputOpacity, #outputgradiant_range, input + div {
         margin-top: 10px;
+    }
+
+    #outputHue, #outputSaturation, #outputLightness, #outputHorzScale, #outputVertScale, #outputOpacity, #outputgradiant_range { 
+        padding: 4px 0 0 0;
+        width: unset;
     }
 
     #colorSwatch {
@@ -698,11 +711,6 @@ p.hide_on_desktop {
     #fourthrow_first_col .row4, #fifthrow_first_col .row5 {
         flex-wrap: wrap;
     }
-
-    #outputHorzScale, #outputVertScale, #outputOpacity {
-        width: unset;
-    }
-
 }
 
 /* yes, the CSS is sloppy. But did you see the Javascript? Oh..um... that's sloppy too. */
