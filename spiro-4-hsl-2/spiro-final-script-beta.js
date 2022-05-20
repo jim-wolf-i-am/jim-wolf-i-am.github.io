@@ -640,14 +640,6 @@ window.onload = function() {
 
 }; // END OF window.onload function
 
-window.addEventListener('resize', function(){
-    if(!animation_is_running){
-        resetControlButtonsColor();
-        init_canvas();
-        formReset();
-    }
-});
-
 var checkSubmit = function (e) {
 	e.preventDefault();
 
@@ -659,10 +651,27 @@ var checkSubmit = function (e) {
 }
 
 var checkReset = function (e) {
+    // keycode 82 is the "r" key. Why on earth did I write this? The user has no idea that pressing "r" will reset the program...
     if(e && e.keyCode == 82) {
        console.log('checkReset triggered formReset function');
        formReset();
    }
+}
+
+// adding eventhandlers to the checkbox came from this post:
+// https://stackoverflow.com/a/27891665/6298578
+// I needed to do this because I added event listeners TO THE ENTIRE <body> ELEMENT (what a noob) so that if the user pressed Return or Enter its the same as clicking the 'Draw It' button
+
+document.getElementById('random_color').addEventListener('keyup', handleCheckboxEvent, true);
+document.getElementById('gradiate_color').addEventListener('keyup', handleCheckboxEvent, true);
+
+function handleCheckboxEvent(e) {
+    e.preventDefault();
+    if (e.keyCode === 32) {  // If spacebar fired the event
+        this.checked = !this.checked;
+        maybeChangeColor();
+        setHuevalue();
+    }
 }
 
 function manual_stop() {
@@ -675,7 +684,16 @@ function manual_stop() {
 		cancelAnimationFrame(requestID);
     }
 
-    var cnvs_center;
+window.addEventListener('resize', function(){
+    if(!animation_is_running){
+        resetControlButtonsColor();
+        init_canvas();
+        formReset();
+    }
+});
+    
+    
+var cnvs_center;
 var chunk_start_x_rel_to_canvas;
 var canvas_copy;
 var myImageData;
