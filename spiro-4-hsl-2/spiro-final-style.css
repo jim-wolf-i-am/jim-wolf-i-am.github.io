@@ -423,19 +423,24 @@ p.hide_on_desktop {
     animation: radiocircle 800ms;
 }
 
-.radioContainer input:checked + .circle::before {
+.radioContainer input:focus + .circle::before {
 	content: "";
-	height: 28px;
-	width: 28px;
+	height: 30px;
+	width: 30px;
 	/* background-color: #fff; */
 	position: absolute;
-	border-radius: 20%;
-	border: #d24cff solid 1px;
+	border-radius: 16%;
+	outline: #d24cff solid 1px;
 	left: calc(50% - 15px);
 	top: calc(50% - 15px);
 	opacity: 1;
 	/* animation: radiocircle 800ms; */
 }
+
+input:focus, button:focus {
+    outline: hsla(285, 100%, 65%, 1) solid 4px;
+}
+
 /* trying to get it right in Firefox DIDN'T WORK WELL  */
 
 /* .radioContainer input:checked + .circle::after {
