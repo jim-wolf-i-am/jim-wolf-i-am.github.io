@@ -423,22 +423,36 @@ p.hide_on_desktop {
     animation: radiocircle 800ms;
 }
 
-.radioContainer input:focus + .circle::before {
+/* .radioContainer input:focus + .circle::before {
 	content: "";
 	height: 30px;
 	width: 30px;
-	/* background-color: #fff; */
 	position: absolute;
 	border-radius: 16%;
 	outline: #d24cff solid 1px;
 	left: calc(50% - 15px);
 	top: calc(50% - 15px);
 	opacity: 1;
-	/* animation: radiocircle 800ms; */
+} */
+
+input:focus {
+    outline: hsla(285, 100%, 65%, 1) solid 2px;
 }
 
-input:focus, button:focus {
+button:focus, input[type="number"]:focus, #onlyBtn:focus {
     outline: hsla(285, 100%, 65%, 1) solid 4px;
+}
+
+#pattern:focus-within {
+	border-radius: 1px;
+	outline: #d24cff solid 1px;
+	outline-offset: 9px;
+}
+
+fieldset.flex-row:focus-within {
+	border-radius: 1px;
+	outline: #d24cff solid 1px;
+	outline-offset: 9px;
 }
 
 /* trying to get it right in Firefox DIDN'T WORK WELL  */
@@ -472,7 +486,7 @@ input:focus, button:focus {
         margin: 4.6em auto;
         max-width: 1000px;
         width: 90%;
-        padding: 2em 2em 0.7em;
+        padding: 2em 2em 0.7em 1em;
     }
 
     .row1 {
