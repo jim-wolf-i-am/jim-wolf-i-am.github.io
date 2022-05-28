@@ -175,6 +175,7 @@ function btnGetFormClick (e) {
     let random_color = document.getElementById('random_color').checked;
     if(random_color){
         setRandomColor();
+        makeCombinedColor();
     }
 
     init();
@@ -856,6 +857,7 @@ function maybeChangeColor() {
     let x = document.getElementById('random_color').checked;
     if (x) {
         setRandomColor();
+        setHuevalue();
     }
 }
 
