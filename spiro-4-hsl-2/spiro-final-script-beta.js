@@ -264,7 +264,7 @@ ctx.lineWidth=0.700;
 }
 
 function draw_Dots() {
-    ctx.fillStyle=combinedColor;
+    // ctx.fillStyle=combinedColor;
     ctx.beginPath();
     ctx.moveTo(0,0);
     ctx.arc(-100,0,2,0,2*Math.PI);
