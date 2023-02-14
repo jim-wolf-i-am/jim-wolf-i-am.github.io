@@ -6,6 +6,8 @@ Quite simply, this is where I post a few of the many generative art projects / e
 
 I'm not *necessarily* trying to show off my coding skills. As such, if my code cleanliness (or lack thereof) horrifies you, just know these projects happened in a flurry of creativity, with the spirit of experimentation.
 
+I justed wanted a way to share my passion projects with those who are curious about them :-)
+
 **Are these projects mobile-friendly?** Well... no, not really. At least not on a phone-sized device. Yes, I know everyone's busy, on the go, living the dream, maximizing synergies, etc., and you might be viewing this on a phone. And while I cringe just a little at envoking this idea: this is art. So, the criteria is wide open. That said, they are touch-compatible (because I simply wanted to see if I could), and they look pretty good on a tablet (and it's okay to admit you have a tablet).
 
 ### Pierre - Animated Bezier Curves
