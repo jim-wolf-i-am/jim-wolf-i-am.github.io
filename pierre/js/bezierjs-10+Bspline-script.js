@@ -2029,11 +2029,6 @@ function draw(){
                 quadraticVertex(bez_elmnts_Shape_1[6].xpos,bez_elmnts_Shape_1[6].ypos,bez_elmnts_Shape_1[7].xpos,bez_elmnts_Shape_1[7].ypos,bez_elmnts_Shape_1[0].xpos,bez_elmnts_Shape_1[0].ypos);
                 endShape();
 
-
-                // TEST ELLIPSE AS I WORKED OUT THE BUGS FOR BILLATERAL DRAWING
-    //            ellipse(bilat_x(bez_elmnts_Shape_1[0].xpos,bez_elmnts_Shape_1[0].ypos),bilat_y(bez_elmnts_Shape_1[0].xpos,bez_elmnts_Shape_1[0].ypos),50,50);
-    //            ellipse(calc_bilat_x(bez_elmnts_Shape_1[0].xpos),calc_bilat_y(bez_elmnts_Shape_1[0].ypos),50,50);
-                
                 // DRAWS THE BILATERAL EQUIVALENT OF Shape 1
                 if(bilateral_1){
                     beginShape();
@@ -2052,53 +2047,6 @@ function draw(){
             } // END   DRAWS Shape 1    END
         } // END   if(show_shape_1)    END
 
-        
-        // code below uses the BEZIER segment CLASS v2
-
-        // DRAWS Shape 2, which, if refactoring of Shape 2.1 goes well, is not needed
-        // if(show_shape_2){        
-        //     for(var k = 0; k < k_repeats; k++){
-        //         if(k==0 && handle_outline_viz){
-        //             if(bkgrnd_luminance >= 12){
-        //                 stroke(color('rgba(0, 0, 0, 0.76)'));
-        //             } else {
-        //                 stroke(color('rgba(255, 255, 255, 0.76)'));
-        //             }
-        //             strokeWeight(1);
-        //         } else {
-        //             noStroke();
-        //         }
-        //         if(lines2 || laser_light_show){
-        //             stroke(red_2, grn_2, blu_2, transparency_2); 
-        //             strokeWeight(3);
-        //             noFill();
-
-        //             } else {
-        //                 fill(red_2, grn_2, blu_2, transparency_2);
-        //         }
-        //     // draws 'normal' version
-        //         beginShape();
-        //         vertex(first_pt['xpos'],first_pt['ypos']);
-        //         bezierVertex(tBs2.cntrl1['xpos'],tBs2.cntrl1['ypos'], tBs2.cntrl2['xpos'], tBs2.cntrl2['ypos'], tBs2.anchor['xpos'],tBs2.anchor['ypos']);
-        //         bezierVertex(0,85,tBs2.last['xpos'],tBs2.last['ypos'],first_pt['xpos'],first_pt['ypos']);
-        //         endShape();
-                
-        //         // draws bilateral version
-        //         if(bilateral_2){
-        //             beginShape();
-        //             vertex(bilat_x(first_pt['xpos'],first_pt['ypos']),bilat_y(first_pt['xpos'],first_pt['ypos']));
-        //             bezierVertex(bilat_x(tBs2.cntrl1['xpos'],tBs2.cntrl1['ypos']),bilat_y(tBs2.cntrl1['xpos'],tBs2.cntrl1['ypos']), bilat_x(tBs2.cntrl2['xpos'],tBs2.cntrl2['ypos']), bilat_y(tBs2.cntrl2['xpos'],tBs2.cntrl2['ypos']), bilat_x(tBs2.anchor['xpos'],tBs2.anchor['ypos']),bilat_y(tBs2.anchor['xpos'],tBs2.anchor['ypos']));
-        //             bezierVertex(bilat_x(0,85),bilat_y(0,85),bilat_x(tBs2.last['xpos'],tBs2.last['ypos']),bilat_y(tBs2.last['xpos'],tBs2.last['ypos']),bilat_x(first_pt['xpos'],first_pt['ypos']),bilat_y(first_pt['xpos'],first_pt['ypos']));
-        //             endShape();                    
-        //         }
-                
-        //         rotate(PI * 2/k_repeats);
-        //     } // END OF for loop THAT REPEATS Shape 2 based on # of repeats
-        // } // END OF  DRAWS Shape 2, which, if refactoring of Shape 2.1 goes well, is not needed
-
-        
-        
-        
         // code below DOES NOT use the BEZIER segment CLASS v2, but instead uses an Array; part of the Refactoring of Shape 2.1
 
         // DRAWS Shape 2.1
@@ -2120,27 +2068,20 @@ function draw(){
                     noFill();
 
                     } else {
-                        fill(red_2, grn_2, blu_2, transparency_2); // production code, uncomment when refactor of Shape 2.1 is done
-                        // fill(255, 0, 0, transparency_2); // test code, comment out when refactor of Shape 2.1 is done
+                        fill(red_2, grn_2, blu_2, transparency_2);
                 }
             // draws 'normal' version
                 beginShape();
-                // vertex(first_pt['xpos'],first_pt['ypos']);  // from Shape 2
                 vertex(bez_elmnts_Shape_2[0].xpos,bez_elmnts_Shape_2[0].ypos); // refactor Shape 2.1
-                // bezierVertex(tBs2.cntrl1['xpos'],tBs2.cntrl1['ypos'], tBs2.cntrl2['xpos'], tBs2.cntrl2['ypos'], tBs2.anchor['xpos'],tBs2.anchor['ypos']);  // from Shape 2
                 bezierVertex(bez_elmnts_Shape_2[1].xpos,bez_elmnts_Shape_2[1].ypos, bez_elmnts_Shape_2[2].xpos,bez_elmnts_Shape_2[2].ypos, bez_elmnts_Shape_2[3].xpos,bez_elmnts_Shape_2[3].ypos);  // refactor Shape 2.1
-                // bezierVertex(0,85,tBs2.last['xpos'],tBs2.last['ypos'],first_pt['xpos'],first_pt['ypos']);  // from Shape 2
                 bezierVertex(0,85,bez_elmnts_Shape_2[4].xpos,bez_elmnts_Shape_2[4].ypos,bez_elmnts_Shape_2[0].xpos,bez_elmnts_Shape_2[0].ypos);  //  refactor Shape 2.1
                 endShape();
                 
                 // draws bilateral version
                 if(bilateral_2){
                     beginShape();
-                    // vertex(bilat_x(first_pt['xpos'],first_pt['ypos']),bilat_y(first_pt['xpos'],first_pt['ypos']));  // from Shape 2
                     vertex(bilat_x(bez_elmnts_Shape_2[0].xpos,bez_elmnts_Shape_2[0].ypos),bilat_y(bez_elmnts_Shape_2[0].xpos,bez_elmnts_Shape_2[0].ypos));  // refactor Shape 2.1
-                    // bezierVertex(bilat_x(tBs2.cntrl1['xpos'],tBs2.cntrl1['ypos']),bilat_y(tBs2.cntrl1['xpos'],tBs2.cntrl1['ypos']), bilat_x(tBs2.cntrl2['xpos'],tBs2.cntrl2['ypos']), bilat_y(tBs2.cntrl2['xpos'],tBs2.cntrl2['ypos']), bilat_x(tBs2.anchor['xpos'],tBs2.anchor['ypos']),bilat_y(tBs2.anchor['xpos'],tBs2.anchor['ypos']));  // from Shape 2
                     bezierVertex(bilat_x(bez_elmnts_Shape_2[1].xpos,bez_elmnts_Shape_2[1].ypos),bilat_y(bez_elmnts_Shape_2[1].xpos,bez_elmnts_Shape_2[1].ypos), bilat_x(bez_elmnts_Shape_2[2].xpos,bez_elmnts_Shape_2[2].ypos), bilat_y(bez_elmnts_Shape_2[2].xpos,bez_elmnts_Shape_2[2].ypos), bilat_x(bez_elmnts_Shape_2[3].xpos,bez_elmnts_Shape_2[3].ypos),bilat_y(bez_elmnts_Shape_2[3].xpos,bez_elmnts_Shape_2[3].ypos));  // refactor Shape 2.1
-                    // bezierVertex(bilat_x(0,85),bilat_y(0,85),bilat_x(tBs2.last['xpos'],tBs2.last['ypos']),bilat_y(tBs2.last['xpos'],tBs2.last['ypos']),bilat_x(first_pt['xpos'],first_pt['ypos']),bilat_y(first_pt['xpos'],first_pt['ypos'])); // from Shape 2
                     bezierVertex(bilat_x(0,85),bilat_y(0,85),bilat_x(bez_elmnts_Shape_2[4].xpos,bez_elmnts_Shape_2[4].ypos),bilat_y(bez_elmnts_Shape_2[4].xpos,bez_elmnts_Shape_2[4].ypos),bilat_x(bez_elmnts_Shape_2[0].xpos,bez_elmnts_Shape_2[0].ypos),bilat_y(bez_elmnts_Shape_2[0].xpos,bez_elmnts_Shape_2[0].ypos)); // refactor Shape 2.1
                     endShape();                    
                 }
@@ -2148,8 +2089,6 @@ function draw(){
                 rotate(PI * 2/k_repeats);
             } // END OF for loop THAT REPEATS Shape 2.1 based on # of repeats
         } // END OF if THAT DRAWS Shape 2.1
-        
-        
         
         if(show_shape_3){
         // DRAWS SHAPE 3
@@ -2248,8 +2187,7 @@ function draw(){
         
         var reverse_x = radius_R1 * Math.cos(start_angle1 + 0.695);
         var reverse_y = radius_R1 * Math.sin(start_angle1 + 0.698);
-        var reverse_angle = Math.atan2(y6 - reverse_y, x6 - reverse_x) * 180 / Math.PI; // correct
-//        var reverse_angle = Math.atan2(reverse_y - y6, reverse_x - x6) * 180 / Math.PI; // incorrect
+        var reverse_angle = Math.atan2(y6 - reverse_y, x6 - reverse_x) * 180 / Math.PI;
         
         if(handle_outline_viz){
             // SHAPE 1 HANDLES
@@ -2259,23 +2197,10 @@ function draw(){
                     bez_elmnts_Shape_1[i].show_handle(red_1,grn_1,blu_1);
                 }        
             }
-            // SHAPE 2 HANDLES
-            // if(show_shape_2){
-            //     first_pt.show_handle(red_2,grn_2,blu_2);
-            //     tBs2.cntrl1.show_handle(red_2,grn_2,blu_2);
-            //     tBs2.cntrl2.show_handle(red_2,grn_2,blu_2);
-            //     tBs2.anchor.show_handle(red_2,grn_2,blu_2);
-            //     tBs2.last.show_handle(red_2,grn_2,blu_2);
-            // }
-            
             // SHAPE 2.1 HANDLES
             if(show_shape_2){
                 for (var i = 0; i < bez_elmnts_Shape_2.length; i++) {
-                    bez_elmnts_Shape_2[i].show_handle(red_2,grn_2,blu_2); // production code
-                    // bez_elmnts_Shape_2[i].show_handle(255,0,0); // test code
-                    // textSize(20);
-                    // noStroke();
-                    // text(i,bez_elmnts_Shape_2[i].xpos+20,bez_elmnts_Shape_2[i].ypos+5); // HANDLES_TEST, but kind of nice so I kept it
+                    bez_elmnts_Shape_2[i].show_handle(red_2,grn_2,blu_2);
                 }
             }
             
@@ -2292,17 +2217,9 @@ function draw(){
                     bspline_handles[i].show_handle(red_4,grn_4,blu_4);
                     textSize(20);
                     noStroke();
-                    text(i,bspline_handles[i].xpos+20,bspline_handles[i].ypos+5); // HANDLES_TEST, but kind of nice so I kept it
+                    text(i,bspline_handles[i].xpos+20,bspline_handles[i].ypos+5);
                 }
             }
-            
-// ATEMPT AT SHOWING THE SPIRO PATH. NOT QUITE ACCURATE
-//            if(spiro_option){
-//                noFill();
-//                circle(0,0,epiT_x * 2);
-//                circle(0,0,epiT_y * 2);
-//            }
-            
         }
 // END OF "This is the Main Drawing Code"
 }
@@ -2677,13 +2594,6 @@ function calculate_bspline_points(){
 }
 // END of calculate_bspline_points()
 
-//function update_bspline_handles(){
-//    for (i=0,j=1; i<bspline_handles.length; i++,j+=2){
-//        bspline_points[j].x = bspline_handles[i].xpos;
-//        bspline_points[j].y = bspline_handles[i].ypos;
-//    }
-//}
-
 // ------------------------
 // END of BSPLINE FUNCTIONS
 // ------------------------
@@ -2745,27 +2655,11 @@ function Bez_point(name,bx,by,r,g,b,a){
             this.mouse_over = false;
             fill(255,255,255,a);            
         }
-        // making the handle touch aware
-        // if (p5js.touches[0].x - canvas_c_x > this.xpos - this.elmt_size && p5js.touches[0].x - canvas_c_x < this.xpos + this.elmt_size &&
-        //     p5js.touches[0].y - canvas_c_y > this.ypos - this.elmt_size && p5js.touches[0].y - canvas_c_y < this.ypos + this.elmt_size) {
-        //     this.mouse_over = true;
-        //     fill(0,0,0);
- 
-        //     if (p5js.mouseIsPressed && this.mouse_over == true) {
-        //         stroke(200, 79, 100);
-        //     } else {
-        //     }
- 
-        // } else {
-        //     this.mouse_over = false;
-        //     fill(255,255,255,a);            
-        // }
         ellipse(this.xpos, this.ypos, this.elmt_size, this.elmt_size);
     };
 
     this.update_radius_angle = function (xx,yy){
         this.radius = Math.sqrt((xx ** 2) + (yy ** 2)); // 'normal' version
-        // this.radius = Math.sqrt((xx ** 2) + (yy ** 2) - r_spiro - point_on_small_r); // trying to stop the points with spiro movement from adding the spiro radii to their own, DIDN'T WORK
         this.angle = Math.atan2(yy,xx) * 180 / Math.PI;
     }
 } // END of Bezier anchor or control handle CLASS
@@ -2803,7 +2697,6 @@ function Bez_seg(name,c1x,c1y,c2x,c2y,ax,ay){
             fill(100);
         }
         ctx.arc(this.cntrl1.x, this.cntrl1.y, this.elmt_size,0,Math.PI*2);
-//        ellipse(this.cntrl1.x, this.cntrl1.y, this.elmt_size, this.elmt_size);
     };	
 } // END of Bezier segment CLASS v1
 
@@ -2830,7 +2723,6 @@ class Bspline_Handle{
         this.yoffset = 0;
         this.radius = Math.sqrt((bsx ** 2) + (bsy ** 2));
         this.angle = Math.atan2(bsy,bsx) * 180 / Math.PI;
-    //    console.log('at object creation, angle = ' + this.angle);
         this.r = r;
         this.g = g;
         this.b = b;
@@ -2848,7 +2740,6 @@ class Bspline_Handle{
 
                 if (mouseIsPressed && this.mouse_over == true) {
                     stroke(200, 79, 100);
-//                    console.log('clicked on index = ' + indx);
                 } else {
                 }
 
@@ -2879,21 +2770,7 @@ function show_bspline_handle(r,g,b,a,x,y,indx) {
             mouseY - canvas_c_y > y - 20 && mouseY - canvas_c_y < y + 20) {
             this.mouse_over = true;
             handle_x = x;
-//            console.log('this.mouse_over = ' + this.mouse_over);
-//            console.log('handle_x = ' + x);
             console.log('index = ' + indx);
-//            if(indx == 1){
-//                console.log('index = ' + indx);   
-//            }
-//            
-//            if(indx == 3){
-//                console.log('index = ' + indx);   
-//            }
-//            
-//            if(indx == 5){
-//                console.log('index = ' + indx);   
-//            }
-            
             fill(0,0,0);
  
             if (mouseIsPressed && this.mouse_over == true) {
@@ -2949,15 +2826,7 @@ function calculate_angles(ang_x,ang_y){
     base_a = Math.atan2(ang_y,ang_x);
     base_r = Math.sqrt(Math.pow(ang_x,2) + Math.pow(ang_y,2));
     base_a_rmdr = base_a % grid_a;
-//    base_a_prev = Math.atan2(prev_mouse_click.y,prev_mouse_click.x);
-//    base_r_prev = Math.sqrt(Math.pow(prev_mouse_click.x,2) + Math.pow(prev_mouse_click.y,2));
-//    base_a_rmdr_prev = base_a_prev % grid_a;
-
     base_a_rmdr_bilat = grid_a - base_a_rmdr;
-//    base_a_rmdr_bilat_prev = grid_a - base_a_rmdr_prev;
-
-//    zones_apart = Math.ceil((base_a - base_a_prev)/base_a);
-//    difference_angle = base_a_prev + base_a;
 }
 // THESE WORK, BUT CAN WE COMBINE THEM WITH calculate angles() ?
 function calc_bilat_x(x){
@@ -3001,18 +2870,12 @@ var color_3_sat;
 var color_3_val;
 
 function update_color_1(picker) {
-    // 'jscolor' instance can be used as a string (whatever that means)
+
     color_1_rgb = document.getElementById('color_1').jscolor.toRGBString();
     red_1 = Math.round(picker.rgb[0]);
     grn_1 = Math.round(picker.rgb[1]);
     blu_1 = Math.round(picker.rgb[2]);
 
-// IN PREVIOUS VERSION OF PROGRAM, WOULD PRINT THE RGB VALUES IN THE COLOR PICKER BUTTON
-//    document.getElementById('color_1').innerHTML =
-//    red_1 + ', ' +
-//    grn_1 + ', ' +
-//    blu_1;
-    
     color_1_hue = Math.round(picker.hsv[0]);
     color_1_sat = Math.round(picker.hsv[1]);
     color_1_val = Math.round(50 * ((picker.hsv[2]/2) / 100) + 25);  // remapping to values between 50 - 25
@@ -3026,20 +2889,13 @@ function update_color_1(picker) {
 }
 
 function update_color_2(picker) {
-    // 'jscolor' instance can be used as a string (whatever that means)
+
     color_2_rgb = document.getElementById('color_2').jscolor.toRGBString();
     
     red_2 = Math.round(picker.rgb[0]);
     grn_2 = Math.round(picker.rgb[1]);
     blu_2 = Math.round(picker.rgb[2]);
     
-// IN PREVIOUS VERSION OF PROGRAM, WOULD PRINT THE RGB VALUES IN THE COLOR PICKER BUTTON
-//    document.getElementById('color_2').innerHTML =
-//    red_2 + ', ' +
-//    grn_2 + ', ' +
-//    blu_2;
-    
-
     color_2_hue = Math.round(picker.hsv[0]);
     color_2_sat = Math.round(picker.hsv[1]);
     color_2_val = Math.round(50 * ((picker.hsv[2]/2) / 100) + 25);  // remapping to values between 50 - 25
@@ -3053,19 +2909,12 @@ function update_color_2(picker) {
 }
 
 function update_color_3(picker) {
-    // 'jscolor' instance can be used as a string (whatever that means)
+
     color_3_rgb = document.getElementById('color_3').jscolor.toRGBString();
     
     red_1_square = Math.round(picker.rgb[0]);
     grn_1_square = Math.round(picker.rgb[1]);
     blu_1_square = Math.round(picker.rgb[2]);
-    
-// IN PREVIOUS VERSION OF PROGRAM, WOULD PRINT THE RGB VALUES IN THE COLOR PICKER BUTTON
-//    document.getElementById('color_3').innerHTML =
-//    red_1_square + ', ' +
-//    grn_1_square + ', ' +
-//    blu_1_square;
-    
 
     color_3_hue = Math.round(picker.hsv[0]);
     color_3_sat = Math.round(picker.hsv[1]);
@@ -3080,7 +2929,7 @@ function update_color_3(picker) {
 }
 
 function update_color_4(picker) {
-    // 'jscolor' instance can be used as a string (whatever that means)
+
     color_4_rgb = document.getElementById('color_4').jscolor.toRGBString();
     
     red_4 = Math.round(picker.rgb[0]);
@@ -3100,7 +2949,7 @@ function update_color_4(picker) {
 }
 
 function update_color_bkgd(picker) {
-    // 'jscolor' instance can be used as a string (whatever that means)
+
     bkgrnd_color = document.getElementById('background_color').jscolor.toRGBString();
     red_bkgrnd = Math.round(picker.rgb[0]);
     grn_bkgrnd = Math.round(picker.rgb[1]);
@@ -3108,7 +2957,6 @@ function update_color_bkgd(picker) {
     
     if(laser_light_show){
         clear();
-//        fill(red_bkgrnd,grn_bkgrnd,blu_bkgrnd);
         fill('rgba('+ red_bkgrnd +','+ grn_bkgrnd +','+ blu_bkgrnd +', 1)');
         rect(-canvas_c_x,-canvas_c_y,canvas_w,canvas_h);
     }
@@ -3185,18 +3033,6 @@ function closeShortcuts() {
     document.getElementById("ui-shortcuts-holder").style.zIndex = "-1"; 
     document.getElementById("ui-shortcuts-holder").style.opacity = 0;
 }
-
-// following function based on advice from "Return Multiple Values in Javascript?" https://stackoverflow.com/questions/2917175/return-multiple-values-in-javascript
-// AND https://dev.to/sarah_chima/destructuring-assignment---arrays-16f
-//var newCodes = function() {
-//    var dCodes = fg.codecsCodes.rs;
-//    var dCodes2 = fg.codecsCodes2.rs;
-//    return {
-//        dCodes: dCodes,
-//        dCodes2: dCodes2
-//    };    or, with ES6, 'destructuring' object: ({dCodes, dCodes2} = newCodes());
-//          or a 'destructructing'"' array: [dCodes, dCodes2] = newCodes();
-//};
 
 var epiTrochoid = function(radius_in,direction) {
     if(direction == 'counter'){
@@ -3311,9 +3147,9 @@ bspline_points =
       {x:bs_o_p[5].x, y:bs_o_p[5].y},
      ];
     
-    petri_bspline = 0;  // these did the trick. Doesn't matter if they're after or before calculate_bspline_points() 
-    gamma_bspline = 0;  // these did the trick. Doesn't matter if they're after or before calculate_bspline_points()
-    theta_bspline = 0;  // these did the trick. Doesn't matter if they're after or before calculate_bspline_points()
+    petri_bspline = 0;
+    gamma_bspline = 0;
+    theta_bspline = 0;
     
     for (var i = 0; i < bspline_handles.length; i++) {
         bspline_handles[i].xpos = bs_o_p[i].x;
@@ -3321,9 +3157,8 @@ bspline_points =
         bspline_handles[i].update_radius_angle(bspline_handles[i].xpos,bspline_handles[i].ypos);
     }
     
-        calculate_bspline_radii(); // added this second, works okay
-//    calculate_bspline_points(); // added this first, does nothing by itself
-    calculate_bspline_angle_incrementers(); // added this third, works okay
+        calculate_bspline_radii();
+    calculate_bspline_angle_incrementers();
 
 }
 
