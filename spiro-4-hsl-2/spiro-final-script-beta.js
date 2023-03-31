@@ -64,9 +64,6 @@ var captureFrame = false;
 
 // oscillator function found at
 // https://riptutorial.com/javascript/example/10173/periodic-functions-using-math-sin
-// function oscillator(time, frequency = 1, amplitude = 1, phase = 0, offset = 0){
-//     return Math.sin(time * frequency * Math.PI * 2 + phase * Math.PI * 2) * amplitude + offset; 
-// }
 function oscillator(time, frequency, amplitude, phase = 0, offset = 0){
     return Math.sin(time * frequency * Math.PI * 2 + phase * Math.PI * 2) * amplitude + offset; 
 } // but I couldn't get it to work
@@ -159,18 +156,7 @@ function btnGetFormClick (e) {
 
     setPatternAmount();
 
-    // complete_loop = parseInt(pattern_amount / userInputForm.speed_sc.value);
-    // BUT THIS IS BASED ON 'speed_sc' in other words, how many times the object rotates around it's own axis
-    // complete_loop = parseInt(pattern_amount / userInputForm.speed_LC.value); // complete loop, based on speed of Large Circle ONLY WORKS IF LARGE CIRCLE IS SMALLER THAN SMALL CIRCLE
-    // complete_loop = (parseInt(pattern_amount / userInputForm.speed_sc.value)/2); // so, really, half complete loop
-    // complete_loop = (parseInt(pattern_amount / userInputForm.speed_LC.value)/2); // half complete loop, based on speed of Large Circle
-    // complete_loop = (parseInt(pattern_amount / userInputForm.speed_LC.value)/4); // quarter complete loop, based on speed of Large Circle
-    // complete_loop = (parseInt(pattern_amount / userInputForm.speed_LC.value)/8); // eighth complete loop, based on speed of Large Circle   OMG THIS IS WHAT I WANT. WELL, ONLY WORKS IF LARGE CIRCLE IS SMALLER THAN SMALL CIRCLE
-    // complete_loop = (parseInt(pattern_amount / userInputForm.speed_LC.value)/userInputForm.speed_LC.value); // instead of divide by 8, try divide by Large Circle
-    complete_loop = (parseInt(pattern_amount / 4)/8); // okay fine you POS, we'll just always divide by 4 and 8 OMG OMG OMG this really works, regardless of Large and or Small Circle size
-    // complete_loop = (parseInt(pattern_amount / (userInputForm.speed_LC.value / userInputForm.speed_sc.value ))/2); // half complete loop, based on ratio of Large Circle speed / small circle speed
-    // complete_loop = (parseInt(pattern_amount / (userInputForm.speed_sc.value / userInputForm.speed_LC.value ))/2); // half complete loop, based on ratio of Large Circle speed / small circle speed
-
+    complete_loop = (parseInt(pattern_amount / 4)/8);
 
     let random_color = document.getElementById('random_color').checked;
     if(random_color){
@@ -264,7 +250,6 @@ ctx.lineWidth=0.700;
 }
 
 function draw_Dots() {
-    // ctx.fillStyle=combinedColor;
     ctx.beginPath();
     ctx.moveTo(0,0);
     ctx.arc(-100,0,2,0,2*Math.PI);
@@ -306,7 +291,6 @@ function draw_Leaf() {
 function draw_Puckeredtri() {
     ctx.beginPath();
     ctx.stroke(svg_puckeredtri);
-    // ctx.fillStyle=combinedColor;
 }
 
 function draw_ShapeText() {
@@ -314,12 +298,6 @@ function draw_ShapeText() {
     ctx.fillText(shape_text_value,0,0);
     ctx.strokeText(shape_text_value,0,0);
 }
-
-// something cool might go here in the future!!
-// something cool might go here in the future!!
-// something cool might go here in the future!!
-// something cool might go here in the future!!
-
 
 function eraseCanvas() {
     // Reset all transformations.  // YES, ALL THIS IS NECESSARY
@@ -335,7 +313,6 @@ function eraseCanvas() {
 	// Clear the canvas.
 	ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-	// Fill the canvas with current fillStyle (hopefully black);
 	ctx.fillRect(0, 0, canvas.width, canvas.height);
     ctx.save();
 }
@@ -358,14 +335,12 @@ var chunk_y;
 // THE INIT FUNCTION REALLY IS THE THING THAT 'RESETS' EVERYTHING
 // NO MATTER HOW MANY OTHER PLACES YOU SEE CODE SETTING EVERYTHING TO 0
 
-//    cancelAnimationFrame(requestID);
     crazyrotate_R = 0;
     crazyrotate_r = 0;
     ctx.setTransform(1, 0, 0, 1, 0, 0);   
     ctx.rotate(0);
     ctx.translate(0,0);
     ctx.fillStyle='#000';
-    // ctx.strokeStyle = combinedColor;
     ctx.lineWidth=1;
 
     revolutions = 0;
@@ -744,7 +719,7 @@ function makeControlButtonsLighter() {
         if (node.nodeName == "BUTTON"){
             document.getElementById(node.id).classList.add('button_on_light_image');
         }
-    } // omg, this is my first use of the for of loop!!!
+    }
 }
 
 function resetControlButtonsColor() {
@@ -787,7 +762,7 @@ var shape_text_value;
 
 function getShapeText(){
     shape_text_value = prompt("enter some text", "pizza");
-    // in the if statement below, if you use '= null' it sets the variable to null!
+    
     if(shape_text_value == null || shape_text_value == ""){
         console.log('pizza for everybody!');
         shape_text_value = "pizza";
@@ -824,7 +799,7 @@ function setBluevalue() {
 
 function setHuevalue() {
     setHuevalue.preventDefault;
-    hueValue = parseInt(document.getElementById('hueValue').value); // without parseInt, it was adding a string and number together, elsewhere in the program!
+    hueValue = parseInt(document.getElementById('hueValue').value);
     makeCombinedColor();
     OutputHueTarget.innerHTML = 'Hue: ' + hueValue;
 }
@@ -871,9 +846,7 @@ function setOpacityvalue() {
 var gradiated_color;
 
 function makeGradiatedColor() {
-    // gradiated_color = 'linear-gradient(to right, red , yellow)';
     gradiated_color = 'linear-gradient(to right, '+ combinedColor + ', ' + 'hsla(' + parseInt(parseInt(hueValue) + (parseInt(document.getElementById('gradient_range').value) * -15)) + ', ' + saturationValue + '%, ' + lightnessValue + '%, ' + opacityValue + ')' + ')';
-    // return;
 }
 
 function makeCombinedColor() {
@@ -884,23 +857,12 @@ function makeCombinedColor() {
     if(gradiate_color){
         makeGradiatedColor();
         colorSwatchIndicator.style.background = gradiated_color;
-        // console.log('makeCombinedColor function says that gradiate_color is true, so lets set the colorWatchIndicator to that gradient');
     } else {
-        // console.log('makeCombinedColor function says that gradiate_color is FALSE, so lets set the colorWatchIndicator to that COLOR');
         colorSwatchIndicator.style.background = combinedColor; // NOTE: inline styles will automatically convert to rgba. No way to prevent that. pOOp!
     }
-    // console.log('makeCombinedColor function triggered');
 }
 
 function makeHueIncrementer() {
-
-    // hueIncrementer = gradientRange / complete_loop; // based on 'loop' length
-    // hueIncrementer = 0.1; // does a fixed amount gradiate evenly? Well, not more evenly, but can be less radical if a fixed number. Or can be based on user input
-    // hueIncrementer = 0.3; // let's try a higher value. Nope didn't look as good.
-    // hueIncrementer = 0.1; // back to 0.1 looks good when LC is 4
-    // hueIncrementer = 0.5; // trying this with LC: 27, sc: 5. Better, not great
-    // hueIncrementer = 0.3; // trying this with LC: 27, sc: 5. Meh.
-    // hueIncrementer = 1; // trying this with LC: 27, sc: 5. Better than the other values, but at LC 27, it's a hot mess no matter how the gradient increments.
     makeHueIncrementer.preventDefault;
     hueIncrementer = document.getElementById('gradient_range').value / 10; // you just had to give the user control over this, didn't you?
     document.getElementById('outputgradiant_range').innerHTML = "Gradient Range: " + hueIncrementer * 10;
