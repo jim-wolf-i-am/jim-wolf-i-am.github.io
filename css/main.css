@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Kantumruy+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&display=swap');
+
+body{
+    background-color: #1a1a23;
+    color: #b1a493;
+    font-family: 'Kantumruy Pro', helvetica, arial, sans-serif;
+    font-size: 1.2rem;
+    line-height: 2rem;
+    margin: 0 auto;
+    max-width: 1180px;
+    width: 80%
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #faebd7;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: 400;
+    margin-top: 2.6rem;
+}
+
+a:link {
+    color: #ffb85c;
+}
+a:visited {
+    color: #dedebb87;
+}
+a:hover {
+    
+}
+a:active {
+
+}

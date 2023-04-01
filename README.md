@@ -1,14 +1,14 @@
-# jim-wolf-i-am.github.io
-> My generative art experiments and musings.
+# Hi! I’m Jim
+> Welcome to my generative art experiments and musings.
 
-## Um, Like What Is This Stuff?
-Quite simply, this is where I post a few of the many generative art projects / experiments I've created.
+## Um, What Is This Stuff?
+This is where I post a few of the many generative art projects / experiments I've created.
 
-I'm not *necessarily* trying to show off my coding skills. As such, if my code cleanliness (or lack thereof) horrifies you, just know these projects happened in a flurry of creativity, with the spirit of experimentation.
+These projects are more about my coding *creativity* rather than my coding *skills*. As such, if my code cleanliness (or lack thereof) horrifies you, just know these projects happened in a flurry of creativity, with the spirit of experimentation (and yes, my professional work does follow best practices for code cleanliness).
 
 I justed wanted a way to share my passion projects with those who are curious about them :-)
 
-**Are these projects mobile-friendly?** Well... no, not really. At least not on a phone-sized device. Yes, I know everyone's busy, on the go, living the dream, maximizing synergies, etc., and you might be viewing this on a phone. And while I cringe just a little at envoking this idea: this is art. So, the criteria is wide open. That said, they are touch-compatible (because I simply wanted to see if I could), and they look pretty good on a tablet (and it's okay to admit you have a tablet).
+**Are these projects mobile-friendly?** On a tablet, yes. Not so much on a phone, but you are welcome to view them that way :-)
 
 ### Pierre - Animated Bezier Curves
 See it in action here: [https://jim-wolf-i-am.github.io/pierre/](https://jim-wolf-i-am.github.io/pierre/)
