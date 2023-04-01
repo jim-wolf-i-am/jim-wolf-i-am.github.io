@@ -8,7 +8,7 @@ body{
     line-height: 2rem;
     margin: 0 auto;
     max-width: 1180px;
-    width: 80%
+    width: 80%;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -29,4 +29,15 @@ a:hover {
 }
 a:active {
 
+}
+
+@media screen and (max-width: 800px) {
+    body{
+        font-size: 1.0rem;
+        line-height: 1.7rem;    
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        margin-top: 2.6rem;
+    }
 }
