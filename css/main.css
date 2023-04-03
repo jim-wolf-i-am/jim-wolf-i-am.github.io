@@ -1,14 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Kantumruy+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&display=swap');
 
-body{
+/*--------------------------------------------------------------
+4.0 - ELEMENTS 
+-------------------------------------------------------------- */
+
+body {
     background-color: #1a1a23;
     color: #b1a493;
     font-family: 'Kantumruy Pro', helvetica, arial, sans-serif;
     font-size: 1.2rem;
     line-height: 2rem;
-    margin: 0 auto;
-    max-width: 1180px;
-    width: 80%;
+}
+
+footer {
+    min-height: 80px;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -18,7 +23,11 @@ h1, h2, h3, h4, h5, h6 {
     margin-top: 2.6rem;
 }
 
-.cta{
+img {
+	max-width: 100%;
+}
+
+.cta {
     color:#e6ab5d;
 }
 
@@ -39,12 +48,100 @@ a.inpara {
     color: #b1a493;
 }
 
+/*--------------------------------------------------------------
+5.0 - OBJECTS
+-------------------------------------------------------------- */
+/* -- FRAMEWORK -- */
+.wrapper {
+	width: 80%;
+	max-width: 1170px;
+	margin: 0 auto;
+}
+
+.flexrow {
+    display: flex;
+    justify-content: space-between;
+	flex-wrap: wrap;
+}
+
+/* .flex-container:after {
+	content: "";
+	background: #aaaaaa;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	height: 1px;
+	width: 100%;
+  } */
+
+.col-2 {
+	width: 14.52%;
+}
+
+.col-3 {
+	width: 23.07%;
+}
+
+.col-4 {
+	width: 31.62%;
+}
+
+.col-5 {
+	width: 40.17%;
+}
+
+.col-6 {
+	width: 48.71%;
+}
+
+.col-7 {
+	width: 57.26%;
+}
+
+.col-8 {
+	width: 65.81%;
+}
+
+.col-9 {
+	width: 74.36%;
+}
+
+.col-10 {
+	width: 82.91%;
+}
+
+.col-11 {
+	width: 91.45%;
+}
+
+.col-12 {
+	width: 100%;
+}
+
+/*--------------------------------------------------------------
+6.0 - COMPONENTS
+-------------------------------------------------------------- */
+
+footer .flexrow {
+    border-top: 1px solid #26334a;
+    margin-top: 2em;
+    min-height: 80px;
+}
+
+.footer-msg {
+    color: #84888f;
+}
+
 @media screen and (max-width: 800px) {
     body{
         font-size: 1.0rem;
         line-height: 1.7rem;    
     }
 
+    .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11, .col-12 {
+        width: 100%;
+    }
+    
     h1, h2, h3, h4, h5, h6 {
         margin-top: 2.6rem;
     }
