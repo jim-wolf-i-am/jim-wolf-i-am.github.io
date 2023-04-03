@@ -1,0 +1,211 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Titillium+Web:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&display=swap');
+
+
+/*--------------------------------------------------------------
+3.0 - GENERIC 
+-------------------------------------------------------------- */
+
+* {
+	box-sizing: border-box;
+}
+
+
+/*--------------------------------------------------------------
+4.0 - ELEMENTS 
+-------------------------------------------------------------- */
+
+body {
+    background-color: #1a1a23;
+    color: #b1a493;
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 1.2rem;
+    line-height: 2rem;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #faebd7;
+    font-family: 'Merriweather', serif;
+    font-weight: 400;
+    /* margin-top: 2.6rem; */
+}
+
+h4 {
+	color: #f79a75;
+	font-weight: 300;
+	margin: 1.3em 0 0.9em;
+}
+
+h5 {
+    color:#e6ab5d;
+	font-family: 'Titillium Web', sans-serif;
+	font-size: 1.1em;
+    margin: 1.4em 0 0.3em;
+}
+
+p {
+    margin: 0 0 1em;
+}
+
+img {
+	max-width: 100%;
+}
+
+a:link {
+    color: #b97255;
+}
+a:visited {
+    /* color: #dedebb87; */
+    color: #b88976;
+}
+a:hover {
+    
+}
+a:active {
+
+}
+
+a.inpara {
+    color: #b1a493;
+}
+
+footer {
+    min-height: 80px;
+}
+
+
+/*--------------------------------------------------------------
+5.0 - COMPONENTS
+-------------------------------------------------------------- */
+
+body header {
+    margin-top: 4em;
+}
+
+header h1 {
+    color: #acace2;
+    font-size: 1.2rem;
+    font-weight: 300;
+    margin: 0.37em 0;
+    text-align: right;
+}
+
+.intro {
+	font-size: 2.5rem;
+	line-height: 3rem;
+	font-weight: 300;
+	color: #fcebd4;
+	margin: 0 0 1em;
+}
+
+p.intro:first-child {
+    margin-top: 2em;
+}
+
+.subintro {
+	font-size: 1.5rem;
+	line-height: 2rem;
+	font-weight: 300;
+	color: #fcebd4;
+	margin: 0 0 1em;
+}
+
+.col-9 h3 {
+	border-bottom: 1px solid #acace2;
+	padding-bottom: 0.5em;
+	color: #acace2;
+}
+
+.contact {
+    text-align: right;
+}
+
+.cta {
+    color:#e6ab5d;
+}
+
+footer .flexrow {
+    border-top: 1px solid #26334a;
+    margin-top: 2em;
+    min-height: 80px;
+}
+
+.footer-msg {
+    color: #84888f;
+}
+
+
+/*--------------------------------------------------------------
+6.0 - OBJECTS
+-------------------------------------------------------------- */
+/* -- FRAMEWORK -- */
+.wrapper {
+	width: 80%;
+	max-width: 1170px;
+	margin: 0 auto;
+}
+
+.flexrow {
+    display: flex;
+    justify-content: space-between;
+	flex-wrap: wrap;
+}
+
+.col-2 {
+	width: 14.52%;
+}
+
+.col-3 {
+	width: 23.07%;
+}
+
+.col-4 {
+	width: 31.62%;
+}
+
+.col-5 {
+	width: 40.17%;
+}
+
+.col-6 {
+	width: 48.71%;
+}
+
+.col-7 {
+	width: 57.26%;
+}
+
+.col-8 {
+	width: 65.81%;
+}
+
+.col-9 {
+	width: 74.36%;
+}
+
+.col-10 {
+	width: 82.91%;
+}
+
+.col-11 {
+	width: 91.45%;
+}
+
+.col-12 {
+	width: 100%;
+}
+
+
+@media screen and (max-width: 800px) {
+    body{
+        font-size: 1.0rem;
+        line-height: 1.7rem;    
+    }
+
+    .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11, .col-12 {
+        width: 100%;
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+        margin-top: 2.6rem;
+    }
+}
