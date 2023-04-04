@@ -147,15 +147,16 @@ footer .flexrow {
     border-top: 1px solid #26334a;
     margin-top: 2em;
     min-height: 80px;
+    padding-top: 1em;
 }
 
 .footer-msg {
     color: #84888f;
 }
 
-#form-container {
+#form-background {
     background-color: #1a1a23f7;
-    position: absolute;
+    position: fixed;
     width: 100vw;
     height: 100vh;
     top: 0;
@@ -165,10 +166,10 @@ footer .flexrow {
     transition: all 300ms;
 }
 
-form {
+#form-container {
     margin: 40px auto 0;
     min-width: 600px;
-    width: 80%;
+    width: 50%;
 }
 
 input, textarea {
@@ -181,6 +182,43 @@ input, textarea {
     
 }
 
+#form-container h3 {
+    margin: 0 0 0.2em;
+}
+
+#form-container button {
+    background-color: #b97255;
+    border: none;
+    padding: 0.4em 1em;
+    border-radius: 2px;
+    transition: all 150ms;
+}
+
+#form-container button:hover {
+    background-color: #e7b09a;
+}
+
+.cancel-button {
+    cursor: pointer;
+    transition: all 150ms;
+}
+
+.cancel-button:hover {
+    color: #e7b09a;
+}
+
+.times-symbol {
+    color: #84888f;
+    font-size: 2em;
+    font-weight: 300;
+	padding: 0 0.2em 0.2em;
+	line-height: 0.7;
+	border: 1px solid #84888f;
+}
+
+.times-symbol:hover {
+    border-color: #e7b09a;
+}
 
 /*--------------------------------------------------------------
 6.0 - OBJECTS
@@ -196,6 +234,7 @@ input, textarea {
     display: flex;
     justify-content: space-between;
 	flex-wrap: wrap;
+    align-items: flex-start;
 }
 
 .col-2 {
@@ -267,7 +306,8 @@ input, textarea {
         margin-bottom: 1.2em;
     }
 
-    form {
+    #form-container {
         min-width: unset;
+        width: 80%;
     }
 }
