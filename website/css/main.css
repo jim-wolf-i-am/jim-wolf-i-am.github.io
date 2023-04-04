@@ -117,6 +117,11 @@ p.intro:first-child {
 	border-bottom: 1px solid #acace2;
 	padding-bottom: 0.5em;
 	color: #acace2;
+    margin-top: 2em;
+}
+
+#train_ed_skills p {
+	margin-bottom: 0.2em;
 }
 
 p i {
