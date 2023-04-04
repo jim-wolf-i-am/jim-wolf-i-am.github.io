@@ -89,6 +89,10 @@ header h1 {
     text-align: right;
 }
 
+.contact {
+    text-align: right;
+}
+
 .intro {
 	font-size: 2.5rem;
 	line-height: 3rem;
@@ -115,8 +119,8 @@ p.intro:first-child {
 	color: #acace2;
 }
 
-.contact {
-    text-align: right;
+p i {
+    color: #878684;
 }
 
 .cta {
@@ -207,5 +211,15 @@ footer .flexrow {
     
     h1, h2, h3, h4, h5, h6 {
         margin-top: 2.6rem;
+    }
+
+    .col-9 h3 {
+        border-bottom-width: 2px;
+    }
+
+    h4 {
+        border-bottom: 1px solid #dc693a;
+        padding-bottom: 0.3em;
+        margin-bottom: 1.2em;
     }
 }
