@@ -3,8 +3,8 @@
 	<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jim Wolf</title>
-    <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/main.css">
 </head>
 
 <html>
@@ -14,7 +14,7 @@
             <div class="flexrow">
                 <div class="col-3">
                     <h1>Jim Wolf</h1>
-                    <p class="contact"><a href="#">Contact Me!</a></p>
+                    <p class="contact"><a href="#" onclick="showContactForm();">Contact Me!</a></p>
                 </div>
                 <div class="col-9">
                     <p class="intro">Hi, I&CloseCurlyQuote;m Jim. I am a front-end web developer and creative coder in Omaha, NE.</p>
@@ -154,8 +154,6 @@
         </div>
     </section>
 
-
-
     <footer>
         <div class="wrapper">
             <div class="flexrow">
@@ -166,5 +164,21 @@
         </div>
     </footer>
 
+    <div id="form-container">
+        <form action="https://api.staticforms.xyz/submit" method="post">
+            <!-- Replace with accesKey sent to your email -->
+            <input type="hidden" name="accessKey" value="d470efb5-5820-410d-a8f7-ac08058bfe69"> <!-- Required -->
+            <label>Name * <input type="text" name="name" required></label>
+            <label>Subject * <input type="text" name="subject" required></label>
+            <label>Email * <input type="text" name="email" required></label>
+            
+            <label>Message: <textarea name="message" rows="5"></textarea></label>
+            <!-- If you want form to redirect to a specific url after submission -->
+            <input type="hidden" name="redirectTo" value="https://example.com/contact/success"> <!-- Optional -->
+            <input type="submit" value="Submit" />
+        </form>
+    </div>
+
+    <script type="text/javascript" src="js/main.js"></script>
 </body>
 </html>

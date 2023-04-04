@@ -22,6 +22,10 @@ body {
     line-height: 2rem;
 }
 
+label {
+    color: #b88976;
+}
+
 h1, h2, h3, h4, h5, h6 {
     color: #faebd7;
     font-family: 'Merriweather', serif;
@@ -52,13 +56,16 @@ img {
 
 a:link {
     color: #b97255;
+    transition: color 150ms;
 }
 a:visited {
-    /* color: #dedebb87; */
     color: #b88976;
+    transition: color 150ms;
 }
+
 a:hover {
-    
+    color: #f39571;
+    transition: color 150ms;
 }
 a:active {
 
@@ -66,6 +73,10 @@ a:active {
 
 a.inpara {
     color: #b1a493;
+}
+
+a.inpara:hover {
+    color: #e8d4bb;
 }
 
 footer {
@@ -140,6 +151,34 @@ footer .flexrow {
 
 .footer-msg {
     color: #84888f;
+}
+
+#form-container {
+    background-color: #1a1a23f7;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    z-index: -1;  /* in production: -1 */
+    opacity: 0;  /* in production: 0 */
+    transition: all 300ms;
+}
+
+form {
+    margin: 40px auto 0;
+    min-width: 600px;
+    width: 80%;
+}
+
+input, textarea {
+    width: 100%;
+    background: none;
+    color: #b1a493;
+    border: none;
+    margin-bottom: 1em;
+    border-bottom: 1px solid #b97255;
+    
 }
 
 
@@ -226,5 +265,9 @@ footer .flexrow {
         border-bottom: 1px solid #dc693a;
         padding-bottom: 0.3em;
         margin-bottom: 1.2em;
+    }
+
+    form {
+        min-width: unset;
     }
 }
