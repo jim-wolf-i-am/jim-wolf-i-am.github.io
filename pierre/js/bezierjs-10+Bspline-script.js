@@ -7,7 +7,7 @@
 p5.disableFriendlyErrors = true; // disables FES
 
 var drawing_status = false;
-var loop_status = true;
+var loop_status = false;
 
 var revolutions = 0;
 var repeats = 0;
@@ -250,6 +250,45 @@ window.onload = function(){
     document.getElementById('readout_spiro_speed').innerHTML = speed_spiro_normalized;
     // preload(); // related to Howler and i_feel_love
     document.addEventListener('keydown',evaluate_key);
+    toggle_dimness_ui();
+};
+
+function toggle_dimness_ui(){
+
+    let wrappers_delight = document.getElementsByClassName('jw_ui_wrapper');
+    let show_shape_inputs = [];
+    let unchecked = [];
+    let checked = [];
+    for(let i = 0; i < wrappers_delight.length; i++){
+        
+        show_shape_inputs.push(wrappers_delight[i].querySelector('[id^=shape]'));
+        show_shape_inputs.push(wrappers_delight[i].querySelector('[for^=shape]'));
+
+        if(wrappers_delight[i].querySelector('[id^=shape]').checked == false){
+            unchecked.push(i);
+        };
+        
+        if(wrappers_delight[i].querySelector('[id^=shape]').checked == true){
+            checked.push(i);
+        };
+    };
+
+    for(let j = 0; j < unchecked.length; j++){
+        // console.log(wrappers_delight[unchecked[j]]);
+        // console.log(wrappers_delight[unchecked[j]].querySelectorAll('input'));
+        Array.from(wrappers_delight[unchecked[j]].querySelectorAll('input')).forEach((el) => el.classList.add('dimmed'));
+        Array.from(wrappers_delight[unchecked[j]].querySelectorAll('label')).forEach((el) => el.classList.add('dimmed'));
+    };
+    for(let k = 0; k < checked.length; k++){
+        // console.log(wrappers_delight[unchecked[j]]);
+        // console.log(wrappers_delight[unchecked[j]].querySelectorAll('input'));
+        Array.from(wrappers_delight[checked[k]].querySelectorAll('input')).forEach((el) => el.classList.remove('dimmed'));
+        Array.from(wrappers_delight[checked[k]].querySelectorAll('label')).forEach((el) => el.classList.remove('dimmed'));
+    };
+
+    for(l = 0; l < show_shape_inputs.length; l++){
+        show_shape_inputs[l].classList.remove('dimmed');
+    };
 };
 
 var current_transparency_1;
@@ -1507,6 +1546,7 @@ function draw(){
     show_shape_2 = document.getElementById('shape2').checked;
     show_shape_3 = document.getElementById('shape3').checked;
     show_shape_4 = document.getElementById('shape4').checked;
+    toggle_dimness_ui();
 //    handle_viz = document.getElementById('handle_vis').checked;
 //    outline_viz = document.getElementById('outline_viz').checked;
     handle_outline_viz = document.getElementById('handle_outline_viz').checked;
@@ -2404,7 +2444,6 @@ class BSpline {
     bspline_y_4 = -window.innerHeight / 2.5; // previously -231
 //    
     bspline_x_5 = window.innerWidth / 6 ;  // ANIMATES, previously 133
-    console.log(bspline_x_5);
     bspline_y_5 = -231; // ANIMATES
 
 // bs_o_p = bspline original points

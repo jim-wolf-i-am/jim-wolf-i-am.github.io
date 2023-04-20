@@ -927,7 +927,7 @@ input#draw_grid {
     padding: 0;
 }
 
-#shape_4_note {
+#note_shape_4 {
 	margin-left: 20px;
 	position: absolute;
 	width: 25%;
@@ -937,6 +937,10 @@ input#draw_grid {
 	line-height: 1.2rem;
     letter-spacing: 0.7px;
 	color: #5a5a5a;
+}
+
+input.dimmed, label.dimmed{
+    opacity: 0.5;
 }
 
 /* THIS TARGETS MY LAPTOP 1700 works */
