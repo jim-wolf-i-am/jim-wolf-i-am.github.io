@@ -7,7 +7,7 @@
 p5.disableFriendlyErrors = true; // disables FES
 
 var drawing_status = false;
-var loop_status = false;
+var loop_status = true;
 
 var revolutions = 0;
 var repeats = 0;
