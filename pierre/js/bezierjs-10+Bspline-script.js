@@ -274,14 +274,10 @@ function toggle_dimness_ui(){
     };
 
     for(let j = 0; j < unchecked.length; j++){
-        // console.log(wrappers_delight[unchecked[j]]);
-        // console.log(wrappers_delight[unchecked[j]].querySelectorAll('input'));
         Array.from(wrappers_delight[unchecked[j]].querySelectorAll('input')).forEach((el) => el.classList.add('dimmed'));
         Array.from(wrappers_delight[unchecked[j]].querySelectorAll('label')).forEach((el) => el.classList.add('dimmed'));
     };
     for(let k = 0; k < checked.length; k++){
-        // console.log(wrappers_delight[unchecked[j]]);
-        // console.log(wrappers_delight[unchecked[j]].querySelectorAll('input'));
         Array.from(wrappers_delight[checked[k]].querySelectorAll('input')).forEach((el) => el.classList.remove('dimmed'));
         Array.from(wrappers_delight[checked[k]].querySelectorAll('label')).forEach((el) => el.classList.remove('dimmed'));
     };
