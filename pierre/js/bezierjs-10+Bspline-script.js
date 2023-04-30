@@ -3197,3 +3197,35 @@ bspline_points =
 
 }
 
+let shape_showers = document.querySelectorAll("[id^='shape']:not([id$='_'])");
+// if you add UI elements whose id value starts with the word 'shape', but that element does not show or hide the shape, then its id value MUST end with an underscore. See Shape 10 for example
+
+// if any shapes are shown on load, toggle the shape-not-showing class for that shape, which will add the dot
+for(let i = 0; i < shape_showers.length; i++){
+  shape_showers[i].addEventListener('input', toggle_play_dot);
+
+  if(shape_showers[i].checked){
+    let element = shape_showers[i];
+    while (element.parentElement) {
+      if (element.parentElement.classList.contains('jw_ui')) {
+        element.parentElement.previousElementSibling.classList.toggle('shape-is-showing');
+      }
+      element = element.parentElement;
+    }
+  }
+}
+
+// concept below provided by Jaromanda X
+// https://stackoverflow.com/questions/50232343/javascript-get-all-ancestors-with-specific-class
+
+function toggle_play_dot(e){
+  
+  let element = e.target;
+
+  while (element.parentElement) {
+    if (element.parentElement.classList.contains('jw_ui')) {
+      element.parentElement.previousElementSibling.classList.toggle('shape-is-showing');
+    }
+    element = element.parentElement;
+  }
+};
