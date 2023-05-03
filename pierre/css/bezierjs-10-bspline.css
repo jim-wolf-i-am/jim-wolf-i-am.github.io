@@ -453,10 +453,7 @@ background: rgba(242, 65, 65, 0.92);
 
 #sketch-holder {
   z-index: -5;
-/*          width: 1080px;*/
-/*          margin: 0 auto;*/
   padding: 0;
-/*          float: left;*/
 }
 
 #keyboard_shortcuts_btn {
