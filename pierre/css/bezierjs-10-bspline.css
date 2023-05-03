@@ -974,13 +974,6 @@ input.dimmed, label.dimmed{
       opacity: 1;
     }  
 
-.hide {
-    transition: opacity 200ms, display 200ms;
-    display: none;
-    opacity: 0;
-    z-index: -6;
-    }
-
 #phone_modal {
     display: none;
     position: absolute;
@@ -992,12 +985,12 @@ input.dimmed, label.dimmed{
     align-items: center;
     }
 
-    @media screen and (max-width: 1023px) {
-        #phone_modal {
-            display: flex;
-            z-index: 6;
-        }
+@media screen and (max-width: 1023px) {
+    #phone_modal {
+        display: flex;
+        z-index: 6;
     }
+}
 
 #phone_modal > div {
 margin: 0 auto;
@@ -1013,6 +1006,16 @@ line-height: 2.6rem;
 
 #phone_modal button {
 font-size: 1.5rem;
+}
+
+.hide {
+    transition: opacity 200ms, display 200ms;
+    display: none;
+    opacity: 0;
+}
+
+#phone_modal.hide {
+    z-index: -6;
 }
 
 /* THIS TARGETS MY LAPTOP 1700 works */
