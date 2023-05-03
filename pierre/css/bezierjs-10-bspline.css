@@ -974,6 +974,46 @@ input.dimmed, label.dimmed{
       opacity: 1;
     }  
 
+.hide {
+    transition: opacity 200ms, display 200ms;
+    display: none;
+    opacity: 0;
+    }
+
+#phone_modal {
+    display: none;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -6;
+    background-color: #000000c0;
+    align-items: center;
+    }
+
+    @media screen and (max-width: 1023px) {
+        #phone_modal {
+            display: flex;
+            z-index: 6;
+        }
+    }
+
+#phone_modal > div {
+margin: 0 auto;
+width: 70%;
+text-align: center;
+}
+
+#phone_modal h3 {
+font-size: 2rem;
+font-weight: 400;
+line-height: 2.6rem;
+}
+
+#phone_modal button {
+font-size: 1.5rem;
+}
+
 /* THIS TARGETS MY LAPTOP 1700 works */
 @media screen and (max-device-width: 1700px){
 

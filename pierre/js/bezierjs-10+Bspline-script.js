@@ -615,7 +615,10 @@ document.addEventListener('click', function (event) {
 
         document.getElementById('spiro_speed_readout').innerHTML = speed_spiro_normalized;
 	}
-    
+
+    if (event.target.matches("#dismiss_phone_modal")) {
+        document.getElementById("phone_modal").classList.add("hide");
+      }
 }, false);
 
 // document.getElementById('laser_light_show').addEventListener('change', function(){
