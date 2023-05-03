@@ -978,6 +978,7 @@ input.dimmed, label.dimmed{
     transition: opacity 200ms, display 200ms;
     display: none;
     opacity: 0;
+    z-index: -6;
     }
 
 #phone_modal {
