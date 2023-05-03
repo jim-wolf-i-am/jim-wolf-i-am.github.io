@@ -967,7 +967,7 @@ input.dimmed, label.dimmed{
     font-size: 32px;
     line-height: 0;
     opacity: 0;
-    transition: 400ms;
+    transition: opacity 400ms;
     }
   
     .shape-is-showing::after {
