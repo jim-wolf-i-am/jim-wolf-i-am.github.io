@@ -443,12 +443,17 @@ background: rgba(242, 65, 65, 0.92);
 }
 
 #ui-holder {
-    float: left;
     z-index: 5;
     color: gray;
     width: 530px;
+    overflow: scroll;
+    scrollbar-width: none;
 }
-
+  
+#ui-holder::-webkit-scrollbar {
+width: 0;
+}
+  
 #sketch-holder {
   z-index: -5;
   padding: 0;
