@@ -2,7 +2,7 @@
     border-bottom: 2px solid #535353;
     margin-bottom: 9px;
     overflow: hidden;
-    transition: all 0.3s;
+    transition: height 0.3s;
 }
 
 .jw_ui_display_none {
@@ -33,7 +33,6 @@
   content: "";
 	display: inline-block;
 	position: relative;
-	top: 2px;
 	width: 0;
 	height: 0;
 	border-top: 6px solid transparent;

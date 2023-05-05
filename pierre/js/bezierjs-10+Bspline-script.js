@@ -3055,11 +3055,13 @@ function update_color_bkgd(picker) {
 function openNav() {
     document.getElementById("ui-holder").style.marginLeft = "0px";
     document.getElementById("menuicon").classList.add('displaynone');
+    document.getElementById("keyboard_shortcuts_btn").classList.remove("posrel");
 }
 
 function closeNav() {
     document.getElementById("ui-holder").style.marginLeft = "-600px";        
     document.getElementById("menuicon").classList.remove('displaynone');
+    document.getElementById("keyboard_shortcuts_btn").classList.add("posrel");
 }
 
 function openShortcuts() {

@@ -202,7 +202,7 @@ input[type='checkbox']{
     height: 20px;
     margin-top: 5.5px;
     margin-bottom: 0;
-    transition: 0.8s;
+    /* transition: 0.8s; */
 }
 
 #transparency_display, #diameter_display {
@@ -217,7 +217,7 @@ button {
   margin-top: 16px;
     border-radius: 3px;
     border: 2px solid;
-    transition: 0.5s;
+    /* transition: 0.5s; */
 	letter-spacing: 1px;
 }
 
@@ -236,7 +236,7 @@ label {
     padding-bottom: 4px;
     padding-left: 0;
     text-align: right;
-    transition: 0.8s;
+    /* transition: 0.8s; */
 }
 
 label[for="background_color"]{
@@ -288,7 +288,7 @@ label[for="background_color"]{
     padding-top: 5px;
     padding-bottom: 0;
     color: #b9b9b9;
-    transition: 0.8s;
+    /* transition: 0.8s; */
 }
 
 .lbl_in_flex_end:hover {
@@ -334,14 +334,12 @@ background: rgba(242, 65, 65, 0.92);
 #color_1,#color_2,#color_3,#color_4,#background_color {
     margin: 0;
     padding: 0;
-    transition: 0s;
     width: 79px;
     height: 27px;
     opacity: 1;
     border-color: rgba(255, 255, 255, 0.7);
     font-size: 0.8em;
     text-align: center;
-    transition: 0s;
 }
 
 #background_color {
@@ -459,13 +457,18 @@ background: rgba(242, 65, 65, 0.92);
 #keyboard_shortcuts_btn {
     margin: 0 35px 0 0;
     padding: 4px 0 5px;
+    position: absolute;
+    left: 180px;
     width: 100px;
-    border-color:
-    rgba(255, 255, 255, 0.7);
-/*    font-size: 0.8em;*/
+    border-color: rgba(255, 255, 255, 0.7);
     text-align: center;
-    transition: opacity 0.8s;
-}
+    transition: left 1000ms;
+  }
+
+  #keyboard_shortcuts_btn.posrel {
+    position: fixed;
+    left: 100px;
+  }
 
 #ui-holder-fixed {
     position: fixed;
@@ -485,7 +488,7 @@ background: rgba(242, 65, 65, 0.92);
     width: 23%;
     top: 40%;
     font-size: 1.3em;
-    transition: 0.8s;
+    transition: opacity 0.8s;
 }
 
 #shortcuts-flex {
@@ -718,21 +721,17 @@ input[type='radio']:after {
 }
 .text_color_1 {
     color: rgb(255,3,123);
-    transition: 0.8s;
 }
 .text_color_2 {
     color: rgb(77,235,255);
-    transition: 0.8s;
 }
 
 .text_color_3 {
     color: rgb(241,255,48);
-    transition: 0.8s;
 }
 
 .text_color_4 {
     color: rgb(154,0,255);
-    transition: 0.8s;
 }
 
 .wrap-non {
@@ -795,8 +794,7 @@ input#draw_grid {
 #handle_outline_viz {
     margin-left: 0;
     margin-right: 8px;
-/*    opacity: 0.5;*/
-    transition: 0.8s;
+    /* transition: 0.8s; */
 }
 
 #handle_outline_viz:hover {
@@ -810,7 +808,7 @@ input#draw_grid {
     margin-top: 8px;
     margin-bottom: 5px;
     margin-left: 0;
-    transition: 0.8s;
+    /* transition: 0.8s; */
 }
 
 #pause_resume_btn:hover {
@@ -895,7 +893,7 @@ input#draw_grid {
 
 
 #vis_hide_1, #i_feel_love_checkbox {
-    transition: 1.0s;
+    /* transition: 1.0s; */
     padding-right: 2px;
 }
 
@@ -960,16 +958,20 @@ input.dimmed, label.dimmed{
     position: relative;
     top: 7px;
     margin: 0px 6px 0 10px;
-    transition: all 400ms;
     font-size: 32px;
     line-height: 0;
     opacity: 0;
     transition: opacity 400ms;
-    }
+}
   
-    .shape-is-showing::after {
+.shape-is-showing::after {
       opacity: 1;
-    }  
+}
+
+.extra_padding:not(.jw_ui_closed) {
+    /* transition: none; */
+    padding-bottom: 10px;
+}
 
 #phone_modal {
     display: none;
@@ -1075,67 +1077,19 @@ font-size: 1.5rem;
             padding: 9px 8px;
         } 
     }
-
-
-    
 }
 
-
-/*
-@media screen and (max-width: 400px){
-    #menuicon {
-        display: inherit;
+@media screen and (max-width: 800px) {
+    #ui-holder {
+      height: 75vh;
+      overflow-x: scroll !important;
     }
-    
-    .sidenav {
-        margin-left: -540px;
-    }
-    
-    button, label, input {
-        padding: 4px;
-    }
-
-    button {
-        margin-top: 0;
-    }
-
-    input,select {
-        padding-left: 8px;
-        min-width: 32%;
-        max-width: 32%;
-    }
-    
-    input[type='checkbox'],input[type='radio']{
-        opacity: 1;
-        min-width: 0;
-        margin-left: 19%;
-    }
-
-    
-    .instructions {
-      margin-top: 4px;
-    }
-
-    #redoBtn,#saveBtn {
-        margin-left: 16px;
-    }
-
-    .controls {
-        margin-top: 15px;
-        margin-bottom: 6px;
-    }
-
-    .instructions_container {
-        max-width: 300px;
-        margin-top: 20px;
-    }
-    
-    .hide_on_mobile {
-        display: none;
-    }
-    
-}
-*/
+  
+    .jw_ui_controller::after {
+      font-size: 40px;
+      }
+  }
+  
 
 /* ----------- Non-Retina Screens ----------- */
 @media screen 
