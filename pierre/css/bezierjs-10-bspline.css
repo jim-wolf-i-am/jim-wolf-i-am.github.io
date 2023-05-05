@@ -176,6 +176,7 @@ button, label, input,.radio_text, .display_areas *, .readout, .basic_ui_text {
     letter-spacing: 1px;
     cursor: pointer;
     user-select: none;
+    transition: opacity 0.8s;
 }
 
 .readout, label {
@@ -202,7 +203,7 @@ input[type='checkbox']{
     height: 20px;
     margin-top: 5.5px;
     margin-bottom: 0;
-    /* transition: 0.8s; */
+    transition: opacity 0.8s;
 }
 
 #transparency_display, #diameter_display {
