@@ -444,15 +444,15 @@ background: rgba(242, 65, 65, 0.92);
 }
 
 #ui-holder {
-    z-index: 5;
     color: gray;
+    height: clamp(50vh, 80vh, 80vh);
     width: 530px;
     overflow: scroll;
-    scrollbar-width: none;
+    z-index: 5;
 }
   
 #ui-holder::-webkit-scrollbar {
-width: 0;
+
 }
   
 #sketch-holder {
