@@ -447,13 +447,23 @@ background: rgba(242, 65, 65, 0.92);
     color: gray;
     height: clamp(50vh, 80vh, 80vh);
     width: 530px;
-    overflow: scroll;
+    overflow-y: scroll;
+    scrollbar-width: thin;
     z-index: 5;
-}
+  }
   
-#ui-holder::-webkit-scrollbar {
-
-}
+  #ui-holder::-webkit-scrollbar {
+    width: 5px;
+    height: 8px;
+  }
+  
+  #ui-holder::-webkit-scrollbar-thumb {
+    background-color: #797979;
+  }
+  
+  #ui-holder::-webkit-scrollbar-track {
+    background-color: #363636;
+  }
   
 #sketch-holder {
   z-index: -5;
