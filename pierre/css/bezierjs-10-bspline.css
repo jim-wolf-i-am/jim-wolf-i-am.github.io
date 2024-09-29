@@ -491,8 +491,8 @@ width: 0;
     opacity: 0;
     background-color: rgba(0, 0, 0, 0.9);
     padding: 15px 30px;
-    width: 23%;
-    top: 40%;
+    /* width: 23%; */
+    /* top: 40%; */
     font-size: 1.3em;
     transition: opacity 0.8s;
 }
